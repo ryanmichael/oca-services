@@ -136,7 +136,12 @@ function build() {
       // hymn by file + section index.
       for (const p of curated[k]?.[sec] || []) {
         const r = rows.find((x) => x.id === p.baseId);
-        const h = cands.find((x) => x.file === p.file && x.idx === p.index);
+        // A pair may instead carry the text inline, transcribed from the packet,
+        // for a hymn the corpus lacks (11-22's Apostles stichera: Raphaela's
+        // November 22 file omits the Apostles, Connie prints them anyway).
+        const h = p.text
+          ? { file: 'packet', idx: p.baseId, text: p.text, tone: p.tone ?? null }
+          : cands.find((x) => x.file === p.file && x.idx === p.index);
         if (r && h) emit(r, h, 'curated', null);
         else report.push({ day: k, files: stat.files, problem: `curated pair ${JSON.stringify(p)} no longer resolves` });
       }

@@ -252,6 +252,16 @@
         "vespers"
       ]
     },
+    "apostichaFeastAfterOctoechosOn": {
+      "label": "Feast Aposticha after the Octoechos on these days",
+      "description": "Days, as M-D (the content date), on which the parish sings the feast's own Aposticha stichera AFTER the Octoechos resurrectional ones at Saturday Great Vespers. The OCA order assigns those stichera to the Litya; a parish that serves no Litya may sing them here instead, the 2nd and 3rd under the feast's proper verses. St John of Damascus, Tyler on the Entry afterfeast Sunday (11-22; 11.21.26 packet, scan p.9).",
+      "namespace": "aposticha.feastAfterOctoechosOn",
+      "type": "csv-strings",
+      "default": [],
+      "appliesTo": [
+        "vespers"
+      ]
+    },
     "menaionTextSource": {
       "label": "Menaion translation the choir sings",
       "description": "Which English translation of the Menaion stichera (Lord I Call, Litya, Aposticha) the parish hears. \"base\" renders the default text (OCA first). \"raphaela\" renders Mother Raphaela's Menaion — the corpus on the St John of Damascus choir site, in modern you/your — wherever it carries the hymn, including days where it appoints different hymns (reference/raphaela/parish-pairs.json); any hymn it lacks falls back to the base. Generated layer: variable-sources/parish-texts/raphaela-menaion.json. Set for St John of Damascus, Tyler, whose choir director prints from this corpus (2026-11-20).",

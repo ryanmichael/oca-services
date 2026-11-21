@@ -82,6 +82,9 @@ function legacyBuildRubrics(row, picks = {}) {
   // Per-feast "Great Vespers alone" — server-lib/sources/calendar.js applyVigilServedAlone.
   if (picked('greatVespersAloneOn') && coerce(picks.greatVespersAloneOn, 'csv-strings').length > 0)
     r.vespers = { ...(r.vespers || {}), greatVespersAloneOn: coerce(picks.greatVespersAloneOn, 'csv-strings') };
+  // Per-day feast Aposticha after the Octoechos — server-lib/assemble/for-date.js.
+  if (picked('apostichaFeastAfterOctoechosOn') && coerce(picks.apostichaFeastAfterOctoechosOn, 'csv-strings').length > 0)
+    r.aposticha = { ...(r.aposticha || {}), feastAfterOctoechosOn: coerce(picks.apostichaFeastAfterOctoechosOn, 'csv-strings') };
   // Registry-only enum, default 'base'. Emitted only when the parish differs.
   if (picked('menaionTextSource') && coerce(picks.menaionTextSource, 'enum') !== 'base')
     r.menaion = { ...(r.menaion || {}), textSource: coerce(picks.menaionTextSource, 'enum') };

@@ -747,6 +747,30 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
         if (hasOctoechosAposticha && !isGreatFeast) {
           // Weekday/Saturday: keep Octoechos aposticha, only overlay Menaion glory
           // (Octoechos provides the 3 base hymns; Menaion provides the Glory sticheron)
+          //
+          // A parish that serves no Litya may sing the feast's own Aposticha
+          // (the stichera the order assigns to the Litya) AFTER the Octoechos
+          // ones. The OCA order for 2026-11-22 puts them at the Litya only;
+          // St John of Damascus, Tyler serves Great Vespers without a Litya
+          // and sings them here (11.21.26 packet, scan p.9: three Tone 2
+          // stichera, the 2nd and 3rd under Ps. 44 verses). Parish rubric
+          // aposticha.feastAfterOctoechosOn, per M-D.
+          const appendOn = opts.rubrics?.aposticha?.feastAfterOctoechosOn;
+          if (Array.isArray(appendOn) && appendOn.includes(adjustedMD().join('-'))
+              && apostStichera.length > 0) {
+            const verses = MENAION_APOSTICHA_VERSES[adjustedMD().join('-')]?.apostichaVerses ?? null;
+            const base = apost.slots.length;
+            apostStichera.forEach((s, i) => {
+              apost.slots.push({
+                position: base + i + 1,
+                source:   'menaion', provenance: provOf(s.dbSource) || menaionProvenance,
+                key:      `auto.${date}.aposticha.hymns.${i}`,
+                tone:     s.tone,
+                label:    sticheraLabel,
+                ...(i >= 1 && verses?.[i - 1] ? { verse: verses[i - 1] } : {}),
+              });
+            });
+          }
         } else {
           // Great feast or no Octoechos base: replace slots with Menaion stichera.
           // A Great Feast's aposticha takes PROPER verses; the assembler otherwise

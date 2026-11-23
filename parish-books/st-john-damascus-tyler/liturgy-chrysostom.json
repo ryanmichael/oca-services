@@ -13,7 +13,8 @@
       "ordinaryTime",
       "preLenten"
     ],
-    "serviceName": "Chrysostom"
+    "serviceName": "Chrysostom",
+    "antiphons": "typical"
   },
   "sampleYears": [
     2026,
@@ -24,13 +25,17 @@
   "stretches": [
     {
       "id": "propers",
-      "label": "The Third Antiphon through the Holy Gospel",
-      "fromSection": "Third Antiphon",
+      "label": "The Troparia through the Holy Gospel",
+      "fromSection": "Troparia",
       "toSection": "Gospel Reading"
     }
   ],
+  "omit": {
+    "printCues": true,
+    "why": "The Reader reads the Beatitude troparia between the verses the choir sings; the pew follows them by ear, so neither the book nor the insert prints them (features/beatitudes-print-cues.md). The Reader's copy is the full booklet."
+  },
   "citationsOnly": {
     "idPattern": "^(ep|gos)(-2|-cont)?-text$",
-    "why": "The insert prints reading citations only; the reading itself is heard. Presentation only: the insert DATA still carries the full text, so book + insert = the whole service."
+    "why": "The insert prints reading citations only; the reading itself is heard. Presentation only: the insert DATA still carries the full text, so book + insert = the whole service less the `omit` rule above."
   }
 }

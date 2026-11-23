@@ -143,6 +143,21 @@
       return `<div class="choir-litany">${esc(text)} — respond as usual</div>`;
     }
 
+    // Print hints (features/beatitudes-print-cues.md). Only a print surface
+    // asks for them (`opts.print`); the on-screen panel never does, and a
+    // Reader's copy (`opts.readersCopy`) keeps every text. A hymn carrying a
+    // cue prints as that one line; a text the pew now follows by itself (the
+    // Beatitude verses, Glory, Now and ever) prints at full hymn size.
+    const hint = block.print;
+    if (hint && opts && opts.print && !opts.readersCopy) {
+      if (type === 'hymn' && hint.cue) {
+        return `<div class="rubric print-cue">${speakerPrefix(speaker)}${esc(hint.cue)}</div>`;
+      }
+      if (hint.emphasis === 'sung' && (type === 'verse' || type === 'doxology')) {
+        return `<div class="prayer sung">${esc(text)}</div>`;
+      }
+    }
+
     switch (type) {
       case 'rubric':
         if (label === 'service-title') {

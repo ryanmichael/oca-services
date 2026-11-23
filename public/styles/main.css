@@ -1578,6 +1578,12 @@ body.mode-choir .choir-toggles { display: flex; }
   font-style: italic; color: var(--muted); margin-bottom: 6px; line-height: 1.5;
 }
 #bk-root .spk { display: inline; font-weight: 600; font-style: normal; color: var(--rubric); }
+/* Print cues (features/beatitudes-print-cues.md): a Reader's troparion
+   printed as one indented line under the verse it follows. The verses
+   themselves print as `.prayer.sung`, which takes the body size above —
+   no separate size rule, so no new tier to keep in step across surfaces. */
+#bk-root .print-cue { padding-left: 1.4em; margin-bottom: 7px; }
+.print-cue { padding-left: 1.4em; }
 
 /* ── Education modules (booklet) ── */
 #bk-root .edu-module {

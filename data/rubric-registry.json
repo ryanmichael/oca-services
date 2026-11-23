@@ -112,6 +112,19 @@
       ],
       "dbColumn": "rubric_beatitudes_reader_led"
     },
+    "beatitudesTropariaPrintAsCues": {
+      "label": "Print the Reader's Beatitude troparia as cues",
+      "description": "Requires beatitudesTropariaReaderLed. In printed booklets each Reader troparion at the Third Antiphon is replaced by a one-line cue (e.g. “Reader: Troparion of the Resurrection”) and the Beatitude verses print as sung text; the bound Parish Book omits the troparia. The app and a booklet's Reader's copy keep the full text.",
+      "namespace": "antiphons.beatitudesTropariaPrintAsCues",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": [
+        "liturgy"
+      ],
+      "requires": [
+        "beatitudesTropariaReaderLed"
+      ]
+    },
     "faithful2Long": {
       "label": "2nd Litany of the Faithful — long form",
       "description": "Deacon adds four great-litany-style petitions before \"Help us, save us…\". Older Russian-tradition Liturgika form; default is OCA Sluzhebnik short form.",

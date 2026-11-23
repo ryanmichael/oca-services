@@ -85,6 +85,9 @@
     min-height: 44px;
   }
   .bk-toggle input { width: 18px; height: 18px; accent-color: var(--rubric); cursor: pointer; }
+  /* `display:flex` above outranks the UA's [hidden] rule, so without this a
+     hidden toggle row still shows (Rotate backs did, when Two-sided was off). */
+  .bk-toggle[hidden] { display: none; }
   .bk-note {
     flex-basis: 100%; font-family: 'EB Garamond', serif; font-size: 14px;
     line-height: 1.45; color: var(--text);
@@ -142,6 +145,7 @@
   <div class="bk-toggles">
     <label class="bk-toggle"><input type="checkbox" id="cb-duplex"> Two-sided</label>
     <label class="bk-toggle" id="row-rotate"><input type="checkbox" id="cb-rotate"> Rotate backs</label>
+    <label class="bk-toggle" id="row-readers" hidden><input type="checkbox" id="cb-readers"> Reader&rsquo;s copy</label>
   </div>
 
   <div class="bk-note" id="note-landscape" hidden>
@@ -192,6 +196,8 @@
   var duplexCb = document.getElementById('cb-duplex');
   var rotateCb = document.getElementById('cb-rotate');
   var rotateRow = document.getElementById('row-rotate');
+  var readersCb = document.getElementById('cb-readers');
+  var readersRow = document.getElementById('row-readers');
   var printBtn = document.getElementById('btn-print');
   var statusEl = document.getElementById('bk-sub');
 
@@ -205,6 +211,11 @@
   }
 
   var blocks = null;
+
+  function renderSource() {
+    document.getElementById('bk-source').innerHTML =
+      window.renderBlocks(blocks, { print: true, readersCopy: readersCb.checked });
+  }
 
   function build() {
     printBtn.disabled = true;
@@ -240,7 +251,15 @@
     .then(function (data) {
       blocks = data.blocks || [];
       if (q.get('choir') === '1' && window.filterForChoir) blocks = window.filterForChoir(blocks);
-      document.getElementById('bk-source').innerHTML = window.renderBlocks(blocks, {});
+      // Reader's copy (features/beatitudes-print-cues.md): only offered when
+      // the service carries print cues, i.e. the parish prints its Reader's
+      // troparia as cues. Not remembered between visits on purpose — a church
+      // computer is shared, and the next person to print the pew copy must not
+      // inherit the Reader's. `?readers=1` opens straight into it (the Parish
+      // Book insert links here that way).
+      readersRow.hidden = !blocks.some(function (b) { return b.print && b.print.cue; });
+      readersCb.checked = !readersRow.hidden && q.get('readers') === '1';
+      renderSource();
       reflect();
       return build();
     })
@@ -253,6 +272,10 @@
   });
   rotateCb.addEventListener('change', function () {
     B.setSetting('rotateBack', this.checked); build();
+  });
+  readersCb.addEventListener('change', function () {
+    if (!blocks) return;
+    renderSource(); build();
   });
 
   // A spread is 11in (1056px) wide. On a phone that is nearly three screens,

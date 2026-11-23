@@ -10,16 +10,21 @@
  * stated as POSITION, not as labels ([[feedback-assert-structure-not-labels]]):
  *
  *   C1  book + insert, read in order, IS the assembled service — every block,
- *       every word, in sequence — for every Sunday the edition claims.
+ *       every word, in sequence — for every Sunday the edition claims, less
+ *       exactly what the edition's `omit` rule takes out (C6).
  *   C2  the probe can fail: a service with a changed, missing, or extra text
  *       outside the insert is refused, not silently printed.
  *   C3  the jump and resume markers sit exactly at the stretch's sections:
- *       the reader leaves the book right before the Third Antiphon and comes
- *       back right after the Gospel.
+ *       the reader leaves the book right before the Troparia and comes back
+ *       right after the Gospel. The Beatitudes (verses only) are in the book.
  *   C4  the frozen book still matches what the service assembles (drift).
  *       A failure here means copies in the narthex disagree with the app —
  *       rebuild + reprint, or deliberately accept: `npm run parish-book:build`.
  *   C5  "citations only" hides reading TEXT and nothing else.
+ *   C6  `omit` removes the Reader's Beatitude troparia and nothing else — every
+ *       one of them, on every claimed Sunday (features/beatitudes-print-cues.md).
+ *   C7  a Feast of the Lord on a Sunday (festal antiphons, no Beatitudes) is not
+ *       claimed: that week prints the full booklet.
  *
  * In-process: the book reads services through the same router the app does
  * (server-lib/parish-book/service-source.js), so no server is spawned.
@@ -32,7 +37,7 @@ const assert = require('node:assert/strict');
 
 const { boot } = require('../../server-lib/boot/load-fixed');
 const { getService } = require('../../server-lib/parish-book/service-source');
-const { deriveBook, splitService, reconstruct, renderKey } = require('../../server-lib/parish-book/split');
+const { deriveBook, splitService, reconstruct, renderKey, project } = require('../../server-lib/parish-book/split');
 const E = require('../../server-lib/parish-book/editions');
 const { insertFor } = require('../../server-lib/routes/parish-book');
 
@@ -68,7 +73,7 @@ describe('Parish Book — Chrysostom edition (St. John of Damascus)', () => {
     for (const { date, svc } of claimed) {
       const ins = splitService(svc.blocks, book);
       if (!ins.fits) { misfits.push(`${date} ${svc.liturgicalLabel}: ${JSON.stringify(ins.misfit)}`); continue; }
-      const got = keys(reconstruct(book, ins)), want = keys(svc.blocks);
+      const got = keys(reconstruct(book, ins)), want = keys(project(svc.blocks, book.omit));
       const i = got.findIndex((k, n) => k !== want[n]);
       assert.equal(got.length, want.length, `${date}: ${got.length} blocks reconstructed, service has ${want.length} (first difference at ${i})`);
       assert.equal(i, -1, `${date}: block ${i} differs — book+insert ${got[i]} vs service ${want[i]}`);
@@ -81,7 +86,7 @@ describe('Parish Book — Chrysostom edition (St. John of Damascus)', () => {
     const ins = await insertFor(ctx, PARISH, date);
     assert.equal(ins.fits, true);
     assert.equal(ins.fingerprint, book.fingerprint);
-    assert.deepEqual(keys(reconstruct(book, ins)), keys(svc.blocks));
+    assert.deepEqual(keys(reconstruct(book, ins)), keys(project(svc.blocks, book.omit)));
   });
 
   it('C2: a changed book text is refused, not printed', () => {
@@ -116,15 +121,17 @@ describe('Parish Book — Chrysostom edition (St. John of Damascus)', () => {
     assert.equal(r.fits, false, 'an extra hymn outside the insert must not vanish');
   });
 
-  it('C3: the reader leaves before the Third Antiphon and returns after the Gospel', () => {
+  it('C3: the reader leaves before the Troparia and returns after the Gospel', () => {
     for (const { date, svc } of claimed) {
       const ins = splitService(svc.blocks, book);
       const st = ins.stretches.find(s => s.id === 'propers');
-      const first = svc.blocks.findIndex(b => b.section === 'Third Antiphon');
+      const first = svc.blocks.findIndex(b => b.section === 'Troparia');
       let last = -1; svc.blocks.forEach((b, i) => { if (b.section === 'Gospel Reading') last = i; });
       const start = svc.blocks.indexOf(st.blocks[0]);
       const end = svc.blocks.indexOf(st.blocks[st.blocks.length - 1]);
-      assert.equal(start, first, `${date}: insert starts at ${svc.blocks[start]?.section}, not the Third Antiphon`);
+      assert.equal(start, first, `${date}: insert starts at ${svc.blocks[start]?.section}, not the Troparia`);
+      // Nothing of the Third Antiphon is left on the insert.
+      assert.ok(!st.blocks.some(b => b.section === 'Third Antiphon'), `${date}: Third Antiphon text on the insert`);
       assert.equal(end, last, `${date}: insert ends at ${svc.blocks[end]?.section}, not the end of the Gospel`);
     }
     const jumps = book.items.filter(i => i.kind === 'jump').length;
@@ -153,5 +160,32 @@ describe('Parish Book — Chrysostom edition (St. John of Damascus)', () => {
       }
     }
     assert.ok(hidden >= 2 * claimed.length, 'every Sunday hides at least an Epistle and a Gospel');
+  });
+
+  it('C6: omit removes the Reader\'s Beatitude troparia — all of them, nothing else', () => {
+    assert.deepEqual(book.omit, { printCues: true }, 'the frozen book carries its omit rule');
+    for (const { date, svc } of claimed) {
+      const kept = new Set(project(svc.blocks, book.omit));
+      const dropped = svc.blocks.filter(b => !kept.has(b));
+      const readerTroparia = svc.blocks.filter(b =>
+        b.section === 'Third Antiphon' && b.type === 'hymn' && b.speaker === 'reader');
+      assert.ok(readerTroparia.length >= 8, `${date}: only ${readerTroparia.length} Reader troparia — fixture broke`);
+      assert.deepEqual(dropped.map(b => b.id), readerTroparia.map(b => b.id),
+        `${date}: omit must drop exactly the Reader's troparia`);
+    }
+    // …and the book prints the Beatitudes themselves, in order, with no troparion.
+    const third = book.items.filter(i => i.kind === 'block' && i.block.section === 'Third Antiphon').map(i => i.block.id);
+    assert.deepEqual(third, ['beat-open', ...Array.from({ length: 10 }, (_, i) => `beat-v${i + 1}`), 'beat-glory', 'beat-now']);
+  });
+
+  it('C7: a Sunday with festal antiphons is not claimed (full booklet that week)', async () => {
+    // 2028-08-06: the Transfiguration on a Sunday in ordinary time.
+    const svc = await getService(ctx, edition, '2028-08-06');
+    assert.equal(svc.antiphons, 'festal');
+    assert.ok(edition.membership.seasons.includes(svc.season), 'refused by the antiphons rule, not by season');
+    assert.equal(E.claims(edition, '2028-08-06', svc), false);
+    assert.equal(E.claims({ ...edition, membership: { ...edition.membership, antiphons: undefined } }, '2028-08-06', svc), true,
+      'without the rule the date would be claimed — the probe can fail');
+    assert.ok(!claimed.some(c => c.date === '2028-08-06'));
   });
 });

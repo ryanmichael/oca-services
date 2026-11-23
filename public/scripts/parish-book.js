@@ -38,7 +38,11 @@
     return { id: 'pb-marker-' + markers.length, type: 'rubric', section: section, text: '⟦PB:' + (markers.length - 1) + '⟧' };
   }
   function renderWithMarkers(blocks, into) {
-    into.innerHTML = window.renderBlocks(blocks, {});
+    // `print: true` — a printed surface: a block carrying a print cue prints
+    // as its cue, and the Beatitude verses as sung text
+    // (features/beatitudes-print-cues.md). The book never meets a cue: the
+    // edition's `omit` rule has already taken the Reader's troparia out.
+    into.innerHTML = window.renderBlocks(blocks, { print: true });
     Array.prototype.forEach.call(into.querySelectorAll('.rubric'), function (el) {
       var m = /^⟦PB:(\d+)⟧$/.exec(el.textContent.trim());
       if (m) el.outerHTML = markers[+m[1]];
@@ -216,7 +220,12 @@
   if (date) {
     $('btn-print-label').textContent = 'Print insert';
     links('<label class="bk-toggle">Week of <input type="date" id="pb-date" value="' + esc(date) + '"></label>' +
-      '<a class="bk-link" id="pb-book-link" href="/parish-book?parish=' + encodeURIComponent(parish) + '">The book &rarr;</a>');
+      '<a class="bk-link" id="pb-book-link" href="/parish-book?parish=' + encodeURIComponent(parish) + '">The book &rarr;</a>' +
+      // The book leaves out the Reader's Beatitude troparia; the Reader still
+      // needs them. Their copy is the full booklet with every text.
+      '<a class="bk-link" href="/booklet?' + esc(new URLSearchParams({
+        src: '/api/liturgy?date=' + date + '&translation=' + encodeURIComponent(parish) + '&parish=' + encodeURIComponent(parish),
+        title: 'Divine Liturgy', sub: date, readers: '1' }).toString()) + '">Reader’s copy &rarr;</a>');
     $('pb-date').addEventListener('change', function () {
       if (this.value) location.search = '?parish=' + encodeURIComponent(parish) + '&date=' + this.value;
     });

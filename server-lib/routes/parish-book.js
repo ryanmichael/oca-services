@@ -47,7 +47,13 @@ async function insertFor(ctx, parish, date) {
   };
   const edition = editions.find(e => E.claims(e, date, svc));
   if (!edition) {
-    return { fits: false, ...meta, reason: `no edition of this parish's book covers ${svc.serviceName} in ${svc.season}` };
+    // Say WHY when the only thing in the way is the antiphons: "not in
+    // ordinaryTime" would be false on a Feast of the Lord in ordinary time.
+    const festal = editions.some(e => e.membership?.antiphons && svc.antiphons !== e.membership.antiphons
+      && E.claims({ ...e, membership: { ...e.membership, antiphons: undefined } }, date, svc));
+    return { fits: false, ...meta, reason: festal
+      ? `the feast's own antiphons replace the Beatitudes the book prints`
+      : `no edition of this parish's book covers ${svc.serviceName} in ${svc.season}` };
   }
   const book = E.loadBook(parish, edition.id);
   if (!book) return { fits: false, ...meta, edition: edition.id, reason: 'this edition has not been built yet' };

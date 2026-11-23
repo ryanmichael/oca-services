@@ -50,6 +50,15 @@
       "type": "string",
       "description": "Optional display label rendered above the text (e.g. 'For the Martyrs', 'Dogmatikon', 'Theotokion')."
     },
+    "print": {
+      "type": "object",
+      "description": "Optional presentation hints for PRINTED copies only; the on-screen view ignores them and the text is always present. `cue`: a hymn the Reader reads, printed as this one line instead of its text (e.g. 'Troparion of the Resurrection'). `emphasis: 'sung'`: a verse the pew follows, printed at full hymn size. Set only by the `antiphons.beatitudesTropariaPrintAsCues` parish rubric. See features/beatitudes-print-cues.md.",
+      "properties": {
+        "cue": { "type": "string" },
+        "emphasis": { "type": "string", "enum": ["sung"] }
+      },
+      "additionalProperties": false
+    },
     "_overlay": {
       "type": "string",
       "description": "Assembler-added: the translation overlay id (e.g. `htm-boston`, `st-john-damascus-tyler`) whose override produced this text. Absent when the text comes from the base layer. See `fixed-texts/translations/`."

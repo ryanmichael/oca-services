@@ -18,6 +18,40 @@ function toVariableSourceRel(repoRelPath) {
   return m ? m[1] : null;
 }
 
+/** Print cues — what each Beatitude troparion IS, named where it is chosen.
+ *  A parish whose Reader reads these troparia can print the cue in place of
+ *  the text (features/beatitudes-print-cues.md). The name is attached here,
+ *  where the book and the position are known, never re-derived from `label`:
+ *  labels are display text and are not consistent (the Myrrh-bearers Octoechos
+ *  stack has none at all, "Theotokion" occurs for both books, and the
+ *  Pentecostarion's "Troparion of Ode 6" is not a Resurrection troparion). */
+const CUE = Object.freeze({
+  resurrection: 'Troparion of the Resurrection',
+  trinity:      'Hymn to the Trinity',
+  theotokion:   'Theotokion',
+  generic:      'Troparion',
+});
+
+/** The Octoechos Sunday Beatitudes are, in every tone and in every stack, six
+ *  Resurrection troparia + the Glory (Trinity) + the Theotokion. Named by
+ *  POSITION so a stack with no labels is named correctly. `full` is false when
+ *  the caller kept only the leading Resurrection troparia. */
+function octoechosCue(full) {
+  return (i, n) => {
+    if (full && i === n - 2) return CUE.trinity;
+    if (full && i === n - 1) return CUE.theotokion;
+    return CUE.resurrection;
+  };
+}
+
+/** A genre a book records on a single troparion overrides its group's name. */
+function genreCue(genre) {
+  if (!genre) return null;
+  if (/theotokion/i.test(genre)) return CUE.theotokion;
+  if (/triadicon|trinity/i.test(genre)) return CUE.trinity;
+  return null;
+}
+
 /** Date keys (M-D) for principal feasts whose canon troparia are appended
  *  to the Octoechos resurrection canon at the Liturgy Beatitudes. The
  *  Octoechos remains the spine (Irmos + 2 resurrection troparia + Theotokion
@@ -77,14 +111,14 @@ const FEAST_BEATITUDES_BLENDS = {
   '8-16': {
     octoechosTroparia: 4,
     parts: [
-      { missing: 2, tone: 1, label: 'For the Dormition (1st canon)' },
+      { missing: 2, tone: 1, label: 'For the Dormition (1st canon)', cue: 'Troparion of the Dormition' },
       { file: 'variable-sources/feast-canons/dormition.json',
-        at: 'ode1', tone: 4, label: 'For the Dormition' },
+        at: 'ode1', tone: 4, label: 'For the Dormition', cue: 'Troparion of the Dormition' },
       // Ode 6 troparia 1-4 are Canon I (Tone 4), which is what the order names;
       // 5-8 are marked `canon: secondCanon` and are Tone 6. `take: 4` keeps the
       // Canon I set, whose last entry is its Theotokion.
       { file: 'variable-sources/menaion/august-16.json',
-        at: 'matins.canon.ode6', take: 4, tone: 4, label: 'For the Image' },
+        at: 'matins.canon.ode6', take: 4, tone: 4, label: 'For the Image', cue: 'Troparion of the Image' },
     ],
   },
 
@@ -120,13 +154,13 @@ const FEAST_BEATITUDES_BLENDS = {
   '9-20': {
     octoechosTroparia: 4,
     parts: [
-      { missing: 1, tone: 8, label: 'For the Feast' },
+      { missing: 1, tone: 8, label: 'For the Feast', cue: 'Troparion of the Cross' },
       { file: 'variable-sources/feast-canons/cross.json',
-        at: 'ode8', take: 3, tone: 8, label: 'For the Feast' },
-      { missing: 1, tone: 4, label: 'For St. Eustathius' },
+        at: 'ode8', take: 3, tone: 8, label: 'For the Feast', cue: 'Troparion of the Cross' },
+      { missing: 1, tone: 4, label: 'For St. Eustathius', cue: 'Troparion of St. Eustathius' },
       // take:3 is troparia 1-2 plus the Theotokion, which must stay last.
       { file: 'variable-sources/menaion/september-20.json',
-        at: 'matins.canon.ode6', take: 3, tone: 4, label: 'For St. Eustathius' },
+        at: 'matins.canon.ode6', take: 3, tone: 4, label: 'For St. Eustathius', cue: 'Troparion of St. Eustathius' },
     ],
   },
 
@@ -153,7 +187,7 @@ const FEAST_BEATITUDES_BLENDS = {
     octoechosTroparia: 6,
     parts: [
       { file: 'variable-sources/feast-canons/entry-theotokos.json',
-        at: 'ode1', take: 4, tone: 4, label: 'For the Entry' },
+        at: 'ode1', take: 4, tone: 4, label: 'For the Entry', cue: 'Troparion of the Entry' },
     ],
   },
 
@@ -175,7 +209,7 @@ const FEAST_BEATITUDES_BLENDS = {
     octoechosTroparia: 6,
     parts: [
       { file: 'variable-sources/menaion/november-01.json',
-        at: 'matins.canon.ode3', take: 4, tone: 1, label: 'For the Unmercenaries' },
+        at: 'matins.canon.ode3', take: 4, tone: 1, label: 'For the Unmercenaries', cue: 'Troparion of the Unmercenaries' },
     ],
   },
 
@@ -200,7 +234,7 @@ const FEAST_BEATITUDES_BLENDS = {
     octoechosTroparia: 6,
     parts: [
       { file: 'variable-sources/menaion/november-08.json',
-        at: 'matins.canon.ode3', take: 4, tone: 8, label: 'For the Bodiless Powers' },
+        at: 'matins.canon.ode3', take: 4, tone: 8, label: 'For the Bodiless Powers', cue: 'Troparion of the Bodiless Powers' },
     ],
   },
 };
@@ -215,7 +249,7 @@ function loadBlendParts(parts, stack) {
       // No text, only a reservation. `count` with no `text` is the renderer's
       // existing shape for "this slot is appointed but unsourced".
       out.push({ tone: part.tone, label: part.label, source: 'feast',
-        count: part.missing, reserved: true });
+        count: part.missing, reserved: true, cue: part.cue || CUE.generic });
       continue;
     }
     // Read through the per-stack cascade so a parish can supply its own
@@ -261,7 +295,8 @@ function loadBlendParts(parts, stack) {
       const itemTone  = (typeof t === 'object' && t.tone) ? t.tone : part.tone;
       const genre     = (typeof t === 'object' && t.label) ? t.label : gluedGenre;
       const itemLabel = genre ? `${part.label} (${genre})` : part.label;
-      out.push({ tone: itemTone, label: itemLabel, source: 'feast', text });
+      out.push({ tone: itemTone, label: itemLabel, source: 'feast', text,
+        cue: genreCue(genre) || part.cue || CUE.generic });
     }
   }
   return out;
@@ -282,7 +317,7 @@ function buildBlendedBeatitudes(dateStr, tone, beatData, stack) {
 
   const out = [];
   pushTroparia(out, beatData.troparia.slice(0, blend.octoechosTroparia),
-    tone, 'octoechos', 'Beatitude');
+    tone, 'octoechos', 'Beatitude', octoechosCue(false));
   out.push(...feast);
   return out;
 }
@@ -373,16 +408,16 @@ function buildBeatitudesTroparia(isSunday, tone, srcs, dateStr, feastCanonName, 
       // the last being the Theotokion → exactly "on 10"). Drop the Octoechos
       // Glory+Theotokion (always the trailing two of the flat shape) and append
       // the feast troparia so the render's Glory/Now slots land on the feast set.
-      pushTroparia(out, beatData.troparia.slice(0, -2), tone, 'octoechos', 'Beatitude');
-      pushTroparia(out, override.ode3?.troparia, override.tone ?? tone, 'feast', 'For the Fathers');
-      pushTroparia(out, override.ode6?.troparia, override.tone ?? tone, 'feast', 'For the Fathers');
+      pushTroparia(out, beatData.troparia.slice(0, -2), tone, 'octoechos', 'Beatitude', octoechosCue(false));
+      pushTroparia(out, override.ode3?.troparia, override.tone ?? tone, 'feast', 'For the Fathers', 'Troparion of the Fathers');
+      pushTroparia(out, override.ode6?.troparia, override.tone ?? tone, 'feast', 'For the Fathers', 'Troparion of the Fathers');
       return out;
     }
-    pushTroparia(out, beatData.troparia, tone, 'octoechos', 'Beatitude');
+    pushTroparia(out, beatData.troparia, tone, 'octoechos', 'Beatitude', octoechosCue(true));
     if (override) {
       const feast = [];
-      pushTroparia(feast, override.ode3?.troparia, override.tone ?? tone, 'feast', 'Troparion (feast)');
-      pushTroparia(feast, override.ode6?.troparia, override.tone ?? tone, 'feast', 'Troparion (feast)');
+      pushTroparia(feast, override.ode3?.troparia, override.tone ?? tone, 'feast', 'Troparion (feast)', 'Troparion of the Feast');
+      pushTroparia(feast, override.ode6?.troparia, override.tone ?? tone, 'feast', 'Troparion (feast)', 'Troparion of the Feast');
       if (feast.length) out.splice(Math.max(0, out.length - 2), 0, ...feast);
     }
     return out;
@@ -413,26 +448,34 @@ function buildOdes(spineOde3, spineOde6, tone, spineSrc, feastOde3, feastOde6) {
 function appendOde(out, spine, tone, spineSrc, feast, odeLabel) {
   if (!spine) return;
   if (spine.irmos) {
-    out.push({ tone, label: `Irmos of ${odeLabel}`, source: spineSrc, text: spine.irmos });
+    out.push({ tone, label: `Irmos of ${odeLabel}`, source: spineSrc, text: spine.irmos, cue: CUE.generic });
   }
-  pushTroparia(out, spine.troparia, tone, spineSrc, `Troparion of ${odeLabel}`);
+  pushTroparia(out, spine.troparia, tone, spineSrc, `Troparion of ${odeLabel}`, CUE.generic);
   if (feast) {
-    pushTroparia(out, feast.troparia, tone, 'feast', `Troparion of ${odeLabel} (feast)`);
+    pushTroparia(out, feast.troparia, tone, 'feast', `Troparion of ${odeLabel} (feast)`, CUE.generic);
   }
   if (spine.theotokion) {
-    out.push({ tone, label: `Theotokion of ${odeLabel}`, source: spineSrc, text: spine.theotokion });
+    out.push({ tone, label: `Theotokion of ${odeLabel}`, source: spineSrc, text: spine.theotokion, cue: CUE.theotokion });
   }
 }
 
-function pushTroparia(out, troparia, tone, source, label) {
+/** `cue` names what the troparia are (see CUE above): a string for the whole
+ *  group, or `(index, count) => string` when the name depends on position.
+ *  A genre the book records on the item itself wins; absent both, generic. */
+function pushTroparia(out, troparia, tone, source, label, cue) {
   if (!Array.isArray(troparia)) return;
-  for (const t of troparia) {
+  troparia.forEach((t, i) => {
     const text = typeof t === 'string' ? t : t?.text;
     // Honor a per-item label (e.g. "Glory"/"Theotokion" in the flat Beatitudes
     // shape); fall back to the caller's group label for legacy string troparia.
-    const itemLabel = (t && typeof t === 'object' && t.label) ? t.label : label;
-    if (text && text.trim()) out.push({ tone, label: itemLabel, source, text });
-  }
+    const ownLabel  = (t && typeof t === 'object' && t.label) ? t.label : null;
+    const itemLabel = ownLabel || label;
+    const groupCue  = typeof cue === 'function' ? cue(i, troparia.length) : cue;
+    if (text && text.trim()) {
+      out.push({ tone, label: itemLabel, source, text,
+        cue: genreCue(ownLabel) || groupCue || CUE.generic });
+    }
+  });
 }
 
 module.exports = { buildBeatitudesTroparia };

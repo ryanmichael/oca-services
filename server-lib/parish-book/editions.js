@@ -75,6 +75,10 @@ function claims(edition, date, service) {
   if (!onWeekday(edition, date)) return false;
   if (m.seasons && !m.seasons.includes(service.season)) return false;
   if (m.serviceName && !(service.serviceName || '').includes(m.serviceName)) return false;
+  // A Feast of the Lord on a Sunday sings festal antiphons in place of the
+  // Beatitudes the book prints — that week is a full-booklet week, not a
+  // misfit (decided 2026-11-23, features/parish-book.md).
+  if (m.antiphons && service.antiphons !== m.antiphons) return false;
   return true;
 }
 

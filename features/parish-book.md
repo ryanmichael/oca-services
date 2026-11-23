@@ -12,8 +12,10 @@ A **bound book** holding the text of a service that does not change, printed
 once by a print shop (St. John of Damascus: Mixam, saddle-stitched, digest
 5.5×8.5), plus a **loose weekly insert** printed onsite that carries what
 does. On an ordinary Sunday the reader leaves the book at a black bar at the
-Third Antiphon, reads the insert through the Gospel, and resumes at a boxed
-"◀ Resume here". A few occasional changes ("It is truly meet", the Communion
+Troparia, reads the insert through the Gospel, and resumes at a boxed
+"◀ Resume here". The Beatitudes are in the book as verses only: the Reader's
+troparia between them are not printed anywhere in the pew's copies
+(see "What it leaves out"). A few occasional changes ("It is truly meet", the Communion
 hymn, the patron troparion, the Dismissal) sit in "Also this week".
 
 ## It owns no text
@@ -22,6 +24,25 @@ Both halves are cut from the assembled service, fetched through the same
 `/api/<service>` route the app uses, in-process (`service-source.js`). A choir
 correction, a parish variant pick or a register change reaches the book
 exactly as it reaches the app. There is no second copy of any text.
+
+## What it leaves out
+
+The contract is book + insert = the assembled service **less the edition's
+`omit` rule**. One rule exists: `omit: { printCues: true }` drops every block
+carrying a print cue, i.e. the Reader's Beatitude troparia of a parish with
+`antiphons.beatitudesTropariaPrintAsCues` on (features/beatitudes-print-cues.md).
+`split.js` `project()` applies it before deriving the book and before every
+insert cut; it is frozen into the book and its fingerprint. Contract C6 asserts
+it removes exactly those troparia and nothing else. The Reader's copy is the
+full booklet, linked from the insert page.
+
+## Membership
+
+`membership` selects the dates an edition claims: weekday, `seasons`,
+`serviceName`, and `antiphons` ("typical"). A Feast of the Lord on a Sunday
+sings festal antiphons in place of the Beatitudes the book prints, so it is not
+claimed and that week prints the full booklet (decided 2026-11-23; C7). The
+insert page says so in those words rather than reporting a misfit.
 
 ## How the split is derived
 
@@ -72,7 +93,16 @@ The existing booklet is untouched. The only text under 12pt is the insert's
 edition tag in the footer (9pt), which is a printer's mark rather than reading
 text.
 
-## Measured (2026-11-17, local, real `booklet.js` paginator)
+## Measured (2026-11-23, after the Beatitudes moved into the book)
+
+- **Book:** 37 pages → 40 for saddle-stitch. 2026–2028: 113 of 113 claimed
+  Sundays fit (2028-08-06, the Transfiguration, is no longer claimed). Slots
+  7 → 4: the two that existed only for the Transfiguration's antiphons are gone.
+- **Insert (15pt):** 11-22 **10** half-pages (was 14); 11-29 **8**, 12-06 **9**,
+  12-13 **8**, 2027-01-24 **7**. Two sheets is now reached on most ordinary
+  Sundays at the booklet's own size.
+
+## Measured (2026-11-17, local, real `booklet.js` paginator) — before
 
 - **Book (Chrysostom):** 35 pages, so 36 for saddle-stitch.
   2026–2028: 114 of 114 claimed Sundays fit, 0 misfits.

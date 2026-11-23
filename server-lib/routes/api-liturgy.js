@@ -392,6 +392,12 @@ function handle(req, res, ctx) {
           // — neither alone covers it.
           feastOnly:      !!calendarEntry.liturgy?.feastOnly,
           feastWindow:    calendarEntry.liturgy?.feastWindow || null,
+          // Which antiphons the Liturgy sings — the same branch the assembler
+          // takes (assemblers/liturgy.js, _shared/paschal-state.js). A Feast of
+          // the Lord's festal antiphons replace the Beatitudes; the Parish Book
+          // (features/parish-book.md) claims only Sundays with 'typical' ones.
+          antiphons: calendarEntry.liturgy?.feastAntiphons ? 'festal'
+            : calendarEntry.liturgy?.paschalAntiphons12 ? 'paschal' : 'typical',
           translation: translation || null,
           style,
           blocks,

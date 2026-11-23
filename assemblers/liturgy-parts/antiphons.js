@@ -105,6 +105,20 @@ function _litBeatitudes(beatitudesSpec, f, opts = {}) {
   const tropSpeaker = opts.rubrics?.antiphons?.beatitudesTropariaReaderLed
     ? 'reader' : 'choir';
 
+  // Parish rubric: print the Reader's troparia as cues. Presentation only —
+  // the API keeps every text; a print renderer that is asked to swaps each
+  // troparion for its `print.cue` and sets the Beatitude verses, which the pew
+  // now follows, as sung text (features/beatitudes-print-cues.md). Only where
+  // the Reader reads them: a troparion the choir sings is the pew's to follow.
+  const printCues = !!opts.rubrics?.antiphons?.beatitudesTropariaPrintAsCues
+    && tropSpeaker === 'reader';
+  const verseExtra = printCues ? { print: { emphasis: 'sung' } } : undefined;
+  const tropExtra  = (t) => {
+    const x = { tone: t.tone, label: t.label, source: t.source };
+    if (printCues) x.print = { cue: t.cue || 'Troparion' };
+    return x;
+  };
+
   // Opening verse sung three times (choir)
   blocks.push(makeBlock('beat-open', section, 'prayer', 'choir', verses[0]));
 
@@ -124,6 +138,7 @@ function _litBeatitudes(beatitudesSpec, f, opts = {}) {
         label:  group.label || '',
         source: group.source || '',
         text:   group.text,
+        cue:    group.cue,
       });
     } else {
       // Group declares a count but no text — flag once for surfacing in
@@ -148,6 +163,7 @@ function _litBeatitudes(beatitudesSpec, f, opts = {}) {
           source: group.source || '',
           text:   (IS_PRODUCTION || group.reserved) ? null
                   : `[${group.label} — troparion ${n + 1} of ${group.count}. Text to be sourced.]`,
+          cue:    group.cue,
         });
       }
     }
@@ -160,34 +176,31 @@ function _litBeatitudes(beatitudesSpec, f, opts = {}) {
 
   const pairedVerses = verses.slice(1, 11);
   pairedVerses.forEach((verse, i) => {
-    blocks.push(makeBlock(`beat-v${i + 1}`, section, 'verse', 'choir', verse));
+    blocks.push(makeBlock(`beat-v${i + 1}`, section, 'verse', 'choir', verse, verseExtra));
     const tropIdx = i - startSlot;
     if (tropIdx >= 0 && tropIdx < tropList.length) {
       const t = tropList[tropIdx];
       if (t.text) {
-        blocks.push(makeBlock(`beat-t${i + 1}`, section, 'hymn', tropSpeaker, t.text,
-          { tone: t.tone, label: t.label, source: t.source }));
+        blocks.push(makeBlock(`beat-t${i + 1}`, section, 'hymn', tropSpeaker, t.text, tropExtra(t)));
       }
     }
   });
 
-  blocks.push(makeBlock('beat-glory', section, 'doxology', null, verses[11]));
+  blocks.push(makeBlock('beat-glory', section, 'doxology', null, verses[11], verseExtra));
   const gloryIdx = 10 - startSlot;
   if (gloryIdx >= 0 && gloryIdx < tropList.length) {
     const g = tropList[gloryIdx];
     if (g.text) {
-      blocks.push(makeBlock('beat-glory-t', section, 'hymn', tropSpeaker, g.text,
-        { tone: g.tone, label: g.label, source: g.source }));
+      blocks.push(makeBlock('beat-glory-t', section, 'hymn', tropSpeaker, g.text, tropExtra(g)));
     }
   }
 
-  blocks.push(makeBlock('beat-now', section, 'doxology', null, verses[12]));
+  blocks.push(makeBlock('beat-now', section, 'doxology', null, verses[12], verseExtra));
   const nowIdx = 11 - startSlot;
   if (nowIdx >= 0 && nowIdx < tropList.length) {
     const t = tropList[nowIdx];
     if (t.text) {
-      blocks.push(makeBlock('beat-theos', section, 'hymn', tropSpeaker, t.text,
-        { tone: t.tone, label: t.label, source: t.source }));
+      blocks.push(makeBlock('beat-theos', section, 'hymn', tropSpeaker, t.text, tropExtra(t)));
     }
   }
 

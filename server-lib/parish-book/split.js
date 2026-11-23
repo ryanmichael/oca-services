@@ -21,8 +21,9 @@
  *
  * The contract (test/contracts/parish-book.test.js) is `reconstruct(book,
  * insert) === assembled service`, block for block, for every date the
- * edition claims. A date that cannot satisfy it does not fit the edition and
- * says so; it never prints a book that disagrees with the service.
+ * edition claims — less what the edition's `omit` rule takes out (see
+ * `project` below). A date that cannot satisfy it does not fit the edition
+ * and says so; it never prints a book that disagrees with the service.
  */
 
 const crypto = require('crypto');
@@ -31,7 +32,27 @@ const crypto = require('crypto');
  *  (_overlay, source, provenance…) are excluded: two Sundays that print the
  *  same words the same way are the same block even if the words were reached
  *  through a different layer. */
-const RENDER_FIELDS = ['id', 'section', 'type', 'speaker', 'text', 'label', 'density', 'tone', 'repetitions'];
+const RENDER_FIELDS = ['id', 'section', 'type', 'speaker', 'text', 'label', 'density', 'tone', 'repetitions', 'print'];
+
+/** The edition's `omit` rule — text the parish's printed copies leave out
+ *  altogether. Only one kind exists: `printCues`, the Reader's Beatitude
+ *  troparia of a parish that prints them as cues (the pew follows them by
+ *  ear; features/beatitudes-print-cues.md). Keyed on the block's print hint,
+ *  which the assembler sets only for those troparia — not on ids or section
+ *  names. Normalised to the rule alone so prose (`why`) cannot move the
+ *  fingerprint. */
+function omitRule(omit) {
+  if (!omit) return null;
+  return omit.printCues ? { printCues: true } : null;
+}
+
+/** The service as the edition prints it: the assembled blocks less `omit`.
+ *  `filter`, so every kept block is the SAME object as in `blocks`. */
+function project(blocks, omit) {
+  const rule = omitRule(omit);
+  if (!rule) return blocks;
+  return blocks.filter(b => !(rule.printCues && b.print && b.print.cue));
+}
 
 function renderKey(b) {
   const o = {};
@@ -50,6 +71,8 @@ function gapKey(blocks) { return blocks.map(renderKey).join('\n'); }
  */
 function deriveBook(samples, cfg) {
   if (!samples.length) throw new Error('deriveBook: no sample services');
+  const omit = omitRule(cfg.omit);
+  samples = samples.map(sm => ({ ...sm, blocks: project(sm.blocks, omit) }));
   const share = cfg.anchorShare ?? 0.95;
   const need = Math.ceil(share * samples.length);
 
@@ -169,6 +192,7 @@ function deriveBook(samples, cfg) {
       ({ id, label, fromSection, toSection, gap })),
     slots,
     items,
+    omit,
     sample: { dates: samples.map(s => s.date), fitting },
   };
   book.fingerprint = fingerprint(book);
@@ -207,6 +231,7 @@ function misfit(blocks, book) {
  * @returns {{fits:true, stretches:{id,label,blocks}[], also:{slot,section,blocks}[]} | {fits:false, misfit}}
  */
 function splitService(blocks, book) {
+  blocks = project(blocks, book.omit);
   const anchorKey = new Map(book.anchors.map((id, i) => [id, book.anchorKeys[i]]));
   const gaps = gapsOf(blocks, book.anchors, anchorKey);
   if (!gaps) return { fits: false, misfit: misfit(blocks, book) };
@@ -261,7 +286,11 @@ function fingerprint(book) {
     }
     return it.kind + ':' + it.stretch + ':' + it.label;
   }).join('\n');
-  return crypto.createHash('sha256').update(printed).digest('hex').slice(0, 12);
+  // What the book leaves out is part of what it prints. Absent for a book
+  // with no rule, so such a book keeps the fingerprint it always had.
+  const omit = omitRule(book.omit);
+  const basis = omit ? 'omit:' + JSON.stringify(omit) + '\n' + printed : printed;
+  return crypto.createHash('sha256').update(basis).digest('hex').slice(0, 12);
 }
 
-module.exports = { deriveBook, splitService, reconstruct, fingerprint, renderKey, RENDER_FIELDS };
+module.exports = { deriveBook, splitService, reconstruct, fingerprint, renderKey, project, RENDER_FIELDS };

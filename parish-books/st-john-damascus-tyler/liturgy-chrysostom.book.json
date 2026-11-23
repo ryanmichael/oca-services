@@ -7,14 +7,14 @@
   "translation": "st-john-damascus-tyler"
  },
  "builtFrom": {
-  "commit": "79572fe",
+  "commit": "a1aebe5",
   "sampleYears": [
    2026,
    2027,
    2028
   ],
-  "claimed": 114,
-  "fits": 114,
+  "claimed": 113,
+  "fits": 113,
   "misfits": []
  },
  "anchors": [
@@ -46,6 +46,11 @@
   "gl-comm-resp",
   "gl-exclamation",
   "gl-amen",
+  "a1-v0",
+  "a1-v1",
+  "a1-v2",
+  "a1-v3",
+  "a1-refrain",
   "ant1-ll-opening",
   "ant1-ll-response",
   "ant1-ll-petition",
@@ -53,6 +58,13 @@
   "ant1-ll-comm-resp",
   "ant1-ll-excl",
   "ant1-ll-amen",
+  "ant1-ll-glory",
+  "a2-v0",
+  "a2-v1",
+  "a2-v2",
+  "a2-v3",
+  "a2-v4",
+  "a2-glory",
   "only-begotten-son",
   "ant2-ll-opening",
   "ant2-ll-response",
@@ -61,6 +73,22 @@
   "ant2-ll-comm-resp",
   "ant2-ll-excl",
   "ant2-ll-amen",
+  "beat-open",
+  "beat-v1",
+  "beat-v2",
+  "beat-v3",
+  "beat-v4",
+  "beat-v5",
+  "beat-v6",
+  "beat-v7",
+  "beat-v8",
+  "beat-v9",
+  "beat-v10",
+  "beat-glory",
+  "beat-now",
+  "se-rubric",
+  "se-deacon",
+  "entrance-hymn",
   "homily",
   "al-opening",
   "al-response",
@@ -317,6 +345,11 @@
   "{\"id\":\"gl-comm-resp\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"To Thee, O Lord.\",\"density\":\"cue\"}",
   "{\"id\":\"gl-exclamation\",\"section\":\"Great Litany\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"For unto Thee are due all glory, honor, and worship: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
   "{\"id\":\"gl-amen\",\"section\":\"Great Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\",\"density\":\"cue\"}",
+  "{\"id\":\"a1-v0\",\"section\":\"First Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Bless the Lord, O my soul, blessed art Thou, O Lord.\\nBless the Lord, O my soul, and all that is within me bless His holy name.\\nBless the Lord, O my soul, and forget not all His benefits;\"}",
+  "{\"id\":\"a1-v1\",\"section\":\"First Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"who cleanseth all thy transgressions; who healeth all thine infirmities;\\nwho redeemeth thy life from destruction, who crowneth thee with mercy and compassion.\"}",
+  "{\"id\":\"a1-v2\",\"section\":\"First Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Compassionate and merciful is the Lord; long-suffering and of great mercy.\"}",
+  "{\"id\":\"a1-v3\",\"section\":\"First Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Bless the Lord, O my soul, blessed art Thou, O Lord.\"}",
+  "{\"id\":\"a1-refrain\",\"section\":\"First Antiphon\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Through the intercessions of the Theotokos, O Savior, save us.\"}",
   "{\"id\":\"ant1-ll-opening\",\"section\":\"Little Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Again and again in peace, let us pray to the Lord.\",\"density\":\"compact\"}",
   "{\"id\":\"ant1-ll-response\",\"section\":\"Little Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
   "{\"id\":\"ant1-ll-petition\",\"section\":\"Little Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Help us, save us, have mercy on us, and keep us, O God, by Thy grace.\",\"density\":\"compact\"}",
@@ -324,6 +357,13 @@
   "{\"id\":\"ant1-ll-comm-resp\",\"section\":\"Little Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"To Thee, O Lord.\",\"density\":\"cue\"}",
   "{\"id\":\"ant1-ll-excl\",\"section\":\"Little Litany\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"For Thine is the might, and Thine is the Kingdom, and the power, and the glory: of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
   "{\"id\":\"ant1-ll-amen\",\"section\":\"Little Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\",\"density\":\"cue\"}",
+  "{\"id\":\"ant1-ll-glory\",\"section\":\"Little Litany\",\"type\":\"doxology\",\"speaker\":\"choir\",\"text\":\"Glory to the Father, and to the Son, and to the Holy Spirit.\"}",
+  "{\"id\":\"a2-v0\",\"section\":\"Second Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Praise the Lord, O my soul.\\nI will praise the Lord in my life; I will sing psalms unto my God as long as I shall be.\"}",
+  "{\"id\":\"a2-v1\",\"section\":\"Second Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Trust not in princes in the sons of men, in whom there is no salvation.\\nHis spirit shall go forth, and he shall return to his earth; in that day all his thoughts shall perish.\"}",
+  "{\"id\":\"a2-v2\",\"section\":\"Second Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Blessed is he who hath the God of Jacob for his helper, whose hope is in the Lord his God,\\nwho made heaven and earth, the sea and all that is in them.\"}",
+  "{\"id\":\"a2-v3\",\"section\":\"Second Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"The Lord shall be King for ever;\"}",
+  "{\"id\":\"a2-v4\",\"section\":\"Second Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"thy God, O Zion, from generation to generation.\"}",
+  "{\"id\":\"a2-glory\",\"section\":\"Second Antiphon\",\"type\":\"doxology\",\"speaker\":\"choir\",\"text\":\"Now and ever, and unto ages of ages. Amen.\"}",
   "{\"id\":\"only-begotten-son\",\"section\":\"Second Antiphon\",\"type\":\"hymn\",\"speaker\":\"choir\",\"text\":\"Only-begotten Son and Immortal Word of God, who for our salvation didst will to be incarnate of the Holy Theotokos and Ever-virgin Mary, who without change didst become man, and wast crucified, O Christ our God, trampling down death by death, who art one of the Holy Trinity, glorified with the Father and the Holy Spirit, save us!\"}",
   "{\"id\":\"ant2-ll-opening\",\"section\":\"Little Litany\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Again and again in peace, let us pray to the Lord.\",\"density\":\"compact\"}",
   "{\"id\":\"ant2-ll-response\",\"section\":\"Little Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
@@ -332,6 +372,22 @@
   "{\"id\":\"ant2-ll-comm-resp\",\"section\":\"Little Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"To Thee, O Lord.\",\"density\":\"cue\"}",
   "{\"id\":\"ant2-ll-excl\",\"section\":\"Little Litany\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"For Thou art a holy God, and unto Thee do we send up glory: to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages.\",\"density\":\"compact\"}",
   "{\"id\":\"ant2-ll-amen\",\"section\":\"Little Litany\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Amen.\",\"density\":\"cue\"}",
+  "{\"id\":\"beat-open\",\"section\":\"Third Antiphon\",\"type\":\"prayer\",\"speaker\":\"choir\",\"text\":\"In Thy Kingdom remember us, O Lord, when Thou comest in Thy Kingdom.\"}",
+  "{\"id\":\"beat-v1\",\"section\":\"Third Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Blessed are the poor in spirit: for theirs is the Kingdom of heaven.\",\"print\":{\"emphasis\":\"sung\"}}",
+  "{\"id\":\"beat-v2\",\"section\":\"Third Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Blessed are they that mourn: for they shall be comforted.\",\"print\":{\"emphasis\":\"sung\"}}",
+  "{\"id\":\"beat-v3\",\"section\":\"Third Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Blessed are the meek: for they shall inherit the earth.\",\"print\":{\"emphasis\":\"sung\"}}",
+  "{\"id\":\"beat-v4\",\"section\":\"Third Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Blessed are they that hunger and thirst after righteousness: for they shall be sated.\",\"print\":{\"emphasis\":\"sung\"}}",
+  "{\"id\":\"beat-v5\",\"section\":\"Third Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Blessed are the merciful: for they shall obtain mercy.\",\"print\":{\"emphasis\":\"sung\"}}",
+  "{\"id\":\"beat-v6\",\"section\":\"Third Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Blessed are the clean of heart: for they shall see God.\",\"print\":{\"emphasis\":\"sung\"}}",
+  "{\"id\":\"beat-v7\",\"section\":\"Third Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Blessed are the peacemakers: for they shall be called the children of God.\",\"print\":{\"emphasis\":\"sung\"}}",
+  "{\"id\":\"beat-v8\",\"section\":\"Third Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Blessed are they which are persecuted for righteousness sake: for theirs is the Kingdom of heaven.\",\"print\":{\"emphasis\":\"sung\"}}",
+  "{\"id\":\"beat-v9\",\"section\":\"Third Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Blessed are ye, when men shall revile you and persecute you, and shall say every evil against you falsely for my sake.\",\"print\":{\"emphasis\":\"sung\"}}",
+  "{\"id\":\"beat-v10\",\"section\":\"Third Antiphon\",\"type\":\"verse\",\"speaker\":\"choir\",\"text\":\"Rejoice, and be glad: for great is your reward in heaven.\",\"print\":{\"emphasis\":\"sung\"}}",
+  "{\"id\":\"beat-glory\",\"section\":\"Third Antiphon\",\"type\":\"doxology\",\"text\":\"Glory to the Father, and to the Son, and to the Holy Spirit,\",\"print\":{\"emphasis\":\"sung\"}}",
+  "{\"id\":\"beat-now\",\"section\":\"Third Antiphon\",\"type\":\"doxology\",\"text\":\"Both now and ever, and unto ages of ages. Amen.\",\"print\":{\"emphasis\":\"sung\"}}",
+  "{\"id\":\"se-rubric\",\"section\":\"Little Entrance\",\"type\":\"rubric\",\"text\":\"The clergy make the Little Entrance with the Gospel Book.\"}",
+  "{\"id\":\"se-deacon\",\"section\":\"Little Entrance\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Wisdom! Attend!\"}",
+  "{\"id\":\"entrance-hymn\",\"section\":\"Entrance Hymn\",\"type\":\"hymn\",\"speaker\":\"choir\",\"text\":\"Come, let us worship and fall down before Christ. O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia!\"}",
   "{\"id\":\"homily\",\"section\":\"Homily\",\"type\":\"rubric\",\"text\":\"The sermon is delivered at this time.\"}",
   "{\"id\":\"al-opening\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Let us say with all our soul and with all our mind, let us say:\",\"density\":\"compact\"}",
   "{\"id\":\"al-response\",\"section\":\"Litany of Fervent Supplication\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"Lord, have mercy.\",\"density\":\"cue\"}",
@@ -562,124 +618,16 @@
  "stretches": [
   {
    "id": "propers",
-   "label": "The Third Antiphon through the Holy Gospel",
-   "fromSection": "Third Antiphon",
+   "label": "The Troparia through the Holy Gospel",
+   "fromSection": "Troparia",
    "toSection": "Gospel Reading",
-   "gap": 43
+   "gap": 71
   }
  ],
  "slots": [
   {
-   "id": "slot-gl-amen",
-   "gap": 28,
-   "section": "First Antiphon",
-   "usual": [
-    {
-     "id": "a1-v0",
-     "section": "First Antiphon",
-     "type": "verse",
-     "speaker": "choir",
-     "text": "Bless the Lord, O my soul, blessed art Thou, O Lord.\nBless the Lord, O my soul, and all that is within me bless His holy name.\nBless the Lord, O my soul, and forget not all His benefits;",
-     "_overlay": "st-john-damascus-tyler"
-    },
-    {
-     "id": "a1-v1",
-     "section": "First Antiphon",
-     "type": "verse",
-     "speaker": "choir",
-     "text": "who cleanseth all thy transgressions; who healeth all thine infirmities;\nwho redeemeth thy life from destruction, who crowneth thee with mercy and compassion."
-    },
-    {
-     "id": "a1-v2",
-     "section": "First Antiphon",
-     "type": "verse",
-     "speaker": "choir",
-     "text": "Compassionate and merciful is the Lord; long-suffering and of great mercy."
-    },
-    {
-     "id": "a1-v3",
-     "section": "First Antiphon",
-     "type": "verse",
-     "speaker": "choir",
-     "text": "Bless the Lord, O my soul, blessed art Thou, O Lord."
-    },
-    {
-     "id": "a1-refrain",
-     "section": "First Antiphon",
-     "type": "response",
-     "speaker": "choir",
-     "text": "Through the intercessions of the Theotokos, O Savior, save us."
-    }
-   ],
-   "usualShare": 0.991,
-   "varies": true
-  },
-  {
-   "id": "slot-ant1-ll-amen",
-   "gap": 35,
-   "section": "Little Litany",
-   "usual": [
-    {
-     "id": "ant1-ll-glory",
-     "section": "Little Litany",
-     "type": "doxology",
-     "speaker": "choir",
-     "text": "Glory to the Father, and to the Son, and to the Holy Spirit."
-    },
-    {
-     "id": "a2-v0",
-     "section": "Second Antiphon",
-     "type": "verse",
-     "speaker": "choir",
-     "text": "Praise the Lord, O my soul.\nI will praise the Lord in my life; I will sing psalms unto my God as long as I shall be.",
-     "_overlay": "st-john-damascus-tyler"
-    },
-    {
-     "id": "a2-v1",
-     "section": "Second Antiphon",
-     "type": "verse",
-     "speaker": "choir",
-     "text": "Trust not in princes in the sons of men, in whom there is no salvation.\nHis spirit shall go forth, and he shall return to his earth; in that day all his thoughts shall perish.",
-     "_overlay": "st-john-damascus-tyler"
-    },
-    {
-     "id": "a2-v2",
-     "section": "Second Antiphon",
-     "type": "verse",
-     "speaker": "choir",
-     "text": "Blessed is he who hath the God of Jacob for his helper, whose hope is in the Lord his God,\nwho made heaven and earth, the sea and all that is in them.",
-     "_overlay": "st-john-damascus-tyler"
-    },
-    {
-     "id": "a2-v3",
-     "section": "Second Antiphon",
-     "type": "verse",
-     "speaker": "choir",
-     "text": "The Lord shall be King for ever;",
-     "_overlay": "st-john-damascus-tyler"
-    },
-    {
-     "id": "a2-v4",
-     "section": "Second Antiphon",
-     "type": "verse",
-     "speaker": "choir",
-     "text": "thy God, O Zion, from generation to generation.",
-     "_overlay": "st-john-damascus-tyler"
-    },
-    {
-     "id": "a2-glory",
-     "section": "Second Antiphon",
-     "type": "doxology",
-     "speaker": "choir",
-     "text": "Now and ever, and unto ages of ages. Amen."
-    }
-   ],
-   "usualShare": 0.991,
-   "varies": true
-  },
-  {
    "id": "slot-meg-cue",
-   "gap": 164,
+   "gap": 192,
    "section": "Hymn to the Theotokos",
    "usual": [
     {
@@ -691,12 +639,12 @@
      "_overlay": "st-john-damascus-tyler"
     }
    ],
-   "usualShare": 0.886,
+   "usualShare": 0.841,
    "varies": true
   },
   {
    "id": "slot-pc-elevation-r",
-   "gap": 206,
+   "gap": 234,
    "section": "Communion Hymn",
    "usual": [
     {
@@ -707,20 +655,12 @@
      "text": "Praise the Lord from the heavens, praise Him in the highest. Alleluia, Alleluia, Alleluia!"
     }
    ],
-   "usualShare": 0.746,
-   "varies": true
-  },
-  {
-   "id": "slot-prayer-ambon",
-   "gap": 231,
-   "section": "Blessing of Grapes and Fruit",
-   "usual": [],
-   "usualShare": 0.991,
+   "usualShare": 0.655,
    "varies": true
   },
   {
    "id": "slot-cd-glory-r",
-   "gap": 244,
+   "gap": 272,
    "section": "Dismissal",
    "usual": null,
    "usualShare": 0.009,
@@ -728,7 +668,7 @@
   },
   {
    "id": "slot-pot-lhm-sung",
-   "gap": 269,
+   "gap": 297,
    "section": "Prayers of Thanksgiving",
    "usual": [
     {
@@ -747,7 +687,7 @@
      "tone": 3
     }
    ],
-   "usualShare": 0.754,
+   "usualShare": 0.761,
    "varies": true
   }
  ],
@@ -1060,8 +1000,55 @@
    }
   },
   {
-   "kind": "slot",
-   "slot": "slot-gl-amen"
+   "kind": "block",
+   "block": {
+    "id": "a1-v0",
+    "section": "First Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Bless the Lord, O my soul, blessed art Thou, O Lord.\nBless the Lord, O my soul, and all that is within me bless His holy name.\nBless the Lord, O my soul, and forget not all His benefits;",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "a1-v1",
+    "section": "First Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "who cleanseth all thy transgressions; who healeth all thine infirmities;\nwho redeemeth thy life from destruction, who crowneth thee with mercy and compassion."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "a1-v2",
+    "section": "First Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Compassionate and merciful is the Lord; long-suffering and of great mercy."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "a1-v3",
+    "section": "First Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Bless the Lord, O my soul, blessed art Thou, O Lord."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "a1-refrain",
+    "section": "First Antiphon",
+    "type": "response",
+    "speaker": "choir",
+    "text": "Through the intercessions of the Theotokos, O Savior, save us."
+   }
   },
   {
    "kind": "block",
@@ -1141,8 +1128,79 @@
    }
   },
   {
-   "kind": "slot",
-   "slot": "slot-ant1-ll-amen"
+   "kind": "block",
+   "block": {
+    "id": "ant1-ll-glory",
+    "section": "Little Litany",
+    "type": "doxology",
+    "speaker": "choir",
+    "text": "Glory to the Father, and to the Son, and to the Holy Spirit."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "a2-v0",
+    "section": "Second Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Praise the Lord, O my soul.\nI will praise the Lord in my life; I will sing psalms unto my God as long as I shall be.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "a2-v1",
+    "section": "Second Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Trust not in princes in the sons of men, in whom there is no salvation.\nHis spirit shall go forth, and he shall return to his earth; in that day all his thoughts shall perish.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "a2-v2",
+    "section": "Second Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Blessed is he who hath the God of Jacob for his helper, whose hope is in the Lord his God,\nwho made heaven and earth, the sea and all that is in them.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "a2-v3",
+    "section": "Second Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "The Lord shall be King for ever;",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "a2-v4",
+    "section": "Second Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "thy God, O Zion, from generation to generation.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "a2-glory",
+    "section": "Second Antiphon",
+    "type": "doxology",
+    "speaker": "choir",
+    "text": "Now and ever, and unto ages of ages. Amen."
+   }
   },
   {
    "kind": "block",
@@ -1233,14 +1291,223 @@
    }
   },
   {
+   "kind": "block",
+   "block": {
+    "id": "beat-open",
+    "section": "Third Antiphon",
+    "type": "prayer",
+    "speaker": "choir",
+    "text": "In Thy Kingdom remember us, O Lord, when Thou comest in Thy Kingdom.",
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "beat-v1",
+    "section": "Third Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Blessed are the poor in spirit: for theirs is the Kingdom of heaven.",
+    "print": {
+     "emphasis": "sung"
+    },
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "beat-v2",
+    "section": "Third Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Blessed are they that mourn: for they shall be comforted.",
+    "print": {
+     "emphasis": "sung"
+    },
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "beat-v3",
+    "section": "Third Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Blessed are the meek: for they shall inherit the earth.",
+    "print": {
+     "emphasis": "sung"
+    },
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "beat-v4",
+    "section": "Third Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Blessed are they that hunger and thirst after righteousness: for they shall be sated.",
+    "print": {
+     "emphasis": "sung"
+    },
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "beat-v5",
+    "section": "Third Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Blessed are the merciful: for they shall obtain mercy.",
+    "print": {
+     "emphasis": "sung"
+    },
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "beat-v6",
+    "section": "Third Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Blessed are the clean of heart: for they shall see God.",
+    "print": {
+     "emphasis": "sung"
+    },
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "beat-v7",
+    "section": "Third Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Blessed are the peacemakers: for they shall be called the children of God.",
+    "print": {
+     "emphasis": "sung"
+    },
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "beat-v8",
+    "section": "Third Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Blessed are they which are persecuted for righteousness sake: for theirs is the Kingdom of heaven.",
+    "print": {
+     "emphasis": "sung"
+    },
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "beat-v9",
+    "section": "Third Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Blessed are ye, when men shall revile you and persecute you, and shall say every evil against you falsely for my sake.",
+    "print": {
+     "emphasis": "sung"
+    },
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "beat-v10",
+    "section": "Third Antiphon",
+    "type": "verse",
+    "speaker": "choir",
+    "text": "Rejoice, and be glad: for great is your reward in heaven.",
+    "print": {
+     "emphasis": "sung"
+    },
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "beat-glory",
+    "section": "Third Antiphon",
+    "type": "doxology",
+    "speaker": null,
+    "text": "Glory to the Father, and to the Son, and to the Holy Spirit,",
+    "print": {
+     "emphasis": "sung"
+    },
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "beat-now",
+    "section": "Third Antiphon",
+    "type": "doxology",
+    "speaker": null,
+    "text": "Both now and ever, and unto ages of ages. Amen.",
+    "print": {
+     "emphasis": "sung"
+    },
+    "_overlay": "st-john-damascus-tyler"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "se-rubric",
+    "section": "Little Entrance",
+    "type": "rubric",
+    "speaker": null,
+    "text": "The clergy make the Little Entrance with the Gospel Book."
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "se-deacon",
+    "section": "Little Entrance",
+    "type": "prayer",
+    "speaker": "deacon",
+    "text": "Wisdom! Attend!"
+   }
+  },
+  {
+   "kind": "block",
+   "block": {
+    "id": "entrance-hymn",
+    "section": "Entrance Hymn",
+    "type": "hymn",
+    "speaker": "choir",
+    "text": "Come, let us worship and fall down before Christ. O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia!"
+   }
+  },
+  {
    "kind": "jump",
    "stretch": "propers",
-   "label": "The Third Antiphon through the Holy Gospel"
+   "label": "The Troparia through the Holy Gospel"
   },
   {
    "kind": "resume",
    "stretch": "propers",
-   "label": "The Third Antiphon through the Holy Gospel"
+   "label": "The Troparia through the Holy Gospel"
   },
   {
    "kind": "block",
@@ -3253,10 +3520,6 @@
    }
   },
   {
-   "kind": "slot",
-   "slot": "slot-prayer-ambon"
-  },
-  {
    "kind": "block",
    "block": {
     "id": "bbn-text",
@@ -3666,6 +3929,9 @@
    "slot": "slot-pot-lhm-sung"
   }
  ],
+ "omit": {
+  "printCues": true
+ },
  "sample": {
   "dates": [
    "2026-01-04",
@@ -3761,7 +4027,6 @@
    "2028-07-16",
    "2028-07-23",
    "2028-07-30",
-   "2028-08-06",
    "2028-08-13",
    "2028-08-20",
    "2028-08-27",
@@ -3783,7 +4048,7 @@
    "2028-12-17",
    "2028-12-31"
   ],
-  "fitting": 114
+  "fitting": 113
  },
- "fingerprint": "960c4160434f"
+ "fingerprint": "4e1a91070351"
 }

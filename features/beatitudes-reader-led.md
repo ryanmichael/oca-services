@@ -44,3 +44,7 @@ Default false. No query-param override; this is per-parish, not per-request.
 - **INV-1** — Default (no overlay rubric): all Third-Antiphon `hymn`-type blocks have `speaker: 'choir'` on an ordinary-time Sunday with interpolated canon troparia.
 - **INV-2** — `beatitudesTropariaReaderLed: true` (Tyler overlay): all Third-Antiphon `hymn`-type blocks have `speaker: 'reader'` on the same day. Beatitude verses (`beat-v*`, `beat-open`) remain `choir`.
 - **INV-3** — Doxology lines (`beat-glory`, `beat-now`) keep `speaker: null` regardless of flag.
+
+## Related
+
+- `antiphons.beatitudesTropariaPrintAsCues` (features/beatitudes-print-cues.md) builds on this rubric: where the Reader reads the troparia, printed copies can show a one-line cue in place of each, and the Parish Book omits them.

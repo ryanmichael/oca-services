@@ -104,6 +104,9 @@ const CSS = `
     font-size: 11.5pt;
     white-space: pre-line;
   }
+  /* Print cues (features/beatitudes-print-cues.md): the page shows every
+     text; the booklet built from it swaps .print-full for .print-cue. */
+  .print-cue { display: none; }
   p.prayer.compact, p.response.compact {
     font-style: italic;
     color: #444;
@@ -283,7 +286,16 @@ function renderService(blocks, options = {}) {
     function printBooklet() {
       closePrintModal();
       var page = document.getElementById('svc-page');
-      var contentHTML = page.innerHTML;
+      // Print cues: the booklet is the pew's copy — a Reader's troparion
+      // prints as its cue line, and the verses the pew now follows as sung
+      // text. This page itself (Standard print) keeps every text.
+      var clone = page.cloneNode(true);
+      clone.querySelectorAll('.print-full').forEach(function (n) { n.remove(); });
+      clone.querySelectorAll('.print-sung').forEach(function (n) {
+        var p = document.createElement('p'); p.className = 'prayer'; p.textContent = n.textContent;
+        n.parentNode.replaceChild(p, n);
+      });
+      var contentHTML = clone.innerHTML;
       var svc  = ${JSON.stringify(title)};
       var date = ${JSON.stringify(date || '')};
       var win = window.open('', '_blank');
@@ -430,6 +442,7 @@ function renderService(blocks, options = {}) {
         'p.instruction { color: #666; font-style: italic; font-size: 10pt; margin: 4px 0; }\\n' +
         'p.prayer, p.hymn, p.response { margin: 0 0 7px; font-size: 11pt; }\\n' +
         'p.verse { font-style: italic; color: #444; margin: 3px 0 3px 1em; font-size: 10pt; white-space: pre-line; }\\n' +
+        'p.print-cue { padding-left: 1.2em; }\\n' +
         'p.prayer.compact, p.response.compact { font-style: italic; color: #444; font-size: 9pt; line-height: 1.4; }\\n' +
         'p.prayer.cue, p.response.cue { font-style: italic; color: #444; font-size: 8.5pt; line-height: 1.3; margin-bottom: 3px; }\\n' +
         'p.prayer.fine, p.response.fine { font-style: italic; color: #444; font-size: 8pt; line-height: 1.35; }\\n' +
@@ -471,6 +484,20 @@ function renderBody(blocks) {
 }
 
 function renderBlock(block) {
+  const html = renderBlockFull(block);
+  const hint = block.print;
+  if (hint && hint.cue && block.type === 'hymn') {
+    const who = block.speaker ? `${escHtml(speakerLabel(block.speaker))}: ` : '';
+    return `    <div class="print-full">\n${html}\n    </div>\n` +
+      `    <p class="rubric print-cue">${who}${escHtml(hint.cue)}</p>`;
+  }
+  if (hint && hint.emphasis === 'sung' && (block.type === 'verse' || block.type === 'doxology')) {
+    return html.replace(/class="(verse|glory-line)"/, 'class="$1 print-sung"');
+  }
+  return html;
+}
+
+function renderBlockFull(block) {
   const lines = [];
 
   // Speaker label (skip null/falsy)

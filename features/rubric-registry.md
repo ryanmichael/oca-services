@@ -106,6 +106,7 @@ borrowing whatever the parish currently has stored. See `TYLER_NO_2ND` in
 | `omitCatechumensSeasons` | `omitCatechumensSeasons` | csv-strings | liturgy | `rubric_omit_catechumens_seasons` | `assemblers/liturgy.js` |
 | `paschalCommunionYearRound` | `paschalCommunionYearRound` | boolean | (none) | `rubric_paschal_communion_year_round` | **orphan-unused** |
 | `beatitudesTropariaReaderLed` | `antiphons.beatitudesTropariaReaderLed` | boolean | liturgy | `rubric_beatitudes_reader_led` | `assemblers/liturgy-parts/antiphons.js` |
+| `beatitudesTropariaPrintAsCues` | `antiphons.beatitudesTropariaPrintAsCues` | boolean (requires `beatitudesTropariaReaderLed`) | liturgy | — (registry-only, `parish_rubrics`) | `assemblers/liturgy-parts/antiphons.js` |
 | `faithful2Long` | `litanies.faithful2Long` | boolean | liturgy | `rubric_faithful_litany_2_long` | `assemblers/liturgy-parts/litanies.js` |
 
 ## Code surface

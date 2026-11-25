@@ -239,6 +239,7 @@ function serviceUrl(date, svcType, pronoun = 'tt') {
                  : svcType === 'paschalHours'      ? '/api/paschal-hours'
                  : svcType === 'paschaCollection'  ? '/api/pascha-collection'
                  : svcType === 'kneelingVespers'   ? '/api/kneeling-vespers'
+                 : svcType === 'akathistThanksgiving' ? '/api/akathist-thanksgiving'
                  : svcType === 'vigil'             ? '/api/vigil'
                  : svcType === 'matins'            ? '/api/matins'
                  : svcType === 'burialVespers'     ? '/api/service'
@@ -339,6 +340,9 @@ function getServiceRows(day) {
   if (day.services.kneelingVespers) {
     rows.push({ key: 'kneelingVespers', name: 'Kneeling Vespers of Pentecost', available: true });
   }
+  if (day.services.akathistThanksgiving) {
+    rows.push({ key: 'akathistThanksgiving', name: 'Akathist of Thanksgiving', available: true });
+  }
   // A weekday Great Feast eve serves Great Vespers or an All-Night Vigil. The
   // weekday morning branch above emits only Matins/Liturgy, and the Saturday
   // and Sunday branches were the ONLY places that ever consulted
@@ -367,7 +371,7 @@ function getServiceRows(day) {
 function shouldShowDay(day) {
   const { dayOfWeek: dow, services } = day;
   if (dow === 'saturday' || dow === 'sunday') return true;
-  return services.dailyVespers || services.greatVespers || services.allNightVigil || services.burialVespers || services.bridegroomMatins || services.royalHours || services.lamentations || services.vesperalLiturgy || services.passionGospels || services.presanctified || services.paschalHours || services.liturgy || services.kneelingVespers;
+  return services.dailyVespers || services.greatVespers || services.allNightVigil || services.burialVespers || services.bridegroomMatins || services.royalHours || services.lamentations || services.vesperalLiturgy || services.passionGospels || services.presanctified || services.paschalHours || services.liturgy || services.kneelingVespers || services.akathistThanksgiving;
 }
 
 function renderServiceList(daysList) {
@@ -456,6 +460,7 @@ async function _showPanel(rowEl, date, svcType) {
                  : svcType === 'paschalHours'     ? 'PASCHAL HOURS'
                  : svcType === 'paschaCollection' ? 'HOLY PASCHA COLLECTION'
                  : svcType === 'kneelingVespers'  ? 'KNEELING VESPERS OF PENTECOST'
+                 : svcType === 'akathistThanksgiving' ? 'AKATHIST OF THANKSGIVING'
                  : svcType === 'matins'          ? 'MATINS'
                  : 'GREAT VESPERS');
   setPanelTitle(svcLabel);

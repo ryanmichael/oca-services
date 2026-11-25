@@ -35,6 +35,12 @@ const daysFromPascha = (d) => {
   return Math.round((utcMidnight(d.cur) - utcMidnight(p)) / DAY_MS);
 };
 
+// US Thanksgiving: the fourth Thursday of November, as a UTC day-of-month.
+const usThanksgivingDay = (year) => {
+  const firstDow = new Date(Date.UTC(year, 10, 1)).getUTCDay();   // 0 = Sunday
+  return 1 + ((4 - firstDow + 7) % 7) + 21;
+};
+
 const SERVICE_CATALOG = [
   {
     key: 'greatVespers', name: 'Great Vespers', kind: 'date',
@@ -141,6 +147,21 @@ const SERVICE_CATALOG = [
     description: 'Vespers of Pentecost Sunday with the three Kneeling Prayers.',
     keywords: ['kneeling', 'pentecost', 'trinity sunday', 'kneeling prayers', 'holy spirit', 'gonyklisia'],
     isServed: (d) => daysFromPascha(d) === 49,
+  },
+  {
+    key: 'akathistThanksgiving', name: 'Akathist of Thanksgiving', kind: 'date',
+    description: '“Glory to God for All Things” — served on the eve and the day of Thanksgiving.',
+    keywords: ['akathist', 'akafist', 'thanksgiving', 'glory to god for all things', 'gratitude', 'kontakion', 'ikos'],
+    // Listed on the Wednesday and Thursday of US Thanksgiving week: St John of
+    // Damascus (Tyler) served it Wed 2026-11-25 in place of Daily Vespers, and
+    // many parishes serve it on Thanksgiving Day itself. The route renders it
+    // for any date, so search still opens it the rest of the year.
+    isServed: (d) => {
+      if (d.cur.getUTCMonth() !== 10) return false;
+      const tg = usThanksgivingDay(d.cur.getUTCFullYear());
+      const day = d.cur.getUTCDate();
+      return day === tg - 1 || day === tg;
+    },
   },
   {
     key: 'panikhida', name: 'Panikhida', kind: 'form',

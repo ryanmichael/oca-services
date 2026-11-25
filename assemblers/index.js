@@ -110,5 +110,6 @@ module.exports = {
   assembleLamentations:     withLitanyDensity(require('./lamentations')),
   assembleTypika:           withLitanyDensity(require('./typika')),
   assemblePanikhida:        withLitanyDensity(require('./panikhida')),
+  assembleAkathistThanksgiving: withLitanyDensity(require('./akathist-thanksgiving')),
   resolveSource,
 };

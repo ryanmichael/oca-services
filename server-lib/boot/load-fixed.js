@@ -193,6 +193,13 @@ function boot() {
     return t;
   });
 
+  const akathistThanksgivingFixed = loadOrExit('Akathist of Thanksgiving fixed texts', () => {
+    const t = loadJSON('fixed-texts/akathist-thanksgiving-fixed.json');
+    registerBaseFixed('akathist-thanksgiving', t);
+    console.log('Akathist of Thanksgiving fixed texts loaded.');
+    return t;
+  });
+
   ensureOrthocalCacheTable();
 
   // Apply any pending schema migrations. Brownfield-safe: on first run,
@@ -215,7 +222,7 @@ function boot() {
     paschalHoursFixed, midnightOfficeFixed, paschalMatinsFixed,
     passionGospelsFixed, bridegroomMatinsFixed, lamentationsFixed,
     vesperalLiturgyFixed, kneelingVespersFixed, royalHoursFixed,
-    matinsFixed, typikaFixed, panikhidaFixed,
+    matinsFixed, typikaFixed, panikhidaFixed, akathistThanksgivingFixed,
     // Shared helpers
     parseQuery, escHtml, formatDate, serveStatic, loadJSON,
     renderService, renderVespers,

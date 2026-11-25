@@ -1,14 +1,14 @@
 {
   "generated": "scripts/choir-index-build.js — do not hand-edit",
-  "packets": 17,
+  "packets": 18,
   "counts": {
-    "service": 41,
+    "service": 43,
     "tone": 13,
     "block": 97,
     "day": 20,
     "standing": 1,
-    "unbound": 8,
-    "assets": 180
+    "unbound": 10,
+    "assets": 184
   },
   "assets": {
     "92817f66af30": {
@@ -426,6 +426,38 @@
       "filename": "Great Vespers 11.21.26.pdf",
       "bytes": 7038086,
       "pages": 13
+    },
+    "955a02dad1af": {
+      "id": "955a02dad1af",
+      "sha256": "955a02dad1af46dc93a4ee2a576d72749184142bc89212fdba8ecd867688c77d",
+      "path": "2026-11-25/pdf/liturgy-2026-11-29.pdf",
+      "filename": "Divine Liturgy 11.29.26.pdf",
+      "bytes": 5601170,
+      "pages": 11
+    },
+    "05f99b7c7fff": {
+      "id": "05f99b7c7fff",
+      "sha256": "05f99b7c7fff51dcec8dbfa319328c024cfe82e4aec7bf3e3c894eb1c071a9d9",
+      "path": "2026-11-25/pdf/great-vespers-2026-11-28.pdf",
+      "filename": "Great Vespers 11.28.26.pdf",
+      "bytes": 6959830,
+      "pages": 13
+    },
+    "b6b723f715ab": {
+      "id": "b6b723f715ab",
+      "sha256": "b6b723f715ab4ddd445e6b12e2d578478b9a372544889399564cad1e355cda9b",
+      "path": "2026-11-25/pdf/_unclassified/O Heavenly King.pdf",
+      "filename": "O Heavenly King.pdf",
+      "bytes": 1920205,
+      "pages": 4
+    },
+    "a189fdfe345e": {
+      "id": "a189fdfe345e",
+      "sha256": "a189fdfe345e57000ef4ad061758da5464e1ab10bbcc792a5f04cfc02410dcec",
+      "path": "2026-11-25/pdf/_unclassified/Tips - Zakuk.pdf",
+      "filename": "Tips - Zakuk.pdf",
+      "bytes": 869314,
+      "pages": 1
     },
     "bd5c7c855c6c": {
       "id": "bd5c7c855c6c",
@@ -1901,6 +1933,26 @@
       "tone": null,
       "asset": "d1dcac1fc339",
       "packet": "2026-11-19"
+    },
+    {
+      "kind": "service",
+      "date": "2026-11-29",
+      "contentDate": "2026-11-29",
+      "service": "liturgy",
+      "role": "booklet",
+      "tone": null,
+      "asset": "955a02dad1af",
+      "packet": "2026-11-25"
+    },
+    {
+      "kind": "service",
+      "date": "2026-11-28",
+      "contentDate": "2026-11-29",
+      "service": "greatVespers",
+      "role": "booklet",
+      "tone": null,
+      "asset": "05f99b7c7fff",
+      "packet": "2026-11-25"
     },
     {
       "kind": "block",
@@ -3762,6 +3814,24 @@
         "service \"Liturgy\" recognised but no date in filename"
       ],
       "path": "2026-11-16/pdf/_unclassified/Liturgy 2 Greek Antiphons.pdf"
+    },
+    {
+      "asset": "b6b723f715ab",
+      "filename": "O Heavenly King.pdf",
+      "packet": "2026-11-25",
+      "reasons": [
+        "no service keyword and no date"
+      ],
+      "path": "2026-11-25/pdf/_unclassified/O Heavenly King.pdf"
+    },
+    {
+      "asset": "a189fdfe345e",
+      "filename": "Tips - Zakuk.pdf",
+      "packet": "2026-11-25",
+      "reasons": [
+        "no service keyword and no date"
+      ],
+      "path": "2026-11-25/pdf/_unclassified/Tips - Zakuk.pdf"
     },
     {
       "asset": "7eaf94f742c3",

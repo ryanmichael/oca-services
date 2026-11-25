@@ -1,0 +1,164 @@
+{
+  "emailDate": "2026-11-25",
+  "sender": "cjruss63@gmail.com",
+  "subject": "ST John Choir Email Blast 11/25",
+  "messages": [
+    {
+      "subject": "ST John Choir Email Blast 11/25",
+      "sourceDir": "../../../../private/tmp/claude-501/-Users-ryanmurphy--claude-spares-spare-yv3c89/3da3412c-7042-4277-add0-dcc085567772/scratchpad/dl-1125",
+      "fetchedAt": "2026-11-25T17:14:33.471Z",
+      "attachments": 4
+    }
+  ],
+  "source": "manual",
+  "fetchedAt": "2026-11-25T17:14:33.471Z",
+  "weekTone": null,
+  "attachments": [
+    {
+      "original": "Divine Liturgy 11.29.26.pdf",
+      "kind": "service",
+      "service": "liturgy",
+      "serviceLabel": "Divine Liturgy",
+      "apiDate": "2026-11-29",
+      "contentDate": "2026-11-29",
+      "apiPath": "/api/liturgy",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/liturgy-2026-11-29.pdf",
+      "sha256": "955a02dad1af46dc93a4ee2a576d72749184142bc89212fdba8ecd867688c77d",
+      "bytes": 5601170,
+      "pages": 11,
+      "hasTextLayer": false,
+      "apiUrl": "/api/liturgy?date=2026-11-29",
+      "messageSubject": "ST John Choir Email Blast 11/25",
+      "ocr": {
+        "file": "ocr/liturgy-2026-11-29.txt",
+        "pages": 11,
+        "textPages": 6,
+        "musicPages": 5,
+        "chars": 4485
+      }
+    },
+    {
+      "original": "Great Vespers 11.28.26.pdf",
+      "kind": "service",
+      "service": "greatVespers",
+      "serviceLabel": "Great Vespers",
+      "apiDate": "2026-11-28",
+      "contentDate": "2026-11-29",
+      "apiPath": "/api/service",
+      "tone": null,
+      "confidence": "high",
+      "reasons": [],
+      "stored": "pdf/great-vespers-2026-11-28.pdf",
+      "sha256": "05f99b7c7fff51dcec8dbfa319328c024cfe82e4aec7bf3e3c894eb1c071a9d9",
+      "bytes": 6959830,
+      "pages": 13,
+      "hasTextLayer": false,
+      "apiUrl": "/api/service?date=2026-11-28",
+      "messageSubject": "ST John Choir Email Blast 11/25",
+      "ocr": {
+        "file": "ocr/great-vespers-2026-11-28.txt",
+        "pages": 13,
+        "textPages": 6,
+        "musicPages": 7,
+        "chars": 4930
+      }
+    },
+    {
+      "original": "O Heavenly King.pdf",
+      "kind": "unclassified",
+      "service": null,
+      "serviceLabel": null,
+      "apiDate": null,
+      "contentDate": null,
+      "apiPath": null,
+      "tone": null,
+      "confidence": "low",
+      "reasons": [
+        "no service keyword and no date"
+      ],
+      "stored": "pdf/_unclassified/O Heavenly King.pdf",
+      "sha256": "b6b723f715ab4ddd445e6b12e2d578478b9a372544889399564cad1e355cda9b",
+      "bytes": 1920205,
+      "pages": 4,
+      "hasTextLayer": false,
+      "messageSubject": "ST John Choir Email Blast 11/25",
+      "ocr": {
+        "file": "ocr/O Heavenly King.txt",
+        "pages": 4,
+        "textPages": 0,
+        "musicPages": 4,
+        "chars": 0
+      }
+    },
+    {
+      "original": "Tips - Zakuk.pdf",
+      "kind": "unclassified",
+      "service": null,
+      "serviceLabel": null,
+      "apiDate": null,
+      "contentDate": null,
+      "apiPath": null,
+      "tone": null,
+      "confidence": "low",
+      "reasons": [
+        "no service keyword and no date"
+      ],
+      "stored": "pdf/_unclassified/Tips - Zakuk.pdf",
+      "sha256": "a189fdfe345e57000ef4ad061758da5464e1ab10bbcc792a5f04cfc02410dcec",
+      "bytes": 869314,
+      "pages": 1,
+      "hasTextLayer": false,
+      "messageSubject": "ST John Choir Email Blast 11/25",
+      "ocr": {
+        "file": "ocr/Tips - Zakuk.txt",
+        "pages": 1,
+        "textPages": 0,
+        "musicPages": 1,
+        "chars": 0
+      }
+    }
+  ],
+  "directives": [],
+  "unresolved": [
+    {
+      "filename": "O Heavenly King.pdf",
+      "stored": "pdf/_unclassified/O Heavenly King.pdf",
+      "reasons": [
+        "no service keyword and no date"
+      ]
+    },
+    {
+      "filename": "Tips - Zakuk.pdf",
+      "stored": "pdf/_unclassified/Tips - Zakuk.pdf",
+      "reasons": [
+        "no service keyword and no date"
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "filename": "Akathist Melody Prep.pdf",
+      "reason": "identical to 2026-11-10/pdf/_unclassified/Akathist of Thanksgiving Prep.pdf",
+      "sha256": "79c95cbfbe89b84a781f97a67ba619b21a42ce9bacfd0adb29e68ebf1cccdf71"
+    },
+    {
+      "filename": "Akathist of Thanksgiving 11.25.26.pdf",
+      "reason": "identical to 2026-11-10/pdf/_unclassified/Akathist of Thanksgiving 11.25.26.pdf",
+      "sha256": "18f3ce825f997a196d4cb6bb2d0217d3d4df93527f613ad60a4271e282161d6c"
+    },
+    {
+      "filename": "Byzantine Lord Have Mercy.pdf",
+      "reason": "identical to 2026-09-24/pdf/_unclassified/Lord Have Mercy (Byzantine).pdf",
+      "sha256": "ee33d34221f95b79d866f9404adf4e35ef071327c47e8ce9cd7621a160274fa2"
+    },
+    {
+      "filename": "Liturgy 2 - Greek Antiphons.pdf",
+      "reason": "identical to 2026-11-16/pdf/_unclassified/Liturgy 2 Greek Antiphons.pdf",
+      "sha256": "f2e421f3dc529efde930d8df856725d39cd658a0916408ca765e1af43f08d4d9"
+    }
+  ],
+  "excluded": []
+}

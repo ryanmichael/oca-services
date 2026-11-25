@@ -81,8 +81,13 @@ npm run audit:offline
 
 echo "Running endpoint audit (audit:endpoints)..."
 # Endpoint audit needs a running server. Start one in the background unless
-# port 3000 is already in use, then run the audit, then clean up.
-if lsof -ti :3000 > /dev/null 2>&1; then
+# a server is already LISTENING on :3000, then run the audit, then clean up.
+#
+# -sTCP:LISTEN matters: a bare `lsof -ti :3000` also matches CLIENT sockets,
+# including CLOSED ones an app keeps after viewing localhost:3000 (the Claude
+# app's browser pane does). On 2026-11-25 that made the hook "reuse" a server
+# that did not exist, and every audit failed "cannot reach http://localhost:3000".
+if lsof -ti tcp:3000 -sTCP:LISTEN > /dev/null 2>&1; then
   echo "  (existing server on :3000 detected — reusing)"
   STARTED_SERVER=0
 else

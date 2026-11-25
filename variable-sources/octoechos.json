@@ -57,6 +57,8 @@
           "glory": {
             "tone": 1,
             "label": "Resurrectional Doxastichon",
+            "_alsoNumberedSticheron": true,
+            "_alsoNumberedNote": "Reads as a plain resurrectional sticheron, not a Glory-framed doxastichon. Evidence: the St. John of Damascus (Tyler) choir sheet for Great Vespers 2026-11-28 (docs/choir-packets/2026-11-25/pdf/great-vespers-2026-11-28.pdf pp.2-3) prints the Tone 1 Octoechos block numbered 10-4 and ends on THIS text as sticheron 4, and reference/orders/2026-1129-order-services.txt independently appoints '7 stichera of the Resurrection, Tone 1' + '3 stichera of St. Paramon' + 'Glory… now and ever… Dogmatic Theotokion' — so on that day the Menaion claims NO Glory and the 7th is still sung numbered. Promotion stays gated on the appointed count (see for-date.js).",
             "text": "Let us praise the Word, coeternal with the Father. He ineffably came forth from the virginal womb. He freely accepted the Cross and death for our sake. He was raised in glory.\nGlory to Thee, O Lifegiving Lord, the Savior of our souls!"
           }
         },
@@ -78,13 +80,13 @@
               "order": 3,
               "label": "Sticheron 3",
               "tone": 1,
-              "text": "As King of heaven and earth, Thou wast voluntarily crucified in Thy love for man. Hell was angered when it met Thee below. Adam rose seeing Thee, the Creator, under the earth. O wonder! How has the life of all tasted deathThou didst enlighten the world which cries:\nO Lord, Who didst rise from the dead, glory to Thee!"
+              "text": "As King of heaven and earth, Thou wast voluntarily crucified in Thy love for man. Hell was angered when it met Thee below. Adam rose seeing Thee, the Creator, under the earth. O wonder! How has the life of all tasted death? Thou didst enlighten the world which cries:\nO Lord, Who didst rise from the dead, glory to Thee!"
             },
             {
               "order": 4,
               "label": "Sticheron 4",
               "tone": 1,
-              "text": "The myrrhbearing women came with haste to Thy tomb, bearing myrhh and lamenting. Not finding Thy most pure body, they learned from the angel of the new and glorious wonder. They told the Apostles:\n\"The Lord is risen, granting the world great mercy.\""
+              "text": "The myrrhbearing women came with haste to Thy tomb, bearing myrrh and lamenting. Not finding Thy most pure body, they learned from the angel of the new and glorious wonder. They told the Apostles:\n\"The Lord is risen, granting the world great mercy.\""
             }
           ],
           "theotokion": {

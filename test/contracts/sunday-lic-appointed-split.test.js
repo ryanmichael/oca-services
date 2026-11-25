@@ -118,13 +118,46 @@ describe('Feature contract: Sunday Lord-I-Call appointed split', () => {
   });
 
   it('INV-5: licNoLeadingRepeat still wins for the parish that set it', async () => {
-    // Tyler sings 6 + 3, not 7 + 3: Tone 1 publishes only 6 distinct
-    // resurrectional stichera and this parish declines to double the first.
-    // The appointed count governs the MENAION; it must not override that.
+    // This parish declines to DOUBLE a resurrectional sticheron to fill the
+    // count. The appointed count governs the MENAION; it must not override that.
+    //
+    // Until 2026-11-25 this asserted Tyler's 6 + 3 here, because Tone 1 was
+    // thought to publish only 6 distinct. The Tyler sheet for Great Vespers
+    // 2026-11-28 numbers the Tone 1 block 10-4 ending on "Let us praise the
+    // Word, coeternal with the Father", and the orders for 10-04 and 11-29 both
+    // appoint 7 — so Tone 1's `glory` text is the 7th numbered sticheron
+    // (`_alsoNumberedSticheron`, see D25). Seven DISTINCT is now available, and
+    // the invariant this test exists for is "no repeat", not "six".
     const { res, men } = licSplit(
       (await get('/api/service?date=2026-10-03&translation=st-john-damascus-tyler')).json.blocks);
     assert.equal(men.length, 3, 'the Menaion is still appointed at 3');
-    assert.equal(res.length, 6, `expected the parish 6-count, got ${res.length}`);
+    const texts = res.map(b => (b.text || '').replace(/\s+/g, ' ').trim());
+    assert.equal(new Set(texts).size, texts.length,
+      `the parish must not repeat a resurrectional sticheron: ${texts.map(t => t.slice(0, 30)).join(' | ')}`);
+    assert.equal(res.length, 7, `expected 7 distinct (Tone 1 now sources its 7th), got ${res.length}`);
+  });
+
+  it('INV-5b: 2026-11-28 sings 7 + 3 Paramon and ONE "Glory… now and ever…" over the Dogmatikon', async () => {
+    // reference/orders/2026-1129: "7 stichera of the Resurrection, Tone 1 /
+    // 3 stichera of St. Paramon, Tone 4 / Glory… now and ever… Dogmatic
+    // Theotokion, Tone 1". Found 2026-11-25 against the Tyler 11.28.26 packet:
+    // a mis-keyed Acacius sticheron sat in Paramon's third slot, a Menaion
+    // Theotokion sang at Glory, and the Tone 1 7th sang at Glory instead of
+    // numbered. Asserted by POSITION, for base and parish alike.
+    for (const t of ['', '&translation=st-john-damascus-tyler']) {
+      const blocks = (await get(`/api/service?date=2026-11-28${t}`)).json.blocks;
+      const { res, men } = licSplit(blocks);
+      const tag = t ? 'tyler' : 'base';
+      assert.equal(new Set(res.map(b => b.text)).size, 7, `${tag}: 7 distinct resurrectional`);
+      assert.equal(res.length, 7, `${tag}: no repeated resurrectional sticheron`);
+      assert.equal(men.length, 3, `${tag}: 3 Menaion stichera`);
+      for (const m of men) assert.match(m.text, /Paramon/, `${tag}: every Menaion sticheron is St Paramon's — got "${m.text.slice(0, 40)}"`);
+      const lic = blocks.filter(b => (b.section || '') === 'Lord, I Have Cried' && b.type !== 'prayer' && b.type !== 'verse');
+      const tail = lic.slice(lic.findIndex(b => b.type === 'doxology'));
+      assert.equal(tail.length, 2, `${tag}: exactly one doxology then one hymn after the stichera`);
+      assert.match(tail[0].text, /Glory to the Father.*now and ever/is, `${tag}: Glory and Now are combined`);
+      assert.match(tail[1].label || '', /Dogmatik/i, `${tag}: the Dogmatikon closes the section`);
+    }
   });
 
   it('INV-6: a Sunday with no order file still renders', async () => {

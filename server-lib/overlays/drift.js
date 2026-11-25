@@ -601,7 +601,7 @@ function validateSticheraTextIntegrity() {
     // finding), which is a separate, known-fragile rank-aware picker change.
     const KNOWN_MISATTRIBUTION = new Set([
       43, 165, 923, 1055, 1118, 1197, 1591, 1707,
-      1863, 1926, 1939, 2372, 2436, 2541, 2623,
+      1863, 1926, 1939, 2372, 2541, 2623,
     ]);
     const seam = db.prepare(
       `SELECT DISTINCT commemoration_id AS cid FROM stichera
@@ -615,6 +615,31 @@ function validateSticheraTextIntegrity() {
         `sticheron text — a second saint's block was scraped onto this row ` +
         `(multi-saint mis-attribution, cf. Sep 2 comm 1786). Fix: split the ` +
         `block to the correct commemoration_ids and strip the rubric seam.`
+      );
+      warnings += 1;
+    }
+
+    // (I) Two stichera run together in ONE row. The St Sergius corpus marks the
+    //   final phrase of every sticheron with "**" exactly once, so a row with two
+    //   is two hymns. Found 2026-11-25: 11-29 row 9468 held Paramon stichera 2
+    //   AND 3, so the set came up one short and a mis-keyed Acacius sticheron
+    //   filled the slot — heard as the wrong saint in the Tyler 11.28.26 packet,
+    //   with audit:date clean. Split it at the start of the second hymn (row
+    //   10844). The rows below share the signature and are queued for the same
+    //   split; tolerated so the gate stays green, and any NEW one trips.
+    const KNOWN_MERGED_STICHERA = new Set([8355, 8561, 8855, 9090, 9277]);
+    const merged = db.prepare(
+      `SELECT id, commemoration_id AS cid, section, "order"
+         FROM stichera
+        WHERE source = 'stSergius'
+          AND (length(text) - length(replace(text, '**', ''))) / 2 >= 2`
+    ).all();
+    for (const r of merged) {
+      if (KNOWN_MERGED_STICHERA.has(r.id)) continue;
+      console.warn(
+        `Sticheron ${r.id} (commemoration ${r.cid}, ${r.section} order ${r.order}) ` +
+        `carries two "**" final-phrase marks — two stichera scraped into one row ` +
+        `(cf. 11-29 row 9468). Fix: split it at the start of the second hymn.`
       );
       warnings += 1;
     }

@@ -1,0 +1,59 @@
+{
+  "key": "paramon-lic-v1",
+  "_version": 1,
+  "_label": "Lord-I-Call sticheron at verse (1), Martyr Paramon and the 370 Martyrs (11-29)",
+  "_target": {
+    "kind": "menaion",
+    "service": "vespers",
+    "commemoration": {
+      "month": 11,
+      "day": 29,
+      "title": "Martyr Paramon and 370 Martyrs in Bithynia"
+    },
+    "hymn": {
+      "table": "stichera",
+      "section": "lordICall",
+      "order": 7
+    },
+    "expect": [
+      "c532b4597ae6e4a2376d984358601954636823e88dae678fa29fed8f4ce107d6"
+    ]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "Base row 10844 was split out of 9468 on 2026-11-25 (the scrape had run stichera 2 and 3 together, so a mis-keyed Acacius sticheron filled this slot). order 7 because orders 3-6 are the alternative set and its Stavrotheotokion. Parish sings the OCA engraved-music text.",
+  "variants": [
+    {
+      "id": "st-sergius",
+      "label": "St Sergius Menaion (current base row)",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-11-25",
+        "source_citation": "oca.db stichera.id=10844 (source=stSergius)",
+        "translation_family": "st-sergius",
+        "family_note": "Identical to the stichera row it stands in for."
+      },
+      "value": {
+        "tone": 4,
+        "text": "The honored choir of spiritual athletes, * three hundred seventy in number, * with faith cast down the delusion * of the polytheism of the all-iniquitous; * and with them thou also wast crowned, * having struggled with valiant mind, * O Paramon, * and, rejoicing, didst join * the choirs of the incorporeal ones. * With them do thou pray, * that we who honor and ever bless thee * may be delivered ** from all sorrow and perils."
+      }
+    },
+    {
+      "id": "oca-music",
+      "label": "OCA engraved-music setting, as the parish sings it",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-11-25",
+        "source_citation": "docs/choir-packets/2026-11-25/pdf/great-vespers-2026-11-28.pdf p.4, third of three (\"The honored choir of athletes\"). Read VISUALLY from the scan, not from the OCR sidecar. Chant marks (//) kept as printed; the director's pencil underlay and stress marks are melodic, not textual, and are not transcribed.",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. The OCA Music Department's engraved/typeset setting the parish sings (the same edition as reference/ocanwa: \"1129-Lord I Call-…-Martyr Paramon and 370 Martyrs in Bithynia-…-OBIKHOD-Tone4.pdf\"), not a different translator. Declared explicitly because the citation prose names no bare \"OCA\" token for familyOfProse to find."
+      },
+      "value": {
+        "tone": 4,
+        "text": "The honored choir of athletes,\nthree hundred seventy in number,\nwith faith cast down the falsehood of the evil-doers' idolatry.\nYou also were crowned with them,\nhaving struggled with a courageous mind, O Paramon,\nand rejoicing, you joined the choirs of the bodiless hosts!\nEver pray with them that we who honor and bless you//\nmay be delivered from all sorrow and dangers!"
+      }
+    }
+  ]
+}

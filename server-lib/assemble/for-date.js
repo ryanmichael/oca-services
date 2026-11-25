@@ -425,8 +425,19 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             ? resKey.split('.').slice(0, -1)
                 .reduce((a, p) => (a ? a[p] : undefined), sources.octoechos)?.glory
             : null;
+          // Promote it when the Menaion claims the Glory (Tone 4, 10-24) — OR
+          // when the order itself appoints more Resurrection stichera than the
+          // tone's numbered ones, with no saint's Glory at all. 2026-11-29
+          // (Tone 1, Paramon) appoints "7 stichera of the Resurrection … 3
+          // stichera of St. Paramon … Glory… now and ever… Dogmatic Theotokion":
+          // the 7th is this text, sung numbered, and nothing is sung at Glory
+          // but the Dogmatikon. Without this the text sang at Glory as a
+          // doxastichon and the Resurrection ran 6 (Tyler packet 11.28.26).
+          const publishedRes = Array.isArray(resNode?.hymns) ? resNode.hymns.length : 6;
+          const orderWantsSeventh = appointedRes != null && appointedRes > publishedRes;
           const displacedGlory =
-            (licGlory && octoGlory?.text && octoGlory._alsoNumberedSticheron) ? octoGlory : null;
+            (octoGlory?.text && octoGlory._alsoNumberedSticheron && (licGlory || orderWantsSeventh))
+              ? octoGlory : null;
 
           if (opts.rubrics?.lordICall?.noLeadingRepeat && totalStichera === 10) {
             const distinct = (Array.isArray(resNode?.hymns) ? resNode.hymns.length : 6)
@@ -449,6 +460,17 @@ function assembleForDate(date, pronoun, entryOverride, vespersFixedBase, sources
             const resHymns = Array.isArray(resNode?.hymns) ? resNode.hymns.length : 6;
             if (displacedGlory && resurrectionalCount > resHymns) {
               lic.slots[0].appendHymns = [displacedGlory];
+              // Promoted with NO Menaion Glory: the generator put this same text
+              // at Glory (ordinary-time.js, `lordICall.glory`) with the
+              // Dogmatikon at Now. It is now numbered, so it must not ALSO sing
+              // at Glory — Glory… now and ever… collapses onto the Dogmatikon,
+              // the shape Tone 5 already has. Only when promoted, so a day that
+              // keeps 6 is untouched.
+              if (!licGlory && lic.glory?.source === 'octoechos'
+                  && /\.lordICall\.glory$/.test(lic.glory.key || '') && lic.now) {
+                lic.glory = { ...lic.now, combinesGloryNow: true };
+                lic.now   = null;
+              }
             }
           }
           lic.slots.push({

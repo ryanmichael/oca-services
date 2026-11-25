@@ -1,0 +1,59 @@
+{
+  "key": "paramon-lic-v2",
+  "_version": 1,
+  "_label": "Lord-I-Call sticheron at verse (2), Martyr Paramon and the 370 Martyrs (11-29)",
+  "_target": {
+    "kind": "menaion",
+    "service": "vespers",
+    "commemoration": {
+      "month": 11,
+      "day": 29,
+      "title": "Martyr Paramon and 370 Martyrs in Bithynia"
+    },
+    "hymn": {
+      "table": "stichera",
+      "section": "lordICall",
+      "order": 2
+    },
+    "expect": [
+      "845c5544f70eac35c95d92e87b6ddd02056d0cb16e2d13277b2a59a8ef7de153"
+    ]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "Two translations of one hymn. The base row is the St Sergius Menaion; St John of Damascus (Tyler) sings the OCA engraved-music text printed in its choir packet. Same shape as archangels-lic-v2 (memory project_register_knob_is_service_wide): register is not the whole difference, so ?pronoun=yy cannot reach this wording.",
+  "variants": [
+    {
+      "id": "st-sergius",
+      "label": "St Sergius Menaion (current base row)",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-11-25",
+        "source_citation": "oca.db stichera.id=9468 (source=stSergius)",
+        "translation_family": "st-sergius",
+        "family_note": "Identical to the stichera row it stands in for."
+      },
+      "value": {
+        "tone": 4,
+        "text": "Having witnessed * a great multitude slaughtered * for the King and God of all, O Paramon, * thou didst burn with divine zeal and cry aloud: * “I am ever a true servant of Christ! * Understand, ye all-iniquitous tyrants, * for, summoned, lo! I have now come * to be slain like an innocent lamb! * Wherefore, be ye not mistaken. * I am defenselessly become * an acceptable sacrifice * to Him Who was slain in the flesh ** for my sake, of His own will.”"
+      }
+    },
+    {
+      "id": "oca-music",
+      "label": "OCA engraved-music setting, as the parish sings it",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-11-25",
+        "source_citation": "docs/choir-packets/2026-11-25/pdf/great-vespers-2026-11-28.pdf p.4, heading \"November 29: Martyr Paramon and his companions in Bithynia (250)\", \"Lord I Call...\" Tone 4 \"To the special melody Called From On High\", second of three. Read VISUALLY from the scan, not from the OCR sidecar. Chant marks (//) kept as printed; the director's pencil underlay and stress marks are melodic, not textual, and are not transcribed.",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. The OCA Music Department's engraved/typeset setting the parish sings (the same edition as reference/ocanwa: \"1129-Lord I Call-…-Martyr Paramon and 370 Martyrs in Bithynia-…-OBIKHOD-Tone4.pdf\"), not a different translator. Declared explicitly because the citation prose names no bare \"OCA\" token for familyOfProse to find."
+      },
+      "value": {
+        "tone": 4,
+        "text": "Witnessing a great multitude slaughtered for the King and God of all,\nyou burned with divine zeal, O Paramon, crying out:\nI am ever a true servant of Christ!\nUnderstand, evil tyrants,\nfor behold, I was summoned and now I come\nto be slain like an innocent lamb!\nTherefore, do not be deceived:\nI am forced to become an acceptable sacrifice to Him//\nWho for my sake was freely slain in the flesh!"
+      }
+    }
+  ]
+}

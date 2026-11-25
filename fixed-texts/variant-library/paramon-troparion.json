@@ -1,0 +1,58 @@
+{
+  "key": "paramon-troparion",
+  "_version": 1,
+  "_label": "Troparion of the Martyrs Paramon and Philumenus (11-29), Vespers and Liturgy",
+  "_target": {
+    "kind": "menaion",
+    "service": "vespers",
+    "commemoration": {
+      "month": 11,
+      "day": 29,
+      "title": "Martyr Paramon and 370 Martyrs in Bithynia"
+    },
+    "hymn": {
+      "table": "troparia",
+      "type": "troparion"
+    },
+    "expect": [
+      "1d672b677b35a8db8f0a26e632dee5772e63991d447e4b566d440252f9c33c52"
+    ]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "The parish sings the OCA engraved sheet (© 2009, Russian Imperial Court Chant): you/your, and \"Philumenus\". St John's register setting is thee/thy, which is right for its Royster fixed texts and wrong for this sheet (memory project_packet_struck_hymns_and_edition_register: register travels with the edition). Guarded on the tt row the parish is served (troparia.id=40580). The same sheet is printed in the Liturgy packet (liturgy-2026-11-29.pdf p.3).",
+  "variants": [
+    {
+      "id": "oca-service-texts",
+      "label": "OCA service texts, thee/thy (current default)",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-11-25",
+        "source_citation": "oca.db troparia.id=40580 (pronoun tt)",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. Identical to the troparia row it stands in for."
+      },
+      "value": {
+        "tone": 4,
+        "text": "Thy holy martyrs Paramon and Philoumenus and those with them, O Lord,\nthrough their sufferings have received incorruptible crowns from Thee, our God.\nFor having Thy strength, they laid low their adversaries,\nand shattered the powerless boldness of demons.\nThrough their intercessions, save our souls!"
+      }
+    },
+    {
+      "id": "oca-music",
+      "label": "OCA engraved-music setting, as the parish sings it",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-11-25",
+        "source_citation": "docs/choir-packets/2026-11-25/pdf/great-vespers-2026-11-28.pdf p.12, \"Menaion: 29 November … Troparion - Tone 4\", Russian Imperial Court Chant arr. L'vov/Bakhmetev, \"© 2009 Orthodox Church in America\". Read VISUALLY from the scan, not from the OCR sidecar. Chant marks (//) kept as printed; the director's pencil underlay and stress marks are melodic, not textual, and are not transcribed.",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. The OCA Music Department's engraved/typeset setting the parish sings (the same edition as reference/ocanwa: \"1129-Lord I Call-…-Martyr Paramon and 370 Martyrs in Bithynia-…-OBIKHOD-Tone4.pdf\"), not a different translator. Declared explicitly because the citation prose names no bare \"OCA\" token for familyOfProse to find."
+      },
+      "value": {
+        "tone": 4,
+        "text": "Your holy martyrs Paramon and Philumenus and those with them, O Lord,\nthrough their sufferings have received incorruptible crowns from You, our God.\nFor having Your strength, they laid low their adversaries,\nand shattered the powerless boldness of demons.\nThrough their intercessions, save our souls!"
+      }
+    }
+  ]
+}

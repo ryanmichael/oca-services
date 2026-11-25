@@ -61,3 +61,23 @@ Sunday - Divine Liturgy at 10:00 AM
 | Liturgy 11-29 sheet pp. 9–11: "Stikhera for the Preparation of Nativity" headed "Nativity Fast — Pre-communion Hymns" (Tones 3, 2, 6, 4 …) | new: seasonal pre-communion hymns during the Nativity Fast; not in our render | Tyler | high | proposed |
 | Rector: "Saturday - Akathist to St. Catherine of Alexandria at 9:00 AM" | none posted by the choir; no render | Tyler | medium | note only |
 | Hierarchical Liturgy recording link | none | — | high | no action |
+
+## Great Vespers 11-28 review (2026-11-25)
+
+Read all 13 pages visually; oracle `reference/orders/2026-1129` ("7 stichera of the
+Resurrection, Tone 1 / 3 stichera of St. Paramon, Tone 4 / Glory… now and ever…
+Dogmatic Theotokion"). Fixed the same day (corrections_log #24-28):
+
+| # | Piece | Packet | Was | Bucket → fix |
+|---|---|---|---|---|
+| 1 | LIC Paramon (1) | "The honored choir of athletes" | "Clothed in a character of innocence" (Acacius, mis-keyed) | data: split 9468 → 10844; 9473-9476 → comm 2440 |
+| 2 | LIC Glory | none — Glory/Now = Dogmatikon | Menaion Theotokion 9477 at Glory | data: 9477 order 0 → -1 |
+| 3 | LIC count | 7 Resurrection (10-4, ends "Let us praise the Word") | base doubled #1; Tyler 6 | structure: tone1 `_alsoNumberedSticheron` + for-date.js promotes with no Menaion Glory; D25 |
+| 4 | LIC Paramon (2) | OCA music "Witnessing a great multitude" | St Sergius "Having witnessed" | variant `paramon-lic-v2` / `-v1` (oca-music) |
+| 5 | Troparion (also Liturgy p.3) | "Your… Philumenus… You" | "Thy… Philoumenus… Thee" | variant `paramon-troparion` (oca-music) |
+| 6 | Aposticha 3, 4 | "tasted death? Thou", "myrrh" | "deathThou", "myrhh" | octoechos.json typo |
+
+Matched: LIC verses + tone, Paramon (3) "Manifestly illumined", Dogmatikon, Aposticha
+4 + Theotokion, Resurrection troparion, Tone 4 dismissal Theotokion.
+Not changed (user decision pending): Connie's typed Resurrection stichera wording
+("Sion", "O heavens: be glad", "lover of mankind", word order in "We stand unworthily").

@@ -81,3 +81,29 @@ Matched: LIC verses + tone, Paramon (3) "Manifestly illumined", Dogmatikon, Apos
 4 + Theotokion, Resurrection troparion, Tone 4 dismissal Theotokion.
 Not changed (user decision pending): Connie's typed Resurrection stichera wording
 ("Sion", "O heavens: be glad", "lover of mankind", word order in "We stand unworthily").
+
+## Liturgy 11-29 review (2026-11-25)
+
+Read all 11 sheet pages and all 21 pages of the Liturgy #2 set (packet 2026-11-16
+`_unclassified/Liturgy 2 Greek Antiphons.pdf`, incl. Zakkak It Is Truly Meet and
+"O Lord Born of the Virgin"). Oracle `reference/orders/2026-1129` (Liturgy):
+troparia/kontakia order matches ours exactly; 8 Beatitude troparia ✓.
+
+**Fixed 2026-11-25 (this Sunday's items, corrections_log #29-33):**
+
+| # | Piece | Packet | Was | Fix |
+|---|---|---|---|---|
+| 1 | Paramon kontakion | you/your, "Philumenus", ends "Always fervently intercede…" (p.6 continues p.5) | "thou didst cleanse… didst **renounc**" | variant `paramon-kontakion` (oca-music) |
+| 2 | yy→tt stemmer | — | "didst renounc/estrang/urg" in 9 tt troparia | data + `stemRegularPast` -ced/-ged rule + drift soft-stem check |
+| 3 | Res. kontakion T1 | "As God, Thou didst rise from the tomb in glory" (© 2020) | "Thou hast risen from the grave as God" | Tyler octoechos overlay |
+| 4 | Prokeimenon T1 verse | "Rejoice in the Lord, ye righteous; praise becometh the upright." | "…O you righteous! Praise befits the just!" | Sunday prokeimenon via the variable-source cascade + Tyler overlay |
+| 5 | Pre-communion | 7 "Stikhera for the Preparation of Nativity" (T3 x3, T8, T2, T6, T4) | none | `seasonal-communion-hymns.json` (empty base) + Tyler overlay, 11-15..12-24 |
+
+**Open — Liturgy #2 switch (11-29 → start of Great Lent), awaiting the user's decisions
+(mechanism = date-range set; Parish Book edition):** Eisodikon "O come… Save us, O Son of
+God…"; Beatitudes in Royster wording ("those who mourn… pure in heart… sons of God…
+Blessed are you… exceedingly glad"); First Antiphon without the "Through the intercessions"
+refrain, ending "…bless His holy name. Blessed art Thou, O Lord"; Second Antiphon opening
+with "Glory to the Father…"; Anaphora "We hymn Thee… O our God", "cometh", "Sabaoth";
+Zakkak "Who without corruption gavest birth"; Slavonic Trisagion spelling "Svyati Boshe";
+"O Lord, born of the Virgin" (tone 6) at communion. Unread pen mark "N+E" on p.3.

@@ -10,6 +10,18 @@
     "_licSelection": "The packet prints SEVEN Tone 6 resurrectional stichera, pre-numbered 10,9,8,7,6,5,4 for a set where the Octoechos takes 10-4. They are a LIBRARY, not a rubric: on 2026-11-07 the director strikes (6) because the Menaion supplies six stichera, so the Octoechos keeps 10-7. This file carries all seven texts; WHICH are sung stays entirely with the assembler, untouched. Packet 10..5 are base hymns 1..6; packet (4) is the separate \"glory\" node, the Resurrectional Doxastichon.",
     "_tone7Note": "Tone 7 Lord-I-Call carries a SEVENTH resurrectional sticheron the base file lacks. reference/orders/2026-1115-order-services.txt appoints '7 stichera of the Resurrection, Tone 7'; the base holds 6, so licNoLeadingRepeat capped the ladder at 9 and every verse number sat one slot late (the packet's (10) was our v9). The seventh is transcribed AS PRINTED from docs/choir-packets/2026-11-11 great-vespers-2026-11-14.pdf p.3 position (4), read visually. It is in the MODERN register while the other six are thee/thou - the director sourced it outside OCA chant form, which is why the base never had it (see memory project_lic_seventh_resurrection_sticheron). Not added to the base: we cannot attribute it to OCA."
   },
+  "tone1": {
+    "saturday": {
+      "vespers": {
+        "kontakion": {
+          "tone": 1,
+          "label": "Resurrectional Kontakion",
+          "note": "OCA engraved setting (Common Chant arr. L'vov/Bakhmetev, \"© 2020 The Orthodox Church in America\"), docs/choir-packets/2026-11-25/pdf/liturgy-2026-11-29.pdf p.4, read visually. Differs from the base Obikhod text in its opening (\"As God, Thou didst rise from the tomb\" vs \"Thou hast risen from the grave as God\") and punctuation. Sung at Liturgy and Matins on every Tone 1 Sunday.",
+          "text": "As God, Thou didst rise from the tomb in glory, raising the world with Thyself. Human nature praises Thee as God, for death has vanished. Adam exults, O Master! Eve rejoices, for she is freed from bondage and cries to Thee: \"Thou art the Giver of Resurrection to all, O Christ!\""
+        }
+      }
+    }
+  },
   "tone6": {
     "saturday": {
       "vespers": {

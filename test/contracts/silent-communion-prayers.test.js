@@ -199,6 +199,27 @@ describe('silent pre-Communion prayer', () => {
       'conversion must not drop a paragraph');
   });
 
+  it('INV-11 — Nativity-Fast pre-communion hymns: St John sings them, before the silent prayer; nobody else, and not outside the fast', async () => {
+    // variable-sources/seasonal-communion-hymns.json (empty base) + the Tyler
+    // overlay, from the Liturgy packet 11.29.26 pp.9-11. Added 2026-11-25.
+    const ch = (blocks) => (blocks || []).filter(b => b.section === 'Communion Hymn');
+    const tyler = ch((await get('/api/liturgy?date=2026-11-29&translation=st-john-damascus-tyler')).json.blocks);
+    const season = tyler.filter(b => /^ch-season-\d+$/.test(b.id));
+    assert.equal(season.length, 7, 'all seven forefeast stichera as the packet prints them');
+    assert.deepEqual(season.map(b => b.tone), [3, 3, 3, 8, 2, 6, 4], 'tones in packet order');
+    assert.match(season[0].text, /^Rejoice, Isaiah/);
+    assert.ok(season.every(b => b.speaker === 'choir' && b.type === 'hymn'));
+    // Position: after the koinonikon, before the silent prayer.
+    const idx = (re) => tyler.findIndex(b => re.test(b.id));
+    assert.ok(idx(/^ch-text$/) < idx(/^ch-season-1$/), 'after the Communion Hymn');
+    assert.ok(idx(/^ch-season-7$/) < idx(/^ch-silent-rubric$/), 'before the silent prayer');
+
+    const base = ch((await get('/api/liturgy?date=2026-11-29')).json.blocks);
+    assert.equal(base.filter(b => b.id.startsWith('ch-season-')).length, 0, 'the OCA base appoints none');
+    const outside = ch((await get('/api/liturgy?date=2026-11-08&translation=st-john-damascus-tyler')).json.blocks);
+    assert.equal(outside.filter(b => b.id.startsWith('ch-season-')).length, 0, 'not outside the Nativity Fast');
+  });
+
   it('INV-8 — called without fixed texts or rubrics (Typika) it neither throws nor emits the prayer', () => {
     const { _litCommunionHymn } = require('../../assemblers/liturgy-parts/communion');
     const koinonikon = { label: 'Communion Hymn', text: 'Praise the Lord from the heavens.' };

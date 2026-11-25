@@ -112,6 +112,19 @@ function _litCommunionHymn(communionHymn, spec, f, rubrics = {}) {
       blocks.push(makeBlock('ch-2-text', section, 'hymn', 'choir', sec.text));
     }
   }
+  // Seasonal hymns the choir sings while the clergy commune (opt-in per stack
+  // via variable-sources/seasonal-communion-hymns.json). They come first; the
+  // silent prayer or the cue rubrics below still follow for the faithful.
+  const pch = spec && spec.preCommunionHymns;
+  if (pch && Array.isArray(pch.hymns) && pch.hymns.length) {
+    if (pch.label) blocks.push(makeBlock('ch-season-label', section, 'rubric', null, `${pch.label}:`));
+    pch.hymns.forEach((h, i) => {
+      if (!h || !h.text) return;
+      blocks.push(makeBlock(`ch-season-${i + 1}`, section, 'hymn', 'choir', h.text,
+        h.tone ? { tone: h.tone } : {}));
+    });
+  }
+
   // Parish opted into the silent prayer: it takes the place of the cue
   // rubrics, and we return before emitting them.
   const silent = (rubrics.liturgy || {}).silentCommunionPrayers

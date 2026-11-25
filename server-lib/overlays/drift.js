@@ -696,6 +696,22 @@ function validateTropariaTransformIntegrity() {
       warnings += 1;
     }
 
+    // "didst X" where X lost the silent 'e' of a soft c/g: "didst renounc",
+    // "didst estrang", "didst urg". The stemmer's default "-ed" strip did this
+    // to 9 rows (found 2026-11-25, Paramon kontakion, Tyler packet 11.28.26);
+    // the short-stem check above could not see them (5-8 letters). Fixed in
+    // stemRegularPast; this keeps any regenerated row honest.
+    const softStem = candidates.filter(r =>
+      [...r.text.matchAll(/\bdidst\s+([a-z]+)\b/gi)].some(([, w]) =>
+        /(?:c|rg|dg|ang|eng|ung)$/i.test(w) && !/^(?:hang|long|belong|wrong)$/i.test(w)));
+    for (const r of softStem) {
+      console.warn(
+        `Troparion ${r.id} (comm=${r.commemoration_id} ${r.type}) has "didst <stem>" missing its silent 'e' (e.g. "renounc", "urg"): "${r.preview}…". ` +
+        `yy→tt stemmer breakage — see stemRegularPast's -ced/-ged rule in scripts/yy-to-tt.js.`
+      );
+      warnings += 1;
+    }
+
     // Object-pronoun collision: "clothe thou" / "save thou" — IMPERATIVE verb
     // + subject pronoun ("thou") where the object "thee" is grammatically
     // required. Signature of the transformer's missing imperative pass.

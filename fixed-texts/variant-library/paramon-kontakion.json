@@ -1,0 +1,58 @@
+{
+  "key": "paramon-kontakion",
+  "_version": 1,
+  "_label": "Kontakion of the Martyrs Paramon and Philumenus (11-29), Liturgy",
+  "_target": {
+    "kind": "menaion",
+    "service": "liturgy",
+    "commemoration": {
+      "month": 11,
+      "day": 29,
+      "title": "Martyr Paramon and 370 Martyrs in Bithynia"
+    },
+    "hymn": {
+      "table": "troparia",
+      "type": "kontakion"
+    },
+    "expect": [
+      "22af9f13829762f688b1d5b05a3a6839581b60ee2babfa0ec1d63433c5244231"
+    ]
+  },
+  "_contract": "see fixed-texts/variant-library/CONTRACT.md",
+  "_note": "Sibling of paramon-troparion. The parish sings the OCA engraved sheet (© 2009, Russian Imperial Court Chant): you/your and \"Philumenus\"; the closing \"Always fervently intercede with Christ on behalf of the world\" is printed as a bracketed cue on p.5 and set in full on p.6 — it is the end of THIS kontakion, not a separate Theotokion. Guarded on the tt row 40579 as fixed 2026-11-25 (\"didst renounce\", was the stemmer's \"didst renounc\").",
+  "variants": [
+    {
+      "id": "oca-service-texts",
+      "label": "OCA service texts, thee/thy (current default)",
+      "_provenance": {
+        "origin": "seed",
+        "contributor": "admin",
+        "date": "2026-11-25",
+        "source_citation": "oca.db troparia.id=40579 (pronoun tt)",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. Identical to the troparia row it stands in for."
+      },
+      "value": {
+        "tone": 4,
+        "text": "Urged on by the commandments of God,\nwith patience, thou didst cleanse thy souls from all defilement.\nThou didst reach perfection as spiritual athletes;\nthou didst renounce sacrifice to idols.\nImitating Christ, thou wast slain with a spear,\nmost blessed Paramon and Philoumenus.\nAlways fervently intercede with Christ on behalf of the world."
+      }
+    },
+    {
+      "id": "oca-music",
+      "label": "OCA engraved-music setting, as the parish sings it",
+      "_provenance": {
+        "origin": "transcribed",
+        "parish_id": "st-john-damascus-tyler",
+        "contributor": "Connie Russell, choir director",
+        "date": "2026-11-25",
+        "source_citation": "docs/choir-packets/2026-11-25/pdf/liturgy-2026-11-29.pdf pp.5-6, \"Menaion: 29 November … Kontakion - Tone 4\", Russian Imperial Court Chant arr. L'vov/Bakhmetev, \"© 2009 Orthodox Church in America\"; p.6 headed \"29 November - Kontakion [Imperial Chapel Chant]\". Read VISUALLY from the scan, not from the OCR sidecar.",
+        "translation_family": "oca-menaion",
+        "family_note": "OCA. The OCA Music Department's engraved setting, not a different translator. Declared explicitly because the citation prose names no bare \"OCA\" token for familyOfProse to find."
+      },
+      "value": {
+        "tone": 4,
+        "text": "Urged on by the commandments of God,\nwith patience, you cleansed your souls from all defilement.\nYou reached perfection as spiritual athletes;\nyou renounced sacrifice to idols.\nImitating Christ, you were slain with a spear,\nmost blessed Paramon and Philumenus.\nAlways fervently intercede with Christ on behalf of the world."
+      }
+    }
+  ]
+}

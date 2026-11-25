@@ -1,0 +1,12 @@
+{
+  "_meta": {
+    "description": "Hymns a choir sings while the clergy commune, by season. EMPTY in the base: no OCA rubric appoints them. A stack opts in by overlaying the `hymns` array (variable-sources/translations/<stack>/seasonal-communion-hymns.json). Read by liturgy-from-orthocal.js; printed by assemblers/liturgy-parts/communion.js after the Communion Hymn.",
+    "added": "2026-11-25 — St John of Damascus (Tyler) Liturgy packet 11.29.26 pp.9-11, \"Nativity Fast / Pre-communion Hymns\"."
+  },
+  "nativityFast": {
+    "from": "11-15",
+    "to": "12-24",
+    "label": "Pre-communion Hymns — Nativity Fast",
+    "hymns": []
+  }
+}

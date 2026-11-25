@@ -23,6 +23,7 @@ const {
 
 const { getMenaionRanked }      = require('./menaion');
 const { buildBeatitudesTroparia } = require('./beatitudes');
+const { loadVariableSourceJSON } = require('./variable-source-overlay');
 
 // Per-commemoration overrides applied when the Menaion DB injects a known
 // troparion or kontakion. Lookup is by exact menaion title. Lets us swap the
@@ -882,7 +883,13 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     const bp = SUNDAY_BEFORE_ELEVATION_PROPER.prokeimenon;
     prokeimenon = { tone: bp.tone, label: bp.label, refrain: bp.refrain, verse: bp.verse };
   } else if (isSunday && SUNDAY_PROKEIMENA[tone]) {
-    const sp = SUNDAY_PROKEIMENA[tone];
+    // Read through the variable-source cascade so a stack can carry its own
+    // wording (variable-sources/translations/<stack>/daily-propers.json).
+    // St John of Damascus (Tyler) sings the Tone 1 verse as "Rejoice in the
+    // Lord, ye righteous; praise becometh the upright" (Liturgy packet
+    // 11.29.26 p.7). The module-level table stays the fallback.
+    const sp = loadVariableSourceJSON('daily-propers.json', opts.stack)?.sundayProkeimena?.[tone]
+            || SUNDAY_PROKEIMENA[tone];
     prokeimenon = { tone, refrain: sp.refrain, verse: sp.verse };
   } else if (!isSunday && !isWeekdayGreatSaintFeast && WEEKDAY_PROKEIMENA[dow]) {
     const wp = WEEKDAY_PROKEIMENA[dow];
@@ -1246,7 +1253,22 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
     }
   }
 
+  // Seasonal hymns the choir sings while the clergy commune. Empty in the base;
+  // a stack opts in through the variable-source cascade (St John of Damascus
+  // sings the Nativity-Fast "Stikhera for the Preparation of Nativity",
+  // Liturgy packet 11.29.26 pp.9-11). Ranges are MM-DD, inclusive.
+  let preCommunionHymns = null;
+  {
+    const md = dateStr.slice(5);
+    const seasons = loadVariableSourceJSON('seasonal-communion-hymns.json', opts.stack) || {};
+    for (const [key, s] of Object.entries(seasons)) {
+      if (key.startsWith('_') || !s || !Array.isArray(s.hymns) || !s.hymns.length) continue;
+      if (md >= s.from && md <= s.to) { preCommunionHymns = { key, label: s.label, hymns: s.hymns }; break; }
+    }
+  }
+
   return {
+    preCommunionHymns,
     variant,
     feastOnly,
     // Null when today is not inside any feast window. See the derivation above

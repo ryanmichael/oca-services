@@ -284,6 +284,15 @@ function stemRegularPast(past) {
     // Heuristic: if dropping just 'd' yields a known e-stem, prefer that.
     const dropD = past.slice(0, -1);
     if (E_STEM_BASES.has(dropD)) return dropD;
+    // -ced / -ged: the soft c and soft g need their silent 'e' (renounced→
+    // renounce, pierced→pierce, rejoiced→rejoice; estranged→estrange,
+    // judged→judge, enlarged→enlarge). The default strip produced "thou didst
+    // renounc" in 7 troparia and "didst estrang" in 1 — found 2026-11-25 in the
+    // Paramon kontakion (Tyler packet 11.28.26). Excluded: -onged (longed,
+    // belonged, wronged keep no 'e') and hanged; a doubled -gged is handled by
+    // the doubled-consonant rule below.
+    if (/ced$/.test(past)) return dropD;
+    if (/(?:rg|dg|ang|eng|ung|ag|ug)ed$/.test(past) && past !== 'hanged') return dropD;
     // -Cated/-Cited/-Cuted/-Ceted/-Coted (C = consonant): -ate/-ite/-ute/
     // -ete/-ote class (emulated→emulate, illuminated→illuminate,
     // contributed→contribute, completed→complete, devoted→devote). Drop 'd'.

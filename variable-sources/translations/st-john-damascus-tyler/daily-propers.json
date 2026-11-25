@@ -1,0 +1,12 @@
+{
+  "_meta": {
+    "_note": "Sparse overlay onto variable-sources/daily-propers.json for St John of Damascus (Tyler). Objects deep-merge; arrays replace wholesale (see ../README.md).",
+    "_source": "St John of Damascus choir packets (Connie Russell, director) — feedback_tyler_match_connie"
+  },
+  "sundayProkeimena": {
+    "1": {
+      "verse": "Rejoice in the Lord, ye righteous; praise becometh the upright.",
+      "_provenance": "docs/choir-packets/2026-11-25/pdf/liturgy-2026-11-29.pdf p.7, \"Divine Liturgy / Tone 1 / Sunday Prokeimenon\" (Znamenny chant): \"Vs: Rejoice in the Lord, ye righteous; praise becometh the upright.\" Read visually. The refrain is unchanged from the base and inherits from it."
+    }
+  }
+}

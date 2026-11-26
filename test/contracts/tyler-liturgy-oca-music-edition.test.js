@@ -83,4 +83,26 @@ describe('Tyler Liturgy from the OCA engraved edition (11-29)', () => {
     assert.equal(prokVerse(t).text, prokVerse(o).text);
     assert.equal(kontakion(t, /Resurrection, Tone 2/).text, kontakion(o, /Resurrection, Tone 2/).text);
   });
+
+  it('INV-4: Great Vespers Tone 1 Resurrection stichera in the director\'s typed wording, by position; base untouched', async () => {
+    // Great Vespers packet 2026-11-28 pp.2-3 (typed, numbered 10-4). Adopted
+    // 2026-11-26: Sion; "O heavens, be glad"; Lover of mankind (x3); "We stand
+    // unworthily before…". Tyler Octoechos overlay, tone1.saturday.vespers.lordICall.
+    const lic = async (q) => {
+      const b = (await get(`/api/service?date=2026-11-28&service=vespers${q}`)).json.blocks;
+      return Object.fromEntries(b.filter(x => /^lic-hymn-v\d+$/.test(x.id)).map(x => [x.id, x.text]));
+    };
+    const t = await lic('&translation=st-john-damascus-tyler');
+    assert.match(t['lic-hymn-v9'], /^Encircle Sion and surround her/);
+    assert.match(t['lic-hymn-v7'], /^O heavens, be glad!/);
+    assert.match(t['lic-hymn-v7'], /as the Lover of mankind\.$/);
+    assert.match(t['lic-hymn-v6'], /as the gracious Lover of mankind\.$/);
+    assert.match(t['lic-hymn-v5'], /^We stand unworthily before Thy lifebearing tomb/);
+    assert.match(t['lic-hymn-v5'], /as the Lover of mankind\.$/);
+    assert.match(t['lic-hymn-v4'], /^Let us praise the Word/, 'the 7th (promoted) sticheron still follows');
+    const o = await lic('');
+    assert.match(o['lic-hymn-v9'], /^Encircle Zion/);
+    assert.match(o['lic-hymn-v7'], /^Be glad, O heavens!/);
+    assert.match(o['lic-hymn-v5'], /^We stand before Thy lifebearing tomb unworthily/);
+  });
 });

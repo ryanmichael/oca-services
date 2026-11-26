@@ -18,6 +18,37 @@
           "label": "Resurrectional Kontakion",
           "note": "OCA engraved setting (Common Chant arr. L'vov/Bakhmetev, \"© 2020 The Orthodox Church in America\"), docs/choir-packets/2026-11-25/pdf/liturgy-2026-11-29.pdf p.4, read visually. Differs from the base Obikhod text in its opening (\"As God, Thou didst rise from the tomb\" vs \"Thou hast risen from the grave as God\") and punctuation. Sung at Liturgy and Matins on every Tone 1 Sunday.",
           "text": "As God, Thou didst rise from the tomb in glory, raising the world with Thyself. Human nature praises Thee as God, for death has vanished. Adam exults, O Master! Eve rejoices, for she is freed from bondage and cries to Thee: \"Thou art the Giver of Resurrection to all, O Christ!\""
+        },
+        "lordICall": {
+          "resurrectional": {
+            "_note": "St John of Damascus (Tyler) sings the Tone 1 Resurrection stichera at Lord, I Call in the director's typed wording — Great Vespers packet 2026-11-28 (docs/choir-packets/2026-11-25/pdf/great-vespers-2026-11-28.pdf pp.2-3, read visually). WORDING only, adopted 2026-11-26 at the user's decision: 'Sion' for 'Zion'; 'O heavens, be glad' for 'Be glad, O heavens'; 'Lover of mankind' for 'Lover of man' (x3); 'We stand unworthily before Thy lifebearing tomb' word order. Kept the parish house style (capitalised divine pronouns, 'Lover', punctuation) and did NOT copy two typing slips on the sheet: 'thou alone have manifested' (kept 'hast') and 'For He is our God, who hast delivered' (kept 'has'). Arrays replace wholesale, so all six are carried; 1 and 3 are the base text unchanged.",
+            "hymns": [
+              {
+                "order": 1,
+                "text": "Accept our evening prayers, O holy Lord! Grant us remission of sins,\nfor Thou alone hast manifested the Resurrection to the world."
+              },
+              {
+                "order": 2,
+                "text": "Encircle Sion and surround her, O people! Give glory in her to the One Who rose from the dead! For He is our God,\nWho has delivered us from our transgressions!"
+              },
+              {
+                "order": 3,
+                "text": "Come, O people, let us hymn and fall down before Christ, glorifying His Resurrection from the dead! For He is our God,\nWho has delivered the world from the Enemy's deceit!"
+              },
+              {
+                "order": 4,
+                "text": "O heavens, be glad! Sound trumpets, O foundations of the earth! Sing in gladness, O mountains! Behold Emmanuel has nailed our sins to the Cross! Granting life, He has slain death.\nHe has resurrected Adam as the Lover of mankind."
+              },
+              {
+                "order": 5,
+                "text": "Let us praise Him Who voluntarily was crucified in the flesh for our sake. He suffered, was buried, but rose from the dead. By Orthodoxy confirm Thy Church, O Christ.\nGrant peace for our life as the gracious Lover of mankind."
+              },
+              {
+                "order": 6,
+                "text": "We stand unworthily before Thy lifebearing tomb, O Christ God, offering glory to Thine ineffable compassion. Thou hast accepted the Cross and death, O sinless One\nto grant Resurrection to the world as the Lover of mankind."
+              }
+            ]
+          }
         }
       }
     }

@@ -79,8 +79,10 @@ Dogmatic Theotokion"). Fixed the same day (corrections_log #24-28):
 
 Matched: LIC verses + tone, Paramon (3) "Manifestly illumined", Dogmatikon, Aposticha
 4 + Theotokion, Resurrection troparion, Tone 4 dismissal Theotokion.
-Not changed (user decision pending): Connie's typed Resurrection stichera wording
-("Sion", "O heavens: be glad", "lover of mankind", word order in "We stand unworthily").
+Connie's typed Resurrection stichera wording — **adopted 2026-11-26** (user decision), Tyler
+Octoechos overlay, corrections_log #34: "Sion", "O heavens, be glad", "Lover of mankind" (x3),
+"We stand unworthily before Thy lifebearing tomb". Wording only: house capitalisation kept, and
+the sheet's typing slips ("thou alone have", "who hast delivered") not copied.
 
 ## Liturgy 11-29 review (2026-11-25)
 

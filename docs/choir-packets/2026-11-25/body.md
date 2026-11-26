@@ -107,3 +107,22 @@ refrain, ending "…bless His holy name. Blessed art Thou, O Lord"; Second Antip
 with "Glory to the Father…"; Anaphora "We hymn Thee… O our God", "cometh", "Sabaoth";
 Zakkak "Who without corruption gavest birth"; Slavonic Trisagion spelling "Svyati Boshe";
 "O Lord, born of the Virgin" (tone 6) at communion. Unread pen mark "N+E" on p.3.
+
+**Decided 2026-11-26 (user):**
+- Switch = a **dated window**: Liturgy #2 texts render for 2026-11-29 through Forgiveness
+  Sunday 2027-03-14 only; earlier dates keep Liturgy #1. Needs a new date-gated "seasonal
+  picks" layer — `parish_variant_picks` has no dates today.
+- After the window, **Liturgy #1 returns** at Clean Monday 2027-03-15; revisit when Connie
+  sends Lenten music.
+- **Parish Book prints the Liturgy #1 Beatitudes**; the weekly sheet carries the Royster
+  Beatitudes during the window.
+
+**Built 2026-11-26** as the dated seasonal layer `greek-chant-royster-liturgy`
+(`fixed-texts/seasonal-layers/`), window in Tyler's `rubrics_extra_json.seasonalLayers`.
+Texts read from all 21 pages of `2026-11-16/pdf/_unclassified/Liturgy 2 Greek Antiphons.pdf`.
+Beyond the list above, the set also changes: Psalm 145 without "Blessed is he who hath the God
+of Jacob" (bars 28-70 skipped); Cherubic Hymn (Royster, with the setting's repetitions);
+Greek Trisagion transliteration "Agios o Theos, Agios Iskiros…". The Parish Book does NOT get an
+insert in the window: those 15 Sundays print the full booklet (the insert can only carry the
+troparia-to-Gospel stretch). Open: order of "O Lord, born of the Virgin" vs the Nativity-Fast
+stichera at communion (placed after them); unread pen mark "N+E" on p.3.

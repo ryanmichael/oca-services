@@ -998,9 +998,11 @@ function buildLiturgyFromOrthocal(orthocalData, dateStr, srcs, style = 'new', op
   } else if (isPaschalPeriod) {
     entranceHymn = { text: GREAT_FEAST_VARIANTS.pascha.entranceHymn };
   } else if (isSunday) {
-    entranceHymn = { text: LITURGY_DEFAULTS.entranceHymn.resurrection };
+    // `kind` lets a parish's dated seasonal layer replace the Sunday form alone
+    // (server-lib/overlays/seasonal-layers.js) without matching on wording.
+    entranceHymn = { text: LITURGY_DEFAULTS.entranceHymn.resurrection, kind: 'resurrection' };
   } else {
-    entranceHymn = { text: LITURGY_DEFAULTS.entranceHymn.saints };
+    entranceHymn = { text: LITURGY_DEFAULTS.entranceHymn.saints, kind: 'saints' };
   }
 
   // ── Megalynarion: feast → Paschal period → Basil → typical ─────────────────

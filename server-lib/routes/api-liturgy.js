@@ -6,6 +6,8 @@ const ROOT = path.resolve(__dirname, '..', '..');
 
 const { getMenaionPatron } = require('../sources/menaion');
 const { applyPractice }    = require('../practice');
+const { activeSeasonalLayers, applySeasonalFixed,
+        applySeasonalLiturgySpec } = require('../overlays/seasonal-layers');
 
 function handle(req, res, ctx) {
   const url = req.url || '/';
@@ -99,6 +101,17 @@ function handle(req, res, ctx) {
           for (const w of applied.warnings) {
             console.warn(`[practice] ${translation}: ${w}`);
           }
+        }
+
+        // Dated seasonal layer — a parish's second set of texts for a window of
+        // dates (St John of Damascus sings "Liturgy #2" from 2026-11-29 until
+        // Great Lent). Applied AFTER the practice layer on purpose: the layer's
+        // arrays are already what is sung, and a practice `select` derived
+        // against the standing text would mis-cut them (its fingerprint is of
+        // the standing array). See server-lib/overlays/seasonal-layers.js.
+        const seasonalLayers = activeSeasonalLayers(overlayRubrics, date, 'liturgy');
+        if (seasonalLayers.length) {
+          liturgyFixedResolved = applySeasonalFixed(liturgyFixedResolved, seasonalLayers);
         }
 
         // Lesser-saints toggle: query param wins; otherwise fall back to the
@@ -318,6 +331,11 @@ function handle(req, res, ctx) {
           }
         }
 
+        if (seasonalLayers.length && calendarEntry.liturgy) {
+          calendarEntry = { ...calendarEntry,
+            liturgy: applySeasonalLiturgySpec(calendarEntry.liturgy, seasonalLayers) };
+        }
+
         let blocks;
         try {
           blocks = assembleLiturgy(calendarEntry, liturgyFixedResolved, reqSources,
@@ -399,6 +417,9 @@ function handle(req, res, ctx) {
           antiphons: calendarEntry.liturgy?.feastAntiphons ? 'festal'
             : calendarEntry.liturgy?.paschalAntiphons12 ? 'paschal' : 'typical',
           translation: translation || null,
+          // Dated seasonal layers in force for this date (empty outside every
+          // window) — which set of the parish's texts this render used.
+          seasonalLayers: seasonalLayers.map(l => ({ id: l.id, from: l.from, to: l.to })),
           style,
           blocks,
         }));

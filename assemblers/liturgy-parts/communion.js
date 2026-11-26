@@ -124,6 +124,25 @@ function _litCommunionHymn(communionHymn, spec, f, rubrics = {}) {
         h.tone ? { tone: h.tone } : {}));
     });
   }
+  // A parish's dated seasonal layer can add its own set (St John of Damascus's
+  // "Liturgy #2" sings "O Lord, born of the Virgin"); see
+  // server-lib/overlays/seasonal-layers.js. A group may interleave the
+  // "Glory…" / "Both now…" doxologies between its troparia.
+  const extra = (spec && Array.isArray(spec.communionHymnsExtra)) ? spec.communionHymnsExtra : [];
+  extra.forEach((g, gi) => {
+    if (!g || !Array.isArray(g.hymns) || !g.hymns.length) return;
+    const prefix = `ch-${g.id || `extra${gi + 1}`}`;
+    const prov   = g.seasonalLayer ? { seasonalLayer: g.seasonalLayer } : {};
+    if (g.label) blocks.push(makeBlock(`${prefix}-label`, section, 'rubric', null, `${g.label}:`, prov));
+    g.hymns.forEach((h, i) => {
+      if (h && h.doxology) {
+        blocks.push(makeBlock(`${prefix}-dox-${i + 1}`, section, 'doxology', 'choir', h.doxology, prov));
+      } else if (h && h.text) {
+        blocks.push(makeBlock(`${prefix}-${i + 1}`, section, 'hymn', 'choir', h.text,
+          h.tone ? { tone: h.tone, ...prov } : prov));
+      }
+    });
+  });
 
   // Parish opted into the silent prayer: it takes the place of the cue
   // rubrics, and we return before emitting them.

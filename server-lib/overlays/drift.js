@@ -178,6 +178,18 @@ function validateParishPractice() {
         warnings += 1;
         continue;
       }
+      // Dated seasonal layers (2026-11-26): a window naming a missing layer
+      // file, or with dates that cannot compare, is skipped at render time —
+      // the parish would sing one set while every booklet printed the other,
+      // with nothing in the output to say so.
+      {
+        const { validateSeasonalLayers } = require('./seasonal-layers');
+        for (const e of validateSeasonalLayers(extra.seasonalLayers)) {
+          console.warn(`Parish '${row.parish_id}': ${e} — the window is silently ignored`);
+          warnings += 1;
+        }
+      }
+
       // Effective set = library presets (Bucket C) + bespoke inline entries
       // (Bucket D), resolved by exactly the code the materializer uses, so this
       // validates what actually renders rather than one of the two sources.

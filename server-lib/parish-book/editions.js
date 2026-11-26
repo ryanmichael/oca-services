@@ -79,6 +79,14 @@ function claims(edition, date, service) {
   // Beatitudes the book prints — that week is a full-booklet week, not a
   // misfit (decided 2026-11-23, features/parish-book.md).
   if (m.antiphons && service.antiphons !== m.antiphons) return false;
+  // A dated seasonal layer swaps the parish's texts for a window of dates (St
+  // John of Damascus's "Liturgy #2", 2026-11-29 to Great Lent). The book is
+  // printed in its standing texts, so a Sunday under a layer it was not printed
+  // for is a full-booklet week too — decided 2026-11-26: the book keeps the
+  // Liturgy #1 wording. An edition printed FOR a layer names it in
+  // `membership.seasonalLayer` and claims only the Sundays under it.
+  const layers = (service.seasonalLayers || []).map(l => l.id).sort().join(',');
+  if (layers !== (m.seasonalLayer || '')) return false;
   return true;
 }
 

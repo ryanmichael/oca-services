@@ -23,7 +23,10 @@ function _litEntranceHymn(entranceHymn) {
   // by the priest before the entrance hymn.
   const verse = typeof entranceHymn === 'object' ? entranceHymn.verse : null;
   if (verse) blocks.push(makeBlock('entrance-verse', section, 'verse', 'priest', verse));
-  blocks.push(makeBlock('entrance-hymn', section, 'hymn', 'choir', text));
+  // `seasonalLayer`: provenance when a parish's dated layer supplied the words.
+  const layer = typeof entranceHymn === 'object' ? entranceHymn.seasonalLayer : null;
+  blocks.push(makeBlock('entrance-hymn', section, 'hymn', 'choir', text,
+    layer ? { seasonalLayer: layer } : {}));
   return blocks;
 }
 

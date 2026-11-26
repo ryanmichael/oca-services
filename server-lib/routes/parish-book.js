@@ -51,8 +51,15 @@ async function insertFor(ctx, parish, date) {
     // ordinaryTime" would be false on a Feast of the Lord in ordinary time.
     const festal = editions.some(e => e.membership?.antiphons && svc.antiphons !== e.membership.antiphons
       && E.claims({ ...e, membership: { ...e.membership, antiphons: undefined } }, date, svc));
+    // Likewise a dated seasonal layer (Liturgy #2): the book prints the
+    // standing texts, so that week is a full-booklet week by decision.
+    const layers = (svc.seasonalLayers || []).map(l => l.id);
+    const seasonal = layers.length && editions.some(e =>
+      E.claims({ ...e, membership: { ...e.membership, seasonalLayer: layers.slice().sort().join(',') } }, date, svc));
     return { fits: false, ...meta, reason: festal
       ? `the feast's own antiphons replace the Beatitudes the book prints`
+      : seasonal
+      ? `the parish sings its seasonal set (${layers.join(', ')}) this week, not the texts the book prints — print the full booklet`
       : `no edition of this parish's book covers ${svc.serviceName} in ${svc.season}` };
   }
   const book = E.loadBook(parish, edition.id);

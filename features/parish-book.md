@@ -44,6 +44,13 @@ sings festal antiphons in place of the Beatitudes the book prints, so it is not
 claimed and that week prints the full booklet (decided 2026-11-23; C7). The
 insert page says so in those words rather than reporting a misfit.
 
+A Sunday under a dated **seasonal layer** (`rubrics.seasonalLayers`,
+`server-lib/overlays/seasonal-layers.js`) is likewise not claimed by an edition
+printed in the standing texts: St John of Damascus sings "Liturgy #2" from
+2026-11-29 to Forgiveness Sunday 2027-03-14, and the book keeps the Liturgy #1
+wording (decided 2026-11-26), so those weeks print the full booklet. An edition
+printed for a layer would name it in `membership.seasonalLayer` (C8).
+
 ## How the split is derived
 
 `split.js`, pure:

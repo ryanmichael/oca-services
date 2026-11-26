@@ -50,8 +50,12 @@ function _litTypicalAntiphon1(f, opts = {}) {
 
   if (a.glory && !gloryMoves) {
     blocks.push(makeBlock('a1-glory', section, 'doxology', 'choir', a.glory));
-    blocks.push(makeBlock('a1-grefrain', section, 'response', 'choir',
-      a.gloryRefrain || a.refrain));
+    // A set sung without the refrain (a seasonal layer blanks it) must not
+    // leave an empty response block behind the doxology.
+    if (a.gloryRefrain || a.refrain) {
+      blocks.push(makeBlock('a1-grefrain', section, 'response', 'choir',
+        a.gloryRefrain || a.refrain));
+    }
   } else if (gloryMoves && (a.gloryRefrain || a.refrain)) {
     blocks.push(makeBlock('a1-refrain', section, 'response', 'choir',
       a.gloryRefrain || a.refrain));

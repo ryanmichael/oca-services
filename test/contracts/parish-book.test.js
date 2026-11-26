@@ -44,7 +44,7 @@ const { insertFor } = require('../../server-lib/routes/parish-book');
 const PARISH = 'st-john-damascus-tyler';
 const EDITION = 'liturgy-chrysostom';
 
-let ctx, edition, book, claimed; // claimed: [{date, svc}]
+let ctx, edition, book, claimed, layered; // claimed: [{date, svc}]; layered: dates refused ONLY by a seasonal layer
 
 before(async () => {
   ctx = boot();
@@ -52,10 +52,12 @@ before(async () => {
   book = E.loadBook(PARISH, EDITION);
   assert.ok(book, `${EDITION}.book.json is not built — run: npm run parish-book:build -- ${PARISH}`);
   claimed = [];
+  layered = [];
   for (const date of E.candidateDates(edition, edition.sampleYears)) {
     let svc;
     try { svc = await getService(ctx, edition, date); } catch (_) { continue; }
     if (E.claims(edition, date, svc)) claimed.push({ date, svc });
+    else if (E.claims(edition, date, { ...svc, seasonalLayers: [] })) layered.push(date);
   }
 });
 
@@ -64,8 +66,12 @@ const keys = blocks => blocks.map(renderKey);
 describe('Parish Book — Chrysostom edition (St. John of Damascus)', () => {
   it('claims a full year of ordinary Sundays per sample year', () => {
     // ~38 per year; a collapse here means membership broke, not that the
-    // book got better at fitting.
-    assert.ok(claimed.length >= 34 * edition.sampleYears.length, `only ${claimed.length} claimed`);
+    // book got better at fitting. Sundays under a dated seasonal layer (C8) are
+    // full-booklet weeks by decision, so they count toward the year but are
+    // bounded: one Liturgy #2 window (2026-11-29 .. 2027-03-14) is 15 of them.
+    assert.ok(claimed.length + layered.length >= 34 * edition.sampleYears.length,
+      `only ${claimed.length} claimed (+${layered.length} under a seasonal layer)`);
+    assert.ok(layered.length <= 16, `${layered.length} Sundays under a seasonal layer — a window ran away`);
   });
 
   it('C1: book + insert reconstructs every claimed Sunday, block for block', () => {
@@ -82,7 +88,8 @@ describe('Parish Book — Chrysostom edition (St. John of Damascus)', () => {
   });
 
   it('C1: the HTTP insert is the same cut (route ↔ split agree)', async () => {
-    const { date, svc } = claimed.find(c => c.date.startsWith('2027-01'));
+    // January 2028: 2027's January is inside the Liturgy #2 window (C8).
+    const { date, svc } = claimed.find(c => c.date.startsWith('2028-01'));
     const ins = await insertFor(ctx, PARISH, date);
     assert.equal(ins.fits, true);
     assert.equal(ins.fingerprint, book.fingerprint);
@@ -187,5 +194,22 @@ describe('Parish Book — Chrysostom edition (St. John of Damascus)', () => {
     assert.equal(E.claims({ ...edition, membership: { ...edition.membership, antiphons: undefined } }, '2028-08-06', svc), true,
       'without the rule the date would be claimed — the probe can fail');
     assert.ok(!claimed.some(c => c.date === '2028-08-06'));
+  });
+
+  it('C8: a Sunday under a dated seasonal layer is a full-booklet week, and the weeks either side are not', async () => {
+    // St John of Damascus sings "Liturgy #2" 2026-11-29 .. 2027-03-14; the book
+    // keeps the Liturgy #1 wording (decided 2026-11-26).
+    const inside = await getService(ctx, edition, '2026-11-29');
+    assert.deepEqual(inside.seasonalLayers.map(l => l.id), ['greek-chant-royster-liturgy']);
+    assert.equal(E.claims(edition, '2026-11-29', inside), false);
+    assert.equal(E.claims(edition, '2026-11-29', { ...inside, seasonalLayers: [] }), true,
+      'without the layer the date would be claimed — the probe can fail');
+    const ins = await insertFor(ctx, PARISH, '2026-11-29');
+    assert.equal(ins.fits, false);
+    assert.match(ins.reason, /seasonal set \(greek-chant-royster-liturgy\)/);
+    // The Sunday before the window is still an insert week.
+    const before = await insertFor(ctx, PARISH, '2026-11-22');
+    assert.equal(before.fits, true, '2026-11-22 is outside the window');
+    assert.ok(!claimed.some(c => c.date >= '2026-11-29' && c.date <= '2027-03-14'), 'no window Sunday is claimed');
   });
 });

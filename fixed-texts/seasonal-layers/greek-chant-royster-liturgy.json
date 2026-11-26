@@ -1,0 +1,164 @@
+{
+  "_meta": {
+    "title": "Greek-chant Liturgy in the Royster translation (\"Liturgy #2\")",
+    "description": "A sparse layer over a parish's resolved Divine Liturgy texts, switched on for a dated window by the parish rubric `seasonalLayers` (server-lib/overlays/seasonal-layers.js). Named for its content, not a parish: any parish singing this set can point a window at it.",
+    "source": "St John of Damascus (Tyler) choir set \"Liturgy 2 Greek Antiphons\" — docs/choir-packets/2026-11-16/pdf/_unclassified/Liturgy 2 Greek Antiphons.pdf (21 pp., read visually 2026-11-26). Antiphons, Beatitudes, Cherubic Hymn and Anaphora: translation +Dmitri (Royster), NAP. Eisodikon: Serbian, Tone 4. Holy God: Beljaeff. It Is Truly Meet: nazo zakkak (\"Thee version\"). O Lord, Born of the Virgin: Obikhod LIC Tone 6.",
+    "register": "tt",
+    "conventions": [
+      "Words as the sheet sets them. Musical repetitions are dropped EXCEPT in the Cherubic Hymn, where the parish prints the setting as sung (the same convention as its standing Cherubic, cherubic-rotation memory).",
+      "Hymns to the Theotokos keep lower-case thee/thy as everywhere else in the parish texts; the music sheet capitalises \"Thy Son\" and \"Thou who alone art Blessed\" typographically.",
+      "Psalm 145 omits \"Blessed is he who hath the God of Jacob…\": the setting skips bars 28-70 (the bar numbers jump 24 -> 71), so the choir does not sing it. Psalm 102 likewise skips bars 33-79 and closes on \"…bless His holy name. Blessed art Thou, O Lord.\""
+    ]
+  },
+  "liturgy": {
+    "fixed": {
+      "typical-antiphon-1": {
+        "verses": [
+          "Bless the Lord, O my soul, blessed art Thou, O Lord.\nBless the Lord, O my soul, and all that is within me bless His holy name.\nBless the Lord, O my soul, and forget not all His benefits,",
+          "who cleanseth all thy transgressions, who healeth all thine infirmities,\nwho redeemeth thy life from destruction, who crowneth thee with mercy and compassion.",
+          "Compassionate and merciful is the Lord, long-suffering and of great mercy.",
+          "Bless the Lord, O my soul, and all that is within me bless His holy name.\nBlessed art Thou, O Lord."
+        ],
+        "_refrainNote": "No \"Through the intercessions of the Theotokos\" refrain in this set: the sheet runs Psalm 102 straight through. An empty string suppresses it (null would leave the parish refrain in place, deepMergeOverlay treats null as \"no change\").",
+        "refrain": "",
+        "gloryRefrain": ""
+      },
+      "typical-antiphon-2": {
+        "verses": [
+          "Praise the Lord, O my soul.\nI will praise the Lord in my life; I will sing psalms unto my God as long as I shall be.",
+          "Trust not in princes, in the sons of men, in whom there is no salvation.\nHis spirit shall go forth, and he shall return to his earth; in that day all his thoughts shall perish.",
+          "The Lord shall be King for ever;",
+          "thy God, O Zion, from generation to generation."
+        ]
+      },
+      "beatitudes": {
+        "verses": [
+          "In Thy Kingdom remember us, O Lord, when Thou comest in Thy Kingdom.",
+          "Blessed are the poor in spirit, for theirs is the Kingdom of Heaven.",
+          "Blessed are those who mourn, for they shall be comforted.",
+          "Blessed are the meek, for they shall inherit the earth.",
+          "Blessed are those who hunger and thirst after righteousness, for they shall be filled.",
+          "Blessed are the merciful, for they shall obtain mercy.",
+          "Blessed are the pure in heart: for they shall see God.",
+          "Blessed are the peacemakers, for they shall be called the sons of God.",
+          "Blessed are those who are persecuted for righteousness' sake, for theirs is the Kingdom of Heaven.",
+          "Blessed are you when men shall revile you and persecute you, and shall say all manner of evil against you falsely for my sake.",
+          "Rejoice and be exceedingly glad, for great is your reward in Heaven.",
+          "Glory to the Father, and to the Son, and to the Holy Spirit;",
+          "Now and ever and unto ages of ages. Amen."
+        ]
+      },
+      "trisagion": {
+        "variants": [
+          {
+            "lang": "English",
+            "text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us."
+          },
+          {
+            "lang": "Slavonic",
+            "text": "Svyati Boshe, Svyati Krepki, Svyati Bezsmertni, pomilui nas."
+          },
+          {
+            "lang": "Greek",
+            "text": "Agios o Theos, Agios Iskiros, Agios Athanatos, eleison imas."
+          }
+        ]
+      },
+      "cherubic-hymn": {
+        "part1": "We, the Cherubim mystically representing, we, the Cherubim mystically representing, we, the Cherubim mystically representing, and to the life-creating, life-creating Trinity the thrice-holy hymn with them singing, the thrice-holy hymn with them singing, all life's cares, all life's cares now lay aside, all life's cares now lay aside, all life's cares, all life's cares now lay aside.",
+        "amen": "Amen.",
+        "part2": "That the King of all we may receive, by angelic hosts escorted, by angelic hosts invisibly escorted, by angelic hosts invisibly escorted.",
+        "alleluia": "Alleluia, alleluia, alleluia."
+      },
+      "anaphora-chrysostom": {
+        "sursum-corda": [
+          {
+            "speaker": "priest",
+            "text": "The grace of our Lord Jesus Christ, the love of God the Father, and the communion of the Holy Spirit be with all of you."
+          },
+          {
+            "speaker": "people",
+            "text": "And with thy spirit."
+          },
+          {
+            "speaker": "priest",
+            "text": "Let us lift up our hearts."
+          },
+          {
+            "speaker": "people",
+            "text": "We lift them up unto the Lord."
+          },
+          {
+            "speaker": "priest",
+            "text": "Let us give thanks unto the Lord."
+          },
+          {
+            "speaker": "people",
+            "text": "It is meet and right to worship Father, Son, and Holy Spirit, the Trinity, one in essence and undivided."
+          }
+        ],
+        "sanctus": "Holy, Holy, Holy, Lord of Sabaoth! Heaven and earth are full of Thy glory! Hosanna, hosanna in the highest! Blessed is He that cometh in the Name of the Lord! Hosanna in the highest!",
+        "anamnesis-response": "We hymn Thee, we bless Thee, we give thanks unto Thee, O our God, and we pray unto Thee, O our God."
+      },
+      "anaphora-basil": {
+        "sursum-corda": [
+          {
+            "speaker": "priest",
+            "text": "The grace of our Lord Jesus Christ, the love of God the Father, and the communion of the Holy Spirit be with all of you."
+          },
+          {
+            "speaker": "people",
+            "text": "And with thy spirit."
+          },
+          {
+            "speaker": "priest",
+            "text": "Let us lift up our hearts."
+          },
+          {
+            "speaker": "people",
+            "text": "We lift them up unto the Lord."
+          },
+          {
+            "speaker": "priest",
+            "text": "Let us give thanks unto the Lord."
+          },
+          {
+            "speaker": "people",
+            "text": "It is meet and right to worship Father, Son, and Holy Spirit, the Trinity, one in essence and undivided."
+          }
+        ],
+        "sanctus": "Holy, Holy, Holy, Lord of Sabaoth! Heaven and earth are full of Thy glory! Hosanna, hosanna in the highest! Blessed is He that cometh in the Name of the Lord! Hosanna in the highest!",
+        "anamnesis-response": "We hymn Thee, we bless Thee, we give thanks unto Thee, O our God, and we pray unto Thee, O our God."
+      },
+      "it-is-truly-meet": "It is truly meet to bless thee, O Theotokos, ever-blessed and most pure, and the Mother of our God. More honorable than the Cherubim, and more glorious beyond compare than the Seraphim, who without corruption gavest birth to God the Word: true Theotokos, we magnify thee."
+    },
+    "entranceHymn": {
+      "_note": "Replaces only the SUNDAY (resurrectional) entrance hymn. A feast entrance verse, the Paschal one and the weekday \"wondrous in the saints\" form are left as the day appoints them.",
+      "resurrection": "O come, let us worship and fall down before Christ. Save us, O Son of God, who art risen from the dead, save us who sing to Thee: Alleluia, alleluia, alleluia!"
+    },
+    "communionHymns": [
+      {
+        "id": "born-of-virgin",
+        "label": "O Lord, Born of the Virgin, Tone 6",
+        "hymns": [
+          {
+            "tone": 6,
+            "text": "O Lord, born of the Virgin, regard not my transgressions; cleanse Thou my heart and make of it a temple for Thy most pure Body and Blood. Cast me not away from Thy presence: Thou who hast mercy without measure."
+          },
+          {
+            "doxology": "Glory to the Father, and to the Son, and to the Holy Spirit."
+          },
+          {
+            "text": "How dare I take of Thy hallowed Things, unworthy as I am? For if I make bold to draw near unto Thee among them that are worthy, and it appeareth that I have no wedding garment, I do but procure the condemnation of my most sinful soul: cleanse my defiled soul, O Lord, and save me, for Thou art the Lover of mankind."
+          },
+          {
+            "doxology": "Both now and ever, and unto ages of ages. Amen."
+          },
+          {
+            "text": "Great is the multitude of my transgressions, O Theotokos: unto thy purity I have recourse, seeking salvation: visit my soul in my infirmity, and pray to thy Son our God to grant me remission of my evil deeds, thou who alone art blessed."
+          }
+        ]
+      }
+    ]
+  }
+}

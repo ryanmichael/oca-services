@@ -107,6 +107,7 @@ const CSS = `
   /* Print cues (features/beatitudes-print-cues.md): the page shows every
      text; the booklet built from it swaps .print-full for .print-cue. */
   .print-cue { display: none; }
+  .print-pointer { display: none; }
   p.prayer.compact, p.response.compact {
     font-style: italic;
     color: #444;
@@ -291,6 +292,21 @@ function renderService(blocks, options = {}) {
       // text. This page itself (Standard print) keeps every text.
       var clone = page.cloneNode(true);
       clone.querySelectorAll('.print-full').forEach(function (n) { n.remove(); });
+      // Appendix: blocks marked .print-appendix print at the back, each set
+      // under its own heading on a fresh page (features/silent-communion-prayers.md).
+      var appx = {}, appxOrder = [];
+      clone.querySelectorAll('.print-appendix').forEach(function (n) {
+        var t = n.getAttribute('data-appendix');
+        if (!appx[t]) { appx[t] = []; appxOrder.push(t); }
+        appx[t].push(n); n.remove();
+      });
+      appxOrder.forEach(function (t) {
+        var head = document.createElement('div');
+        head.className = 'section-head appendix-break';
+        head.textContent = 'Appendix: ' + t;
+        clone.appendChild(head);
+        appx[t].forEach(function (n) { while (n.firstChild) clone.appendChild(n.firstChild); });
+      });
       clone.querySelectorAll('.print-sung').forEach(function (n) {
         var p = document.createElement('p'); p.className = 'prayer'; p.textContent = n.textContent;
         n.parentNode.replaceChild(p, n);
@@ -326,6 +342,9 @@ function renderService(blocks, options = {}) {
           var heights = [0];
           children.forEach(function(el) {
             var h = el.getBoundingClientRect().height + 16;
+            if (el.classList.contains('appendix-break') && pages[pages.length - 1].length > 0) {
+              pages.push([]); heights.push(0);
+            }
             var idx = pages.length - 1;
             var remaining = PAGE_H - heights[idx];
 
@@ -486,6 +505,16 @@ function renderBody(blocks) {
 function renderBlock(block) {
   const html = renderBlockFull(block);
   const hint = block.print;
+  // Appendix (features/silent-communion-prayers.md): the page keeps the
+  // service order; printBooklet() moves each .print-appendix to the back and
+  // swaps a pointer's .print-full for its .print-pointer note.
+  if (hint && hint.pointer) {
+    return `    <div class="print-full">\n${html}\n    </div>\n` +
+      `    <p class="rubric print-pointer">${escHtml(hint.pointer)}.</p>`;
+  }
+  if (hint && hint.appendix) {
+    return `    <div class="print-appendix" data-appendix="${escHtml(hint.appendix)}">\n${html}\n    </div>`;
+  }
   if (hint && hint.cue && block.type === 'hymn') {
     const who = block.speaker ? `${escHtml(speakerLabel(block.speaker))}: ` : '';
     return `    <div class="print-full">\n${html}\n    </div>\n` +

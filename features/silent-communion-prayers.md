@@ -1,8 +1,9 @@
 # Silent pre-Communion prayer during the Communion Hymn
 
-**Status:** shipped 2026-10-12; set in fine print 2026-10-25
+**Status:** shipped 2026-10-12; set in fine print 2026-10-25; printed at the back 2026-11-26
 **Contract test:** `test/contracts/silent-communion-prayers.test.js`
-**Rubric:** `liturgy.silentCommunionPrayers` (registry: `silentCommunionPrayers`) — off by default
+**Rubric:** `liturgy.silentCommunionPrayers` (registry: `silentCommunionPrayers`) — off by default;
+`liturgy.silentCommunionPrayersInAppendix` moves it to the back in print
 **Text:** `fixed-texts/liturgy-fixed.json` → `prayers-before-communion`
 **Emitter:** `assemblers/liturgy-parts/communion.js` → `_litCommunionHymn`
 
@@ -120,6 +121,43 @@ intent rather than following along. It now reads:
 `silently` stays in the wording on purpose: INV-4 matches `/\bsilent/i`, and
 "keep silence" would not satisfy it.
 
+## In print, at the back (2026-11-26)
+
+St John of Damascus asked for the prayer to come out of the Communion Hymn on
+paper and sit in an appendix at the back of the book, with a note telling the
+reader where to find it. New rubric `liturgy.silentCommunionPrayersInAppendix`
+(registry `silentCommunionPrayersInAppendix`, boolean, off), one row in
+`parish_rubrics` for St John's.
+
+**It is a print hint, not a reorder.** The assembler still emits the prayer in
+the Communion Hymn, so the API, the screen and every audit see the service in
+its real order. It adds `print` hints, the same mechanism as the Beatitude
+print cues (features/beatitudes-print-cues.md):
+
+- `ch-silent-rubric` gets `print: { pointer, appendix }`. In print it reads
+  `prayers-before-communion.appendix.pointer`: "…The faithful may pray
+  silently the Prayer of St. John Chrysostom, found at the back of this book",
+  plus " (page N)" where the surface prints folios, and a full stop.
+- The attribution and the prayer get `print: { appendix: "Prayers Before Holy
+  Communion" }` (the title also comes from `appendix.title`).
+
+**Who honours it.** `renderBlocks` in `public/scripts/renderer.js`, when
+`opts.print`: blocks carrying `print.appendix` leave their place and render
+after everything else as a section "Appendix: <title>". That covers the
+booklet (`/booklet`) and the Parish Book, which both render through it.
+`paginate()` in `booklet.js` starts a `.print-appendix` section on a fresh
+page. The Parish Book prints folios, so `parish-book.js` lays the pointer out
+with a " (page 00)" placeholder and fills in the folio of the page holding the
+appendix heading once paginated. The booklet has no folios, so its pointer
+carries no number. The static `renderer.js` wraps the blocks for its
+`printBooklet()` to lift out too, but `/service` renders Vespers only today,
+so that path never meets the prayer.
+
+**What it costs.** Parish Book: still 37 pages, so 40 for saddle-stitch; the
+appendix is page 36 and the pointer is on page 25 (measured 2026-11-26). The
+weekly booklet for 2026-11-29 grew one half-page from the page break (47 → 48),
+still 12 sheets. The prayer keeps `density: 'fine'`.
+
 ## Invariants
 
 - **INV-1** — off by default: the OCA base keeps the cue rubrics and emits no
@@ -140,6 +178,20 @@ intent rather than following along. It now reads:
   prayed **quietly**, not only that it is silent.
 - **INV-10** — the block carries `density: 'fine'`, both renderers stamp the
   class, and `.prayer.fine` is styled smaller than `.prayer.compact`.
+- **INV-12** — with the appendix rubric on, the API order is unchanged: the
+  prayer is still in Communion Hymn immediately before Communion Prayer; the
+  pointer and the prayer name the same appendix.
+- **INV-13** — print render: the prayer appears once, inside the appendix,
+  which is the last section; the pointer sits in Communion Hymn, before
+  Communion Prayer.
+- **INV-14** — screen render: the prayer is inline and there is no pointer.
+- **INV-15** — with the appendix rubric off, no block carries a print hint;
+  on, the same ids and texts in the same order.
+- **INV-16** — the static renderer wraps the prayer for `printBooklet()` and
+  hides the pointer on its own page.
+- **e2e `11-appendix-page`** — in the Parish Book the pointer's page number is
+  the folio of the page the appendix heading starts; in the booklet the
+  appendix starts a fresh page. Verified to fail with the page off by one.
 
 ## Scope
 

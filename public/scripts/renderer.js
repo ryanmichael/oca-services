@@ -149,6 +149,15 @@
     // cue prints as that one line; a text the pew now follows by itself (the
     // Beatitude verses, Glory, Now and ever) prints at full hymn size.
     const hint = block.print;
+    // Appendix pointer (features/silent-communion-prayers.md): in print, a
+    // block whose text has moved to the back prints a note pointing there. A
+    // surface that prints folios fills `.appendix-page` with the page number
+    // after pagination (parish-book.js); the booklet has none, so it stays
+    // empty. Applies to the Reader's copy too: it is the same paper.
+    if (hint && hint.pointer && opts && opts.print) {
+      return `<div class="rubric print-pointer">${speakerPrefix(speaker)}${esc(hint.pointer)}` +
+        `<span class="appendix-page" data-appendix="${esc(hint.appendix || '')}">${opts.appendixPageMark || ''}</span>.</div>`;
+    }
     if (hint && opts && opts.print && !opts.readersCopy) {
       if (type === 'hymn' && hint.cue) {
         return `<div class="rubric print-cue">${speakerPrefix(speaker)}${esc(hint.cue)}</div>`;
@@ -256,6 +265,34 @@
   function renderBlocks(blocks, opts) {
     if (!blocks || blocks.length === 0) {
       return '<div class="panel-loading">No content available.</div>';
+    }
+
+    // Appendix (features/silent-communion-prayers.md). On a print surface a
+    // block carrying `print.appendix` leaves its place and is printed, in
+    // order, under an "Appendix" heading after everything else; the block
+    // that pointed to it prints its `print.pointer` (renderBlock). The
+    // screen never asks for `print`, so it keeps the service order.
+    if (opts && opts.print && blocks.some(b => b.print && b.print.appendix && !b.print.pointer)) {
+      const inPlace = [], moved = {}, titles = [];
+      for (const b of blocks) {
+        const t = b.print && !b.print.pointer && b.print.appendix;
+        if (!t) { inPlace.push(b); continue; }
+        if (!moved[t]) { moved[t] = []; titles.push(t); }
+        // Drop `appendix` from the copy so the recursive render below does
+        // not try to move it again.
+        const print = Object.assign({}, b.print); delete print.appendix;
+        moved[t].push(Object.assign({}, b, { section: 'Appendix: ' + t, print }));
+      }
+      let html = renderBlocks(inPlace, opts);
+      for (const t of titles) {
+        // No gold rule: the appendix starts on a fresh page (booklet.js
+        // paginate honours `.print-appendix`), so a rule would only strand
+        // itself at the foot of the last page of the service.
+        html += renderBlocks(moved[t], opts)
+          .replace('<div class="svc-sec">', `<div class="svc-sec print-appendix" data-appendix="${esc(t)}">`)
+          .replace('<div class="svc-head">', `<div class="svc-head appendix-head" data-appendix="${esc(t)}">`);
+      }
+      return html;
     }
 
     // Group consecutive blocks by section

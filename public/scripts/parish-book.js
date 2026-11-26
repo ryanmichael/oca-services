@@ -37,12 +37,12 @@
     markers.push(html);
     return { id: 'pb-marker-' + markers.length, type: 'rubric', section: section, text: '⟦PB:' + (markers.length - 1) + '⟧' };
   }
-  function renderWithMarkers(blocks, into) {
+  function renderWithMarkers(blocks, into, extra) {
     // `print: true` — a printed surface: a block carrying a print cue prints
     // as its cue, and the Beatitude verses as sung text
     // (features/beatitudes-print-cues.md). The book never meets a cue: the
     // edition's `omit` rule has already taken the Reader's troparia out.
-    into.innerHTML = window.renderBlocks(blocks, { print: true });
+    into.innerHTML = window.renderBlocks(blocks, Object.assign({ print: true }, extra || {}));
     Array.prototype.forEach.call(into.querySelectorAll('.rubric'), function (el) {
       var m = /^⟦PB:(\d+)⟧$/.exec(el.textContent.trim());
       if (m) el.outerHTML = markers[+m[1]];
@@ -106,13 +106,35 @@
     return out;
   }
 
+  // Appendix pointers (features/silent-communion-prayers.md): the page an
+  // appendix starts on is the folio of the page holding its heading.
+  var PAGE_MARK = ' (page 00)';
+  function fillAppendixPages(pages) {
+    var at = {};
+    pages.forEach(function (p, i) {
+      var re = /class="svc-head appendix-head" data-appendix="([^"]*)"/g, m;
+      var html = (p || []).join('');
+      while ((m = re.exec(html))) if (!(m[1] in at)) at[m[1]] = i + 1;
+    });
+    return pages.map(function (p) {
+      return (p || []).map(function (h) {
+        return h.replace(/(<span class="appendix-page" data-appendix="([^"]*)">) \(page 00\)<\/span>/g, function (_, open, t) {
+          return open + (t in at ? ' (page ' + at[t] + ')' : '') + '</span>';
+        });
+      });
+    });
+  }
+
   function showBook(book) {
     setTitle(book.title, 'Book edition ' + book.fingerprint + ' · built at ' + (book.builtFrom.commit || '?'));
-    renderWithMarkers(bookBlocks(book), $('bk-source'));
+    // The book prints folios, so a pointer to the appendix can name its page.
+    // It is laid out with a two-digit placeholder of the same width and filled
+    // once the paginator has said where the appendix landed.
+    renderWithMarkers(bookBlocks(book), $('bk-source'), { appendixPageMark: PAGE_MARK });
     var measure = $('bk-measure');
     measure.innerHTML = $('bk-source').innerHTML;
     return fontsIn().then(function () {
-      var pages = B.paginate(measure, $('bk-root'), esc(book.title), esc(book.parishName || ''));
+      var pages = fillAppendixPages(B.paginate(measure, $('bk-root'), esc(book.title), esc(book.parishName || '')));
       var n = pages.length, padded = Math.ceil(n / 4) * 4;
       var host = $('pb-pages');
       host.innerHTML = '';

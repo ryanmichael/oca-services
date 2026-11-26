@@ -92,7 +92,11 @@
       } else if (el.classList.contains('edu-module')) {
         allItems.push({ html: el.outerHTML, isHead: false, keepWithNext: false });
       } else if (el.classList.contains('svc-sec')) {
-        Array.from(el.children).forEach(function (child) {
+        // An appendix (features/silent-communion-prayers.md) starts on a
+        // fresh page, so "at the back of this book" finds it at the top of one.
+        var breakFirst = el.classList.contains('print-appendix');
+        Array.from(el.children).forEach(function (child, ci) {
+          var brk = breakFirst && ci === 0;
           var isHead = child.classList.contains('svc-head');
           var isLabel = child.classList.contains('stich-label');
           // Split blocks with <br> into individual lines for natural pagination
@@ -107,13 +111,13 @@
                   : open.replace(/>$/, ' style="margin-bottom:0">');
                 lines.forEach(function (line, j) {
                   var wrap = j < lines.length - 1 ? openNoMB : open;
-                  allItems.push({ html: wrap + line.trim() + close, isHead: false, keepWithNext: false });
+                  allItems.push({ html: wrap + line.trim() + close, isHead: false, keepWithNext: false, breakBefore: brk && j === 0 });
                 });
                 return;
               }
             }
           }
-          allItems.push({ html: child.outerHTML, isHead: isHead, keepWithNext: isHead || isLabel });
+          allItems.push({ html: child.outerHTML, isHead: isHead, keepWithNext: isHead || isLabel, breakBefore: brk });
         });
       }
     });
@@ -155,6 +159,10 @@
     var pages = [[]], heights = [0];
     allItems.forEach(function (item, i) {
       var h = itemHeights[i];
+      if (item.breakBefore && pages[pages.length - 1].length > 0) {
+        pages.push([]);
+        heights.push(0);
+      }
       var idx = pages.length - 1;
       var remaining = PAGE_H - heights[idx];
       // Keep headers, stich-labels, and verses with the following content.

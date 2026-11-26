@@ -7,14 +7,14 @@
   "translation": "st-john-damascus-tyler"
  },
  "builtFrom": {
-  "commit": "a1aebe5",
+  "commit": "49371a1",
   "sampleYears": [
    2026,
    2027,
    2028
   ],
-  "claimed": 113,
-  "fits": 113,
+  "claimed": 97,
+  "fits": 97,
   "misfits": []
  },
  "anchors": [
@@ -551,9 +551,9 @@
   "{\"id\":\"pc-elevation-d\",\"section\":\"Pre-Communion\",\"type\":\"prayer\",\"speaker\":\"deacon\",\"text\":\"Let us attend.\"}",
   "{\"id\":\"pc-elevation-p\",\"section\":\"Pre-Communion\",\"type\":\"prayer\",\"speaker\":\"priest\",\"text\":\"The holy Things are for the holy!\"}",
   "{\"id\":\"pc-elevation-r\",\"section\":\"Pre-Communion\",\"type\":\"response\",\"speaker\":\"choir\",\"text\":\"One is holy, one is Lord, Jesus Christ, to the glory of God the Father. Amen.\"}",
-  "{\"id\":\"ch-silent-rubric\",\"section\":\"Communion Hymn\",\"type\":\"rubric\",\"text\":\"While the clergy commune there is a wait of several minutes. The faithful may pray silently, saying this quietly to themselves:\"}",
-  "{\"id\":\"ch-silent-chrysostom-roof-label\",\"section\":\"Communion Hymn\",\"type\":\"rubric\",\"text\":\"Prayer of St. John Chrysostom:\"}",
-  "{\"id\":\"ch-silent-chrysostom-roof\",\"section\":\"Communion Hymn\",\"type\":\"prayer\",\"speaker\":\"all\",\"text\":\"O Lord my God, I know that I am not worthy nor sufficiently pleasing that Thou shouldst come under the roof of the house of my soul for it is entirely desolate and fallen in ruin and Thou wilt not find in me a place worthy to lay Thy head. But as Thou didst humble Thyself from on high for our sake, so now humble Thyself to my lowliness.\\n\\nAs Thou didst deign to lie in a cavern, in a manger of dumb beasts, so now deign to enter in to the manger of my beastly soul, and into my soiled body.\\n\\nAnd as Thou didst not disdain to enter and to eat with sinners in the house of Simon the leper, so now be pleased to enter into the house of my soul, humble and leprous and sinful.\\n\\nAnd as Thou didst not cast out the prostitute, the sinful woman who came to touch Thee, so have compassion on me a sinner who comes to touch Thee.\\n\\nAnd as Thou didst not abhor the kiss of her sin-stained and unclean mouth, do not abhor my mouth, worse stained and more unclean than hers, nor my stained and shamed and unclean lips, nor my still more impure tongue.\\n\\nBut let the fiery coal of Thy most pure Body and Thy most precious Blood bring me sanctification, enlightenment and strengthening of my lowly soul and body, relief from the burden of my many transgressions, protection against every action of the devil, repulsion and victory over my wicked and evil habits, mortification of my passions, accomplishment of Thy commandments, increase of Thy divine grace, and inheritance of Thy kingdom.\\n\\nFor I do not come to Thee in presumption, O Christ my God, but made bold by Thine unspeakable goodness, lest I stray far away from Thy flock, O Master, and become caught by the wolf of souls.\\n\\nTherefore I pray Thee, O Master, for Thou alone art holy, sanctify my soul and body, my mind and heart, my muscles and bones. Renew me entirely. Implant Thy fear in my fleshly members and let Thy sanctification never be removed from me.\\n\\nBe my helper and defender, guide my life in peace and make me worthy to stand at Thy right hand with all Thy saints.\\n\\nBy the prayers and supplications of Thy most pure Mother, of Thy spiritual servants, the most pure angelic powers, and of all the saints who from all ages have been well-pleasing to Thee. Amen.\",\"density\":\"fine\"}",
+  "{\"id\":\"ch-silent-rubric\",\"section\":\"Communion Hymn\",\"type\":\"rubric\",\"text\":\"While the clergy commune there is a wait of several minutes. The faithful may pray silently, saying this quietly to themselves:\",\"print\":{\"pointer\":\"While the clergy commune there is a wait of several minutes. The faithful may pray silently the Prayer of St. John Chrysostom, found at the back of this book\",\"appendix\":\"Prayers Before Holy Communion\"}}",
+  "{\"id\":\"ch-silent-chrysostom-roof-label\",\"section\":\"Communion Hymn\",\"type\":\"rubric\",\"text\":\"Prayer of St. John Chrysostom:\",\"print\":{\"appendix\":\"Prayers Before Holy Communion\"}}",
+  "{\"id\":\"ch-silent-chrysostom-roof\",\"section\":\"Communion Hymn\",\"type\":\"prayer\",\"speaker\":\"all\",\"text\":\"O Lord my God, I know that I am not worthy nor sufficiently pleasing that Thou shouldst come under the roof of the house of my soul for it is entirely desolate and fallen in ruin and Thou wilt not find in me a place worthy to lay Thy head. But as Thou didst humble Thyself from on high for our sake, so now humble Thyself to my lowliness.\\n\\nAs Thou didst deign to lie in a cavern, in a manger of dumb beasts, so now deign to enter in to the manger of my beastly soul, and into my soiled body.\\n\\nAnd as Thou didst not disdain to enter and to eat with sinners in the house of Simon the leper, so now be pleased to enter into the house of my soul, humble and leprous and sinful.\\n\\nAnd as Thou didst not cast out the prostitute, the sinful woman who came to touch Thee, so have compassion on me a sinner who comes to touch Thee.\\n\\nAnd as Thou didst not abhor the kiss of her sin-stained and unclean mouth, do not abhor my mouth, worse stained and more unclean than hers, nor my stained and shamed and unclean lips, nor my still more impure tongue.\\n\\nBut let the fiery coal of Thy most pure Body and Thy most precious Blood bring me sanctification, enlightenment and strengthening of my lowly soul and body, relief from the burden of my many transgressions, protection against every action of the devil, repulsion and victory over my wicked and evil habits, mortification of my passions, accomplishment of Thy commandments, increase of Thy divine grace, and inheritance of Thy kingdom.\\n\\nFor I do not come to Thee in presumption, O Christ my God, but made bold by Thine unspeakable goodness, lest I stray far away from Thy flock, O Master, and become caught by the wolf of souls.\\n\\nTherefore I pray Thee, O Master, for Thou alone art holy, sanctify my soul and body, my mind and heart, my muscles and bones. Renew me entirely. Implant Thy fear in my fleshly members and let Thy sanctification never be removed from me.\\n\\nBe my helper and defender, guide my life in peace and make me worthy to stand at Thy right hand with all Thy saints.\\n\\nBy the prayers and supplications of Thy most pure Mother, of Thy spiritual servants, the most pure angelic powers, and of all the saints who from all ages have been well-pleasing to Thee. Amen.\",\"density\":\"fine\",\"print\":{\"appendix\":\"Prayers Before Holy Communion\"}}",
   "{\"id\":\"pc-prayer-1\",\"section\":\"Communion Prayer\",\"type\":\"prayer\",\"speaker\":\"all\",\"text\":\"I believe, O Lord, and I confess that Thou art truly the Christ, the Son of the living God, who didst come into the world to save sinners, of whom I am first. And I believe that this is thine own immaculate Body, and that this is thine own precious Blood. Wherefore, I pray thee, have mercy on me, and pardon my trespasses, voluntary and involuntary, in word or in deed, in knowledge and in ignorance, and make me worthy without condemnation to partake of thine immaculate Mysteries, unto forgiveness of sins and unto life eternal.\"}",
   "{\"id\":\"pc-prayer-2\",\"section\":\"Communion Prayer\",\"type\":\"prayer\",\"speaker\":\"all\",\"text\":\"Of thy mystical Supper, O Son of God, accept me today as a communicant, for I will not speak of Thy Mystery to thine enemies, neither will I give thee a kiss as did Judas, but like the thief will I confess thee: Remember me, O Lord, in thy kingdom.\"}",
   "{\"id\":\"pc-prayer-3\",\"section\":\"Communion Prayer\",\"type\":\"prayer\",\"speaker\":\"all\",\"text\":\"Not unto judgment nor unto condemnation be my partaking of thy holy Mysteries, O Lord, but unto healing of soul and body. Amen.\"}",
@@ -639,7 +639,7 @@
      "_overlay": "st-john-damascus-tyler"
     }
    ],
-   "usualShare": 0.841,
+   "usualShare": 0.825,
    "varies": true
   },
   {
@@ -655,7 +655,7 @@
      "text": "Praise the Lord from the heavens, praise Him in the highest. Alleluia, Alleluia, Alleluia!"
     }
    ],
-   "usualShare": 0.655,
+   "usualShare": 0.536,
    "varies": true
   },
   {
@@ -663,7 +663,7 @@
    "gap": 272,
    "section": "Dismissal",
    "usual": null,
-   "usualShare": 0.009,
+   "usualShare": 0.01,
    "varies": true
   },
   {
@@ -687,7 +687,7 @@
      "tone": 3
     }
    ],
-   "usualShare": 0.761,
+   "usualShare": 0.763,
    "varies": true
   }
  ],
@@ -3264,7 +3264,11 @@
     "section": "Communion Hymn",
     "type": "rubric",
     "speaker": null,
-    "text": "While the clergy commune there is a wait of several minutes. The faithful may pray silently, saying this quietly to themselves:"
+    "text": "While the clergy commune there is a wait of several minutes. The faithful may pray silently, saying this quietly to themselves:",
+    "print": {
+     "pointer": "While the clergy commune there is a wait of several minutes. The faithful may pray silently the Prayer of St. John Chrysostom, found at the back of this book",
+     "appendix": "Prayers Before Holy Communion"
+    }
    }
   },
   {
@@ -3274,7 +3278,10 @@
     "section": "Communion Hymn",
     "type": "rubric",
     "speaker": null,
-    "text": "Prayer of St. John Chrysostom:"
+    "text": "Prayer of St. John Chrysostom:",
+    "print": {
+     "appendix": "Prayers Before Holy Communion"
+    }
    }
   },
   {
@@ -3285,7 +3292,10 @@
     "type": "prayer",
     "speaker": "all",
     "text": "O Lord my God, I know that I am not worthy nor sufficiently pleasing that Thou shouldst come under the roof of the house of my soul for it is entirely desolate and fallen in ruin and Thou wilt not find in me a place worthy to lay Thy head. But as Thou didst humble Thyself from on high for our sake, so now humble Thyself to my lowliness.\n\nAs Thou didst deign to lie in a cavern, in a manger of dumb beasts, so now deign to enter in to the manger of my beastly soul, and into my soiled body.\n\nAnd as Thou didst not disdain to enter and to eat with sinners in the house of Simon the leper, so now be pleased to enter into the house of my soul, humble and leprous and sinful.\n\nAnd as Thou didst not cast out the prostitute, the sinful woman who came to touch Thee, so have compassion on me a sinner who comes to touch Thee.\n\nAnd as Thou didst not abhor the kiss of her sin-stained and unclean mouth, do not abhor my mouth, worse stained and more unclean than hers, nor my stained and shamed and unclean lips, nor my still more impure tongue.\n\nBut let the fiery coal of Thy most pure Body and Thy most precious Blood bring me sanctification, enlightenment and strengthening of my lowly soul and body, relief from the burden of my many transgressions, protection against every action of the devil, repulsion and victory over my wicked and evil habits, mortification of my passions, accomplishment of Thy commandments, increase of Thy divine grace, and inheritance of Thy kingdom.\n\nFor I do not come to Thee in presumption, O Christ my God, but made bold by Thine unspeakable goodness, lest I stray far away from Thy flock, O Master, and become caught by the wolf of souls.\n\nTherefore I pray Thee, O Master, for Thou alone art holy, sanctify my soul and body, my mind and heart, my muscles and bones. Renew me entirely. Implant Thy fear in my fleshly members and let Thy sanctification never be removed from me.\n\nBe my helper and defender, guide my life in peace and make me worthy to stand at Thy right hand with all Thy saints.\n\nBy the prayers and supplications of Thy most pure Mother, of Thy spiritual servants, the most pure angelic powers, and of all the saints who from all ages have been well-pleasing to Thee. Amen.",
-    "density": "fine"
+    "density": "fine",
+    "print": {
+     "appendix": "Prayers Before Holy Communion"
+    }
    }
   },
   {
@@ -3967,22 +3977,6 @@
    "2026-11-08",
    "2026-11-15",
    "2026-11-22",
-   "2026-11-29",
-   "2026-12-06",
-   "2026-12-13",
-   "2026-12-20",
-   "2026-12-27",
-   "2027-01-03",
-   "2027-01-10",
-   "2027-01-17",
-   "2027-01-24",
-   "2027-01-31",
-   "2027-02-07",
-   "2027-02-14",
-   "2027-02-21",
-   "2027-02-28",
-   "2027-03-07",
-   "2027-03-14",
    "2027-06-27",
    "2027-07-04",
    "2027-07-11",
@@ -4048,7 +4042,7 @@
    "2028-12-17",
    "2028-12-31"
   ],
-  "fitting": 113
+  "fitting": 97
  },
- "fingerprint": "4e1a91070351"
+ "fingerprint": "417468cd0955"
 }

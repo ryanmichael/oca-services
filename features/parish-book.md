@@ -36,6 +36,17 @@ insert cut; it is frozen into the book and its fingerprint. Contract C6 asserts
 it removes exactly those troparia and nothing else. The Reader's copy is the
 full booklet, linked from the insert page.
 
+## What it moves to the back
+
+A block carrying a `print.appendix` hint prints in an appendix after the
+Dismissal, and the block pointing to it prints its `print.pointer` with the
+page number (features/silent-communion-prayers.md, "In print, at the back").
+St John's silent pre-Communion prayer is the one case: the note is on page 25,
+the appendix on page 36 (edition `417468cd0955`). The hints are in the frozen
+blocks, so moving or un-moving a block changes the fingerprint. The contract is
+still book + insert = the service less `omit`; the appendix changes where a
+block prints, not whether.
+
 ## Membership
 
 `membership` selects the dates an edition claims: weekday, `seasons`,

@@ -77,6 +77,8 @@ function legacyBuildRubrics(row, picks = {}) {
   // Troparia/Kontakia cue rubrics while the clergy commune.
   if (picked('silentCommunionPrayers') && coerce(picks.silentCommunionPrayers, 'boolean') === true)
     r.liturgy = { ...(r.liturgy || {}), silentCommunionPrayers: true };
+  if (picked('silentCommunionPrayersInAppendix') && coerce(picks.silentCommunionPrayersInAppendix, 'boolean') === true)
+    r.liturgy = { ...(r.liturgy || {}), silentCommunionPrayersInAppendix: true };
   if (picked('sungVenerationEnding') && coerce(picks.sungVenerationEnding, 'boolean') === true)
     r.liturgy = { ...(r.liturgy || {}), sungVenerationEnding: true };
   // features/beatitudes-print-cues.md — assemblers/liturgy-parts/antiphons.js.

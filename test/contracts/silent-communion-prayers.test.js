@@ -220,6 +220,86 @@ describe('silent pre-Communion prayer', () => {
     assert.equal(outside.filter(b => b.id.startsWith('ch-season-')).length, 0, 'not outside the Nativity Fast');
   });
 
+  // ── Appendix (liturgy.silentCommunionPrayersInAppendix, 2026-11-26) ───────
+  // In print the prayer moves to the back and a note takes its place; the
+  // service order (API, screen, audits) does not move. Asserted on POSITION
+  // in the rendered markup, not on labels.
+  const panel = () => {
+    const sandbox = { window: {} };
+    vm.createContext(sandbox);
+    vm.runInContext(fs.readFileSync(path.join(ROOT, 'public/scripts/renderer.js'), 'utf8'), sandbox);
+    return sandbox.window.renderBlocks;
+  };
+  const OPENING = 'O Lord my God, I know that I am not worthy';
+  const count = (s, needle) => s.split(needle).length - 1;
+
+  it('INV-12 — the API order is unchanged; only print hints are added', async () => {
+    const bl = await blocks(`/api/liturgy?date=${DATE}&pronoun=tt${TYLER}`);
+    const i = bl.findIndex(b => b.id === SILENT);
+    assert.equal(bl[i].section, 'Communion Hymn', 'still in the Communion Hymn in service order');
+    assert.equal(bl[i + 1].section, 'Communion Prayer', 'still immediately before the Communion Prayer');
+    const rubric = bl.find(b => b.id === 'ch-silent-rubric');
+    assert.ok(rubric.print && rubric.print.pointer, 'the rubric carries the print pointer');
+    assert.equal(bl[i].print.appendix, rubric.print.appendix, 'prayer and pointer name the same appendix');
+    assert.equal(bl.find(b => b.id === `${SILENT}-label`).print.appendix, rubric.print.appendix,
+      'the attribution travels with the prayer');
+  });
+
+  it('INV-13 — print moves the prayer behind everything; the pointer sits where it was', async () => {
+    const bl = await blocks(`/api/liturgy?date=${DATE}&pronoun=tt${TYLER}`);
+    const html = panel()(bl, { print: true });
+    assert.equal(count(html, OPENING), 1, 'printed exactly once');
+    const prayerAt = html.indexOf(OPENING);
+    const appendixAt = html.indexOf('svc-sec print-appendix');
+    assert.ok(appendixAt > 0, 'an appendix section exists');
+    assert.ok(prayerAt > appendixAt, 'the prayer is inside the appendix');
+    // Every other section ends before the appendix starts: nothing after it.
+    assert.equal(html.slice(appendixAt + 1).indexOf('<div class="svc-sec"'), -1,
+      'the appendix is the last section');
+    // The pointer is where the prayer was: after the koinonikon, before the
+    // Communion Prayer heading.
+    const pointerAt = html.indexOf('print-pointer');
+    assert.ok(pointerAt > html.indexOf('COMMUNION HYMN') && pointerAt < html.indexOf('COMMUNION PRAYER'),
+      'the pointer replaces the prayer in the Communion Hymn');
+    assert.match(html.slice(pointerAt, pointerAt + 400), /back of this book/);
+  });
+
+  it('INV-14 — the screen keeps the prayer inline and prints no pointer', async () => {
+    const bl = await blocks(`/api/liturgy?date=${DATE}&pronoun=tt${TYLER}`);
+    const html = panel()(bl, {});
+    assert.equal(count(html, OPENING), 1);
+    assert.ok(html.indexOf(OPENING) < html.indexOf('COMMUNION PRAYER'), 'inline, before the Communion Prayer');
+    assert.equal(count(html, 'print-pointer') + count(html, 'print-appendix'), 0);
+  });
+
+  it('INV-15 — with the appendix rubric off, the blocks carry no print hint (byte-identical)', () => {
+    const { _litCommunionHymn } = require('../../assemblers/liturgy-parts/communion');
+    const f = JSON.parse(fs.readFileSync(path.join(ROOT, 'fixed-texts/liturgy-fixed.json'), 'utf8'));
+    const k = { label: 'Communion Hymn', text: 'Praise the Lord from the heavens.' };
+    const off = _litCommunionHymn(k, null, f, { liturgy: { silentCommunionPrayers: true } });
+    assert.ok(off.some(b => b.id === SILENT));
+    assert.equal(off.filter(b => b.print).length, 0);
+    const on = _litCommunionHymn(k, null, f,
+      { liturgy: { silentCommunionPrayers: true, silentCommunionPrayersInAppendix: true } });
+    assert.deepEqual(on.map(b => b.id), off.map(b => b.id), 'same blocks, same order');
+    assert.deepEqual(on.map(b => b.text), off.map(b => b.text), 'same texts');
+  });
+
+  it('INV-16 — the server-rendered booklet moves it too, and its page keeps it inline', () => {
+    const { _litCommunionHymn } = require('../../assemblers/liturgy-parts/communion');
+    const f = JSON.parse(fs.readFileSync(path.join(ROOT, 'fixed-texts/liturgy-fixed.json'), 'utf8'));
+    const on = _litCommunionHymn({ label: 'Communion Hymn', text: 'Praise the Lord.' }, null, f,
+      { liturgy: { silentCommunionPrayers: true, silentCommunionPrayersInAppendix: true } });
+    const { renderService } = require(path.join(ROOT, 'renderer.js'));
+    const page = renderService(on, { title: 't' });
+    // The page itself: the prayer is wrapped for the booklet to lift out, and
+    // the pointer is hidden on screen.
+    assert.ok(page.indexOf('class="print-appendix"') < page.indexOf(OPENING), 'prayer wrapped for the booklet');
+    assert.match(page, /\.print-pointer \{ display: none; \}/);
+    assert.match(page, /querySelectorAll\('\.print-appendix'\)/, 'printBooklet lifts .print-appendix out');
+    assert.match(page, /appendix-break/, 'and starts it on a fresh page');
+  });
+
   it('INV-8 — called without fixed texts or rubrics (Typika) it neither throws nor emits the prayer', () => {
     const { _litCommunionHymn } = require('../../assemblers/liturgy-parts/communion');
     const koinonikon = { label: 'Communion Hymn', text: 'Praise the Lord from the heavens.' };

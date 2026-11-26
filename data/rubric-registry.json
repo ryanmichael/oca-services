@@ -232,6 +232,16 @@
         "liturgy"
       ]
     },
+    "silentCommunionPrayersInAppendix": {
+      "label": "Print the silent pre-Communion prayer at the back",
+      "description": "Requires silentCommunionPrayers. In print (the booklet and the Parish Book) the prayer of St. John Chrysostom moves to an appendix at the back of the book, and the Communion Hymn section prints a note pointing to it (with the page number where the book prints them). On screen the prayer stays where it is.",
+      "namespace": "liturgy.silentCommunionPrayersInAppendix",
+      "type": "boolean",
+      "default": false,
+      "appliesTo": [
+        "liturgy"
+      ]
+    },
     "sungVenerationEnding": {
       "label": "Choir sings the close of the Prayers of Thanksgiving",
       "description": "Requires prayersOfThanksgiving. The book appoints twelve “Lord, have mercy” said by the reader and the troparion of the Liturgy's author. When on, the choir instead sings three “Lord, have mercy” and the troparion of the temple's patron — displaced by the feast's troparion on a feast, or in the week following one.",

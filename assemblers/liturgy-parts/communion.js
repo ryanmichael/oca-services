@@ -150,14 +150,26 @@ function _litCommunionHymn(communionHymn, spec, f, rubrics = {}) {
     ? (f || {})['prayers-before-communion']
     : null;
   if (silent && Array.isArray(silent.prayers) && silent.prayers.length > 0) {
-    blocks.push(makeBlock('ch-silent-rubric', section, 'rubric', null, silent.rubric));
+    // `liturgy.silentCommunionPrayersInAppendix`: a PRINT hint only. The
+    // service order is unchanged (the screen, the API and every audit see the
+    // prayer here); a print surface moves each block carrying
+    // `print.appendix` to an appendix at the back and prints the rubric's
+    // `print.pointer` in its place (renderBlocks in public/scripts/renderer.js,
+    // printBooklet in renderer.js). Same mechanism as the Beatitude print cues
+    // (features/beatitudes-print-cues.md).
+    const app = (rubrics.liturgy || {}).silentCommunionPrayersInAppendix
+      && silent.appendix && silent.appendix.title && silent.appendix.pointer
+      ? silent.appendix : null;
+    const inApp = app ? { print: { appendix: app.title } } : {};
+    blocks.push(makeBlock('ch-silent-rubric', section, 'rubric', null, silent.rubric,
+      app ? { print: { pointer: app.pointer, appendix: app.title } } : {}));
     silent.prayers.forEach((pr) => {
       if (!pr || !pr.text) return;
       // The attribution goes in its OWN rubric block: renderer.js renders
       // `label` for a hymn only, so a label on a prayer block is silently
       // dropped. Same shape as _litPrayersOfThanksgiving.
       if (pr.label) {
-        blocks.push(makeBlock(`ch-silent-${pr.id}-label`, section, 'rubric', null, `${pr.label}:`));
+        blocks.push(makeBlock(`ch-silent-${pr.id}-label`, section, 'rubric', null, `${pr.label}:`, inApp));
       }
       // One block per prayer, paragraphs kept inside it on blank lines (esc()
       // turns them into breaks). Splitting into a block per paragraph the way
@@ -169,7 +181,7 @@ function _litCommunionHymn(communionHymn, spec, f, rubrics = {}) {
       // dominate the page. Styled in `public/styles/main.css` (`.prayer.fine`)
       // and in both print stylesheets in `renderer.js`.
       blocks.push(makeBlock(`ch-silent-${pr.id}`, section, 'prayer', 'all', pr.text,
-        { density: 'fine' }));
+        { density: 'fine', ...inApp }));
     });
     return blocks;
   }
